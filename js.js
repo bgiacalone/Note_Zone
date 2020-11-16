@@ -1,29 +1,58 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+  let note_map = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"];
+  let g = document.getElementById("guitar");
+  let k = document.getElementById("keyboard");
   let toggleNoteNamesButton = document.getElementById("toggleNoteNames");
   let notes_named = false;
-  let notes_shown = false;
-  let note_map = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+  let names_shown = false;
+  add_class(g, "names_hidden");
+  add_class(k, "names_hidden");
   toggleNoteNamesButton.addEventListener("click", toggle_note_name_click_handler);
   function name_notes() {
     let notes = document.getElementsByClassName("n");
     for (var i = 0; i < notes.length; i++) {
-      notes[i].style.content = "";
       notes[i].innerHTML = note_map[notes[i].dataset.n - 1];
     }
+    notes_named = true;
   }
   name_notes();
   function toggle_note_name_click_handler() {
-    let notes = document.getElementsByClassName("n");
-    if (!notes_shown) {
-      for (var i = 0; i < notes.length; i++) {
-        notes[i].style.color = "black";
-      }
-      notes_shown = true;
+    if (names_shown) {
+      remove_class(g, "names_shown");
+      remove_class(k, "names_shown");
+      add_class(g, "names_hidden");
+      add_class(k, "names_hidden");
+      names_shown = false;
     } else {
-      for (var i = 0; i < notes.length; i++) {
-        notes[i].style.color = "transparent";
-      }
-      notes_shown = false;
+      remove_class(g, "names_hidden");
+      remove_class(k, "names_hidden");
+      add_class(g, "names_shown");
+      add_class(k, "names_shown");
+      names_shown = true;
     }
   }
 });
+function has_class(element, klass) {
+  if (element.className && typeof(klass) == "string") {
+    let classes = element.className.split(" ");
+    return classes.includes(klass);
+  } else {
+    return false;
+  }
+}
+function remove_class(element, klass) {
+  let classes = element.className.split(" ");
+  if (classes.includes(klass)) {
+    classes.splice(classes.indexOf(klass), 1);
+    element.className = classes.join(" ");
+  } else {
+    return false;
+  }
+}
+function add_class(element, klass) {
+  let classes = element.className.split(" ");
+  if (!classes.includes(klass)) {
+    classes.push(klass);
+    element.className = classes.join(" ").trim();
+  }
+}

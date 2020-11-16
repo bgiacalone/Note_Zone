@@ -2,10 +2,10 @@ body {text-align: center; padding-top:15px;}
 button {cursor:pointer;}
 
 .k .o, .k .n { display: inline-block; }
-.k .n { padding: 15px 0; position: relative; width: 10px; }
+.k .n { padding: 15px 0; position: relative; width: 10px; font-size:.6em; }
 .n._1, .n._6 { margin-left: -5px; }
-.n._3, .n._5, .n._8, .n._10, .n._12 { margin-left: -14px; }
-.n._2, .n._4, .n._7, .n._9, .n._11 { background-color:black; color:white; left:-4px; margin-left:-6px; top:-4px; z-index:2; }
+.n._3, .n._5, .n._8, .n._10, .n._12 { margin-left: -15px; }
+.n._2, .n._4, .n._7, .n._9, .n._11 { background-color:black; border:1px solid black;color:white; left:-4px; margin-left:-6px; top:-4px; z-index:2; }
 .n._1, .n._3, .n._5, .n._6, .n._8, .n._10, .n._12 { background-color:snow; border:1px solid black; padding-bottom:40px; width:17px; }
 
 .g { background-color:rgba(155,125,100,.6); display:inline-block; padding:3px 5px; }
@@ -14,9 +14,27 @@ button {cursor:pointer;}
 .g .sg .sgn:first-child { margin-left:0; }
 .g .s { border-top: 4px solid grey; display: flex; }
 .g .s:last-child { border-bottom: 4px solid grey; }
-.g .s .n { border-right: 2px solid black; width: 38px; }
+.g .s .n { border-right: 2px solid black; line-height: 22px; width: 38px; }
 .g .s .n:first-child { border-right: 4px solid white; }
 .g .s .n:last-child { border-right: 4px solid black; }
 
-.notes_shown.k .n, .notes_shown.g .s { color: black; }
-.notes_hidden.g .n, .notes_hidden.g .s { color: transparent; }
+.names_hidden .n { color: transparent; }
+.names_shown.g .n, .names_shown .n._1, .names_shown .n._3, .names_shown .n._5, .names_shown .n._6, .names_shown .n._8, .names_shown .n._10, .names_shown .n._12 { color: black; }
+.names_shown .n._2, .names_shown .n._4, .names_shown .n._7, .names_shown .n._9, .names_shown .n._11 { color: white; }
+
+
+
+/* -start TODOLIST
+
+1. make instruments collapsible/hide-show
+2. add "piano" instrument with 88keys
+3. add "keyboard octave" instrument with 12 larger keys
+4. add Toggle Note Highlight button , toggles per-note color highlights
+5. add Toggle Octave Highlight button , toggles per-octave color highlights
+6. add form & button to generate pseudo random note combinations and highlight them
+7. add buttons to guitar instrument section (submenu?) that allow for orientation flipping (x & y)
+8. draw guitar body and head
+9. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
+10. display MIDI input 
+
+ --end TODOLIST  */
