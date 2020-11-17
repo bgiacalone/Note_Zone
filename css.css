@@ -14,7 +14,7 @@ button {cursor:pointer;}
 .g .sg .sgn:first-child { margin-left:0; }
 .g .s { border-top: 4px solid grey; display: flex; }
 .g .s:last-child { border-bottom: 4px solid grey; }
-.g .s .n { border-right: 2px solid black; line-height: 22px; width: 38px; }
+.g .s .n { border-right: 2px solid black; line-height: 22px; width: 38px; font-size:.8em; }
 .g .s .n:first-child { border-right: 4px solid white; }
 .g .s .n:last-child { border-right: 4px solid black; }
 
@@ -22,6 +22,24 @@ button {cursor:pointer;}
 .names_shown.g .n, .names_shown .n._1, .names_shown .n._3, .names_shown .n._5, .names_shown .n._6, .names_shown .n._8, .names_shown .n._10, .names_shown .n._12 { color: black; }
 .names_shown .n._2, .names_shown .n._4, .names_shown .n._7, .names_shown .n._9, .names_shown .n._11 { color: white; }
 
+.notes_highlighted .n[data-n="1"] { background-color:#f09; }
+.notes_highlighted .n[data-n="2"] { background-color:#f00; }
+.notes_highlighted .n[data-n="3"] { background-color:#f90; }
+.notes_highlighted .n[data-n="4"] { background-color:#ff0; }
+.notes_highlighted .n[data-n="5"] { background-color:#9f0; }
+.notes_highlighted .n[data-n="6"] { background-color:#0f0; }
+.notes_highlighted .n[data-n="7"] { background-color:#0f9; }
+.notes_highlighted .n[data-n="8"] { background-color:#0ff; }
+.notes_highlighted .n[data-n="9"] { background-color:#09f; }
+.notes_highlighted .n[data-n="10"] { background-color:#00f; }
+.notes_highlighted .n[data-n="11"] { background-color:#90f; }
+.notes_highlighted .n[data-n="12"] { background-color:#f0f; }
+.notes_highlighted.names_shown .n { color:white; }
+.notes_highlighted.names_shown .n[data-n="4"] { color:black; }
+.notes_highlighted.names_shown .n[data-n="5"] { color:black; }
+.notes_highlighted.names_shown .n[data-n="6"] { color:black; }
+.notes_highlighted.names_shown .n[data-n="7"] { color:black; }
+.notes_highlighted.names_shown .n[data-n="8"] { color:black; }
 
 
 /* -start TODOLIST
@@ -29,12 +47,11 @@ button {cursor:pointer;}
 1. make instruments collapsible/hide-show
 2. add "piano" instrument with 88keys
 3. add "keyboard octave" instrument with 12 larger keys
-4. add Toggle Note Highlight button , toggles per-note color highlights
-5. add Toggle Octave Highlight button , toggles per-octave color highlights
-6. add form & button to generate pseudo random note combinations and highlight them
-7. add buttons to guitar instrument section (submenu?) that allow for orientation flipping (x & y)
-8. draw guitar body and head
-9. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
-10. display MIDI input 
+4. add Toggle Octave Highlight button , toggles per-octave color highlights
+5. add form & button to generate pseudo random note combinations and highlight them
+6. add buttons to guitar instrument section (submenu?) that allow for orientation flipping (x & y)
+7. draw guitar body and head
+8. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
+9. display MIDI input
 
  --end TODOLIST  */

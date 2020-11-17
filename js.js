@@ -3,19 +3,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let g = document.getElementById("guitar");
   let k = document.getElementById("keyboard");
   let toggleNoteNamesButton = document.getElementById("toggleNoteNames");
+  let toggleNoteHighlightButton = document.getElementById("toggleNoteHighlight");
   let notes_named = false;
   let names_shown = false;
+  let notes_highlighted = false;
   add_class(g, "names_hidden");
   add_class(k, "names_hidden");
-  toggleNoteNamesButton.addEventListener("click", toggle_note_name_click_handler);
-  function name_notes() {
-    let notes = document.getElementsByClassName("n");
-    for (var i = 0; i < notes.length; i++) {
-      notes[i].innerHTML = note_map[notes[i].dataset.n - 1];
-    }
-    notes_named = true;
-  }
   name_notes();
+  toggleNoteNamesButton.addEventListener("click", toggle_note_name_click_handler);
+  toggleNoteHighlightButton.addEventListener("click", toggle_note_highlight_click_handler);
+  function toggle_note_highlight_click_handler() {
+    if (notes_highlighted) {
+      remove_class(g, "notes_highlighted");
+      remove_class(k, "notes_highlighted");
+      notes_highlighted = false;
+    } else {
+      add_class(g, "notes_highlighted");
+      add_class(k, "notes_highlighted");
+      notes_highlighted = true;
+    }
+  }
   function toggle_note_name_click_handler() {
     if (names_shown) {
       remove_class(g, "names_shown");
@@ -31,7 +38,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
       names_shown = true;
     }
   }
+  function name_notes() {
+    let notes = document.getElementsByClassName("n");
+    for (var i = 0; i < notes.length; i++) {
+      notes[i].innerHTML = note_map[notes[i].dataset.n - 1];
+    }
+    notes_named = true;
+  }
 });
+
 function has_class(element, klass) {
   if (element.className && typeof(klass) == "string") {
     let classes = element.className.split(" ");
