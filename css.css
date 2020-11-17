@@ -1,5 +1,13 @@
-body {text-align: center; padding-top:15px;}
+body { padding:0; margin:0; background-color:#f1f1f1; }
 button {cursor:pointer;}
+main {text-align: center; padding-top:35px;}
+
+.tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); }
+.tn .logo img, .tn .amburgla img { border-radius:5px; height:50px; }
+.logo, .amburgla { display:flex; width:50%; padding:5px; }
+.logo { justify-content: flex-start; align-items: middle; }
+.note_logo { height:50px !important; width:50px; }
+.amburgla { justify-content: flex-end; }
 
 .k .o, .k .n { display: inline-block; }
 .k .n { padding: 15px 0; position: relative; width: 10px; font-size:.6em; }
@@ -10,8 +18,9 @@ button {cursor:pointer;}
 
 .g { background-color:rgba(155,125,100,.6); display:inline-block; padding:3px 5px; }
 .g .sg { background-color:rgba(255,255,255,.75); padding-top:2px; }
-.g .sg .sgn { border-right:2px solid rgba(0,0,0,.25); display:inline-block; margin-left:-4px; max-width:38px; overflow:hidden; width:38px; }
+.g .sg .sgn { border-right:2px solid rgba(0,0,0,.25); color: transparent; display:inline-block; margin-left:-4px; max-width:38px; overflow:hidden; width:38px; }
 .g .sg .sgn:first-child { margin-left:0; }
+.g .sg .sgn.m { color: black;}
 .g .s { border-top: 4px solid grey; display: flex; }
 .g .s:last-child { border-bottom: 4px solid grey; }
 .g .s .n { border-right: 2px solid black; line-height: 22px; width: 38px; font-size:.8em; }
