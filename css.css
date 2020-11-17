@@ -22,24 +22,24 @@ button {cursor:pointer;}
 .names_shown.g .n, .names_shown .n._1, .names_shown .n._3, .names_shown .n._5, .names_shown .n._6, .names_shown .n._8, .names_shown .n._10, .names_shown .n._12 { color: black; }
 .names_shown .n._2, .names_shown .n._4, .names_shown .n._7, .names_shown .n._9, .names_shown .n._11 { color: white; }
 
-.notes_highlighted .n[data-n="1"] { background-color:#f09; }
-.notes_highlighted .n[data-n="2"] { background-color:#f00; }
-.notes_highlighted .n[data-n="3"] { background-color:#f90; }
-.notes_highlighted .n[data-n="4"] { background-color:#ff0; }
-.notes_highlighted .n[data-n="5"] { background-color:#9f0; }
-.notes_highlighted .n[data-n="6"] { background-color:#0f0; }
-.notes_highlighted .n[data-n="7"] { background-color:#0f9; }
-.notes_highlighted .n[data-n="8"] { background-color:#0ff; }
-.notes_highlighted .n[data-n="9"] { background-color:#09f; }
-.notes_highlighted .n[data-n="10"] { background-color:#00f; }
-.notes_highlighted .n[data-n="11"] { background-color:#90f; }
-.notes_highlighted .n[data-n="12"] { background-color:#f0f; }
+.notes_highlighted .n[data-n="1"] { background-color:#f00; }
+.notes_highlighted .n[data-n="2"] { background-color:#f90; }
+.notes_highlighted .n[data-n="3"] { background-color:#ff0; }
+.notes_highlighted .n[data-n="4"] { background-color:#9f0; }
+.notes_highlighted .n[data-n="5"] { background-color:#0f0; }
+.notes_highlighted .n[data-n="6"] { background-color:#0f9; }
+.notes_highlighted .n[data-n="7"] { background-color:#0ff; }
+.notes_highlighted .n[data-n="8"] { background-color:#09f; }
+.notes_highlighted .n[data-n="9"] { background-color:#00f; }
+.notes_highlighted .n[data-n="10"] { background-color:#90f; }
+.notes_highlighted .n[data-n="11"] { background-color:#f0f; }
+.notes_highlighted .n[data-n="12"] { background-color:#f09; }
 .notes_highlighted.names_shown .n { color:white; }
+.notes_highlighted.names_shown .n[data-n="3"] { color:black; }
 .notes_highlighted.names_shown .n[data-n="4"] { color:black; }
 .notes_highlighted.names_shown .n[data-n="5"] { color:black; }
 .notes_highlighted.names_shown .n[data-n="6"] { color:black; }
 .notes_highlighted.names_shown .n[data-n="7"] { color:black; }
-.notes_highlighted.names_shown .n[data-n="8"] { color:black; }
 
 
 /* -start TODOLIST
