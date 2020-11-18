@@ -9,6 +9,7 @@ main {text-align: center; padding-top:35px;}
 .note_logo { height:50px !important; width:50px; }
 .amburgla { justify-content: flex-end; }
 
+.k { margin-top:45px; }
 .k .o, .k .n { display: inline-block; }
 .k .n { padding: 15px 0; position: relative; width: 10px; font-size:.6em; }
 .n._1, .n._6 { margin-left: -5px; }
@@ -16,7 +17,7 @@ main {text-align: center; padding-top:35px;}
 .n._2, .n._4, .n._7, .n._9, .n._11 { background-color:black; border:1px solid black;color:white; left:-4px; margin-left:-6px; top:-4px; z-index:2; }
 .n._1, .n._3, .n._5, .n._6, .n._8, .n._10, .n._12 { background-color:snow; border:1px solid black; padding-bottom:40px; width:17px; }
 
-.g { background-color:rgba(155,125,100,.6); display:inline-block; padding:3px 5px; }
+.g { background-color:rgba(155,125,100,.6); display:inline-block; padding:3px 5px; margin-top:45px; }
 .g .sg { background-color:rgba(255,255,255,.75); padding-top:2px; }
 .g .sg .sgn { border-right:2px solid rgba(0,0,0,.25); color: transparent; display:inline-block; margin-left:-4px; max-width:38px; overflow:hidden; width:38px; }
 .g .sg .sgn:first-child { margin-left:0; }
@@ -53,13 +54,20 @@ main {text-align: center; padding-top:35px;}
 
 /* -start TODOLIST
 
+a. octave brackets
+b. hamburgler css wiggle on hover
+c. left aligned nav pullout menu
+d. circle of fifths page
+e. chords page
+f. staff notation view
+g. frequency spectrum view
 1. make instruments collapsible/hide-show
 2. add "piano" instrument with 88keys
 3. add "keyboard octave" instrument with 12 larger keys
 4. add Toggle Octave Highlight button , toggles per-octave color highlights
 5. add form & button to generate pseudo random note combinations and highlight them
 6. add buttons to guitar instrument section (submenu?) that allow for orientation flipping (x & y)
-7. draw guitar body and head
+7. guitar graphics upgrade - scaled fretboard , add head and body
 8. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
 9. display MIDI input
 
