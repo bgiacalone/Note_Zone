@@ -4,14 +4,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let k = document.getElementById("keyboard");
   let toggleNoteNamesButton = document.getElementById("toggleNoteNames");
   let toggleNoteHighlightButton = document.getElementById("toggleNoteHighlight");
+  let toggleScaleHighlightButton = document.getElementById("toggleScaleHighlight");
   let notes_named = false;
   let names_shown = false;
   let notes_highlighted = false;
+  let scale_highlighted = false;
   add_class(g, "names_hidden");
   add_class(k, "names_hidden");
   name_notes();
   toggleNoteNamesButton.addEventListener("click", toggle_note_name_click_handler);
   toggleNoteHighlightButton.addEventListener("click", toggle_note_highlight_click_handler);
+  toggleScaleHighlightButton.addEventListener("click", toggle_scale_highlight_click_handler);
   function toggle_note_highlight_click_handler() {
     if (notes_highlighted) {
       remove_class(g, "notes_highlighted");
@@ -23,6 +26,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
       notes_highlighted = true;
     }
   }
+
+
+  let cmaj = [1,3,5,6,8,10,12];
+  function toggle_scale_highlight_click_handler() {
+    if (scale_highlighted) {
+      cmaj.forEach((item, i) => {
+        let asd = document.querySelectorAll("div[data-n='"+item+"']");
+        asd.forEach((item, i) => {
+          remove_class(item, "notes_highlighted");
+        });
+      });;
+      scale_highlighted = false;
+    } else {
+      cmaj.forEach((item, i) => {
+        let asd = document.querySelectorAll("div[data-n='"+item+"']");
+        asd.forEach((item, i) => {
+          add_class(item, "notes_highlighted");
+        });
+      });
+      scale_highlighted = true;
+    }
+  }
+
+
   function toggle_note_name_click_handler() {
     if (names_shown) {
       remove_class(g, "names_shown");
