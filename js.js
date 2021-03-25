@@ -29,23 +29,36 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
   function toggle_scale_highlight_click_handler() {
-    let scale_dropdown_val = 0;
-    let scale_root_note = 0;
+    let scale_tonic = document.querySelector("select[id='tonic']").value;
+    let scale_interval = document.querySelector("select[id='interval']").value;
+    let running = +scale_tonic;
     if (scale_highlighted) {
-      scale_map[scale_dropdown].forEach((item, i) => {
-        let asd = document.querySelectorAll("div[data-n='"+item+"']");
+      let qwe =document.querySelectorAll("div[data-n='" + scale_tonic + "']");
+      qwe.forEach((item, i) => {
+        item.classList.remove("notes_highlighted");
+      });
+      scale_map[scale_interval].forEach((item, i) => {
+        running = running + scale_map[scale_interval][i];
+        let asd = document.querySelectorAll("div[data-n='"+running+"']");
         asd.forEach((item, i) => {
           item.classList.remove("notes_highlighted");
         });
-      });;
+      });
+      running = 0;
       scale_highlighted = false;
     } else {
-      scale_map[scale_dropdown].forEach((item, i) => {
-        let asd = document.querySelectorAll("div[data-n='"+item+"']");
+      let qwe =document.querySelectorAll("div[data-n='" + scale_tonic + "']");
+      qwe.forEach((item, i) => {
+        item.classList.add("notes_highlighted");
+      });
+      scale_map[scale_interval].forEach((item, i) => {
+        running = running + scale_map[scale_interval][i];
+        let asd = document.querySelectorAll("div[data-n='"+running+"']");
         asd.forEach((item, i) => {
           item.classList.add("notes_highlighted");
         });
       });
+      running = 0;
       scale_highlighted = true;
     }
   }
@@ -72,28 +85,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
     notes_named = true;
   }
 });
-
-// function has_class(element, klass) {
-//   if (element.className && typeof(klass) == "string") {
-//     let classes = element.className.split(" ");
-//     return classes.includes(klass);
-//   } else {
-//     return false;
-//   }
-// }
-// function remove_class(element, klass) {
-//   let classes = element.className.split(" ");
-//   if (classes.includes(klass)) {
-//     classes.splice(classes.indexOf(klass), 1);
-//     element.className = classes.join(" ");
-//   } else {
-//     return false;
-//   }
-// }
-// function add_class(element, klass) {
-//   let classes = element.className.split(" ");
-//   if (!classes.includes(klass)) {
-//     classes.push(klass);
-//     element.className = classes.join(" ").trim();
-//   }
-// }
