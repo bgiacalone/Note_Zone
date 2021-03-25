@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let toggleNoteNamesButton = document.getElementById("toggleNoteNames");
   let toggleNoteHighlightButton = document.getElementById("toggleNoteHighlight");
   let toggleScaleHighlightButton = document.getElementById("toggleScaleHighlight");
+  let selectorScaleTonic = document.getElementById("tonic");
+  let selectorScaleInterval = document.getElementById("interval");
+  let stored_scale_tonic = document.querySelector("select[id='tonic']").value;
+  let stored_scale_interval = document.querySelector("select[id='interval']").value;
   let notes_named = false;
   let names_shown = false;
   let notes_highlighted = false;
@@ -17,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   toggleNoteNamesButton.addEventListener("click", toggle_note_name_click_handler);
   toggleNoteHighlightButton.addEventListener("click", toggle_note_highlight_click_handler);
   toggleScaleHighlightButton ? toggleScaleHighlightButton.addEventListener("click", toggle_scale_highlight_click_handler) : console.log("n");
+  selectorScaleTonic ? selectorScaleTonic.addEventListener("change", toggle_scale_highlight_click_handler) : console.log("n");
+  selectorScaleInterval ? selectorScaleInterval.addEventListener("change", toggle_scale_highlight_click_handler) : console.log("n");
   function toggle_note_highlight_click_handler() {
     if (notes_highlighted) {
       k.classList.remove("notes_highlighted");
@@ -28,10 +34,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
       notes_highlighted = true;
     }
   }
-  function toggle_scale_highlight_click_handler() {
-    let scale_tonic = document.querySelector("select[id='tonic']").value;
-    let scale_interval = document.querySelector("select[id='interval']").value;
+  function toggle_scale_highlight_click_handler(e) {
+    console.log(e.type);
+    if (e.type == "change") {
+      return;
+    }
+    let scale_tonic = scale_highlighted ? stored_scale_tonic : document.querySelector("select[id='tonic']").value;
+    let scale_interval = scale_highlighted ? stored_scale_interval : document.querySelector("select[id='interval']").value;
     let running = +scale_tonic;
+    console.log(scale_tonic);
+    console.log(scale_interval);
     if (scale_highlighted) {
       let qwe =document.querySelectorAll("div[data-n='" + scale_tonic + "']");
       qwe.forEach((item, i) => {
