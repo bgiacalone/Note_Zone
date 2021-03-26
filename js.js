@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   let note_map = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"];
   let scale_map = [ [2,2,1,2,2,2,1],
-                    [2,1,2,2,1,2,2] ];
+                    [2,1,2,2,1,2,2],
+                    [1,2,2,1,2,2,2],
+                    [2,1,2,2,2,1,2],
+                    [1,2,2,2,1,2,2],
+                    [2,2,2,1,2,2,1],
+                    [2,2,1,2,2,1,2] ];
   let g = document.getElementById("guitar");
   let k = document.getElementById("keyboard");
   let toggleNoteNamesButton = document.getElementById("toggleNoteNames");
@@ -42,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let scale_interval = scale_highlighted ? stored_scale_interval : document.querySelector("select[id='interval']").value;
     let running = +scale_tonic;
     if (scale_highlighted) {
-      let qwe =document.querySelectorAll("div[data-n='" + stored_scale_tonic + "']");
-      qwe.forEach((item, i) => {
+      let x =document.querySelectorAll("div[data-n='" + stored_scale_tonic + "']");
+      x.forEach((item, i) => {
         item.classList.remove("notes_highlighted");
       });
       scale_map[stored_scale_interval].forEach((item, i) => {
@@ -51,16 +56,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if (running > 12) {
           running = running - 12;
         }
-        let asd = document.querySelectorAll("div[data-n='"+running+"']");
-        asd.forEach((item, i) => {
+        let y = document.querySelectorAll("div[data-n='"+running+"']");
+        y.forEach((item, i) => {
           item.classList.remove("notes_highlighted");
         });
       });
       running = 0;
       scale_highlighted = false;
     } else {
-      let qwe =document.querySelectorAll("div[data-n='" + scale_tonic + "']");
-      qwe.forEach((item, i) => {
+      let x =document.querySelectorAll("div[data-n='" + scale_tonic + "']");
+      x.forEach((item, i) => {
         item.classList.add("notes_highlighted");
       });
       scale_map[scale_interval].forEach((item, i) => {
@@ -68,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if (running > 12) {
           running = running - 12;
         }
-        let asd = document.querySelectorAll("div[data-n='"+running+"']");
-        asd.forEach((item, i) => {
+        let y = document.querySelectorAll("div[data-n='"+running+"']");
+        y.forEach((item, i) => {
           item.classList.add("notes_highlighted");
         });
       });
