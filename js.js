@@ -35,22 +35,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
   function toggle_scale_highlight_click_handler(e) {
-    console.log(e.type);
     if (e.type == "change") {
       return;
     }
     let scale_tonic = scale_highlighted ? stored_scale_tonic : document.querySelector("select[id='tonic']").value;
     let scale_interval = scale_highlighted ? stored_scale_interval : document.querySelector("select[id='interval']").value;
     let running = +scale_tonic;
-    console.log(scale_tonic);
-    console.log(scale_interval);
     if (scale_highlighted) {
-      let qwe =document.querySelectorAll("div[data-n='" + scale_tonic + "']");
+      let qwe =document.querySelectorAll("div[data-n='" + stored_scale_tonic + "']");
       qwe.forEach((item, i) => {
         item.classList.remove("notes_highlighted");
       });
-      scale_map[scale_interval].forEach((item, i) => {
-        running = running + scale_map[scale_interval][i];
+      scale_map[stored_scale_interval].forEach((item, i) => {
+        running = running + scale_map[stored_scale_interval][i];
+        if (running > 12) {
+          running = running - 12;
+        }
         let asd = document.querySelectorAll("div[data-n='"+running+"']");
         asd.forEach((item, i) => {
           item.classList.remove("notes_highlighted");
@@ -65,12 +65,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
       });
       scale_map[scale_interval].forEach((item, i) => {
         running = running + scale_map[scale_interval][i];
+        if (running > 12) {
+          running = running - 12;
+        }
         let asd = document.querySelectorAll("div[data-n='"+running+"']");
         asd.forEach((item, i) => {
           item.classList.add("notes_highlighted");
         });
       });
       running = 0;
+      stored_scale_tonic = document.querySelector("select[id='tonic']").value;
+      stored_scale_interval = document.querySelector("select[id='interval']").value;
       scale_highlighted = true;
     }
   }
