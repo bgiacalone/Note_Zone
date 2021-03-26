@@ -52,6 +52,8 @@ main {text-align: center; padding-top:35px;}
 .notes_highlighted.names_shown .n[data-n="7"] { color:black; }
 
 
+.g.hidden, .k.hidden { display: none; }
+
 /* -start TODOLIST
 
 a. octave brackets
