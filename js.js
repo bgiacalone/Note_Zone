@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let names_shown = false;
   let notes_highlighted = false;
   let scale_highlighted = false;
-  k.classList.add("names_hidden");
-  g.classList.add("names_hidden");
+  k.classList.toggle("names_hidden");
+  g.classList.toggle("names_hidden");
   name_notes();
   toggleNoteNamesButton.addEventListener("click", toggle_note_name_click_handler);
   toggleNoteHighlightButton.addEventListener("click", toggle_note_highlight_click_handler);
@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   selectorScaleInterval ? selectorScaleInterval.addEventListener("change", toggle_scale_highlight_click_handler) : console.log("n");
   function toggle_note_highlight_click_handler() {
     if (notes_highlighted) {
-      k.classList.remove("notes_highlighted");
-      g.classList.remove("notes_highlighted");
+      k.classList.toggle("notes_highlighted");
+      g.classList.toggle("notes_highlighted");
       notes_highlighted = false;
     } else {
-      k.classList.add("notes_highlighted");
-      g.classList.add("notes_highlighted");
+      k.classList.toggle("notes_highlighted");
+      g.classList.toggle("notes_highlighted");
       notes_highlighted = true;
     }
   }
@@ -47,10 +47,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let scale_interval = scale_highlighted ? stored_scale_interval : document.querySelector("select[id='interval']").value;
     let running = +scale_tonic;
     if (scale_highlighted) {
-      let x =document.querySelectorAll("div[data-n='" + stored_scale_tonic + "']");
-      x.forEach((item, i) => {
-        item.classList.remove("notes_highlighted");
-      });
       scale_map[stored_scale_interval].forEach((item, i) => {
         running = running + scale_map[stored_scale_interval][i];
         if (running > 12) {
@@ -58,16 +54,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
         let y = document.querySelectorAll("div[data-n='"+running+"']");
         y.forEach((item, i) => {
-          item.classList.remove("notes_highlighted");
+          item.classList.toggle("notes_highlighted");
         });
       });
       running = 0;
       scale_highlighted = false;
     } else {
-      let x =document.querySelectorAll("div[data-n='" + scale_tonic + "']");
-      x.forEach((item, i) => {
-        item.classList.add("notes_highlighted");
-      });
       scale_map[scale_interval].forEach((item, i) => {
         running = running + scale_map[scale_interval][i];
         if (running > 12) {
@@ -75,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
         let y = document.querySelectorAll("div[data-n='"+running+"']");
         y.forEach((item, i) => {
-          item.classList.add("notes_highlighted");
+          item.classList.toggle("notes_highlighted");
         });
       });
       running = 0;
@@ -86,16 +78,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
   function toggle_note_name_click_handler() {
     if (names_shown) {
-      k.classList.remove("names_shown");
-      g.classList.remove("names_shown");
-      k.classList.add("names_hidden");
-      g.classList.add("names_hidden");
+      k.classList.toggle("names_shown");
+      g.classList.toggle("names_shown");
+      k.classList.toggle("names_hidden");
+      g.classList.toggle("names_hidden");
       names_shown = false;
     } else {
-      k.classList.remove("names_hidden");
-      g.classList.remove("names_hidden");
-      k.classList.add("names_shown");
-      g.classList.add("names_shown");
+      k.classList.toggle("names_hidden");
+      g.classList.toggle("names_hidden");
+      k.classList.toggle("names_shown");
+      g.classList.toggle("names_shown");
       names_shown = true;
     }
   }
