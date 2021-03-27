@@ -16,6 +16,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let selectorScaleInterval = document.getElementById("interval");
   let keyboard = document.getElementById("keyboard");
   let guitar = document.getElementById("guitar");
+  let duplicateButton = document.getElementById("duplicateButton");
+  let template = document.getElementById("template");
+  let expansion = document.getElementById("expansion");
+  let expansionButtonArray = [ []
+                                  ];
   let keyboardHideButton = document.querySelector("button[name='hideKeyboard']");
   let guitarHideButton = document.querySelector("button[name='hideGuitar']");
   let stored_scale_tonic = document.querySelector("select[id='tonic']").value;
@@ -24,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let names_shown = false;
   let notes_highlighted = false;
   let scale_highlighted = false;
+  let expansionCount = 0;
   k.classList.toggle("names_hidden");
   g.classList.toggle("names_hidden");
   name_notes();
@@ -31,15 +37,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
   toggleNoteHighlightButton.addEventListener("click", toggle_note_highlight_click_handler);
   keyboardHideButton.addEventListener("click", keyboard_hide_button_click_handler);
   guitarHideButton.addEventListener("click", guitar_hide_button_click_handler);
+  duplicateButton.addEventListener("click", duplicate_button_click_handler);
   toggleScaleHighlightButton ? toggleScaleHighlightButton.addEventListener("click", toggle_scale_highlight_click_handler) : console.log("n");
   selectorScaleTonic ? selectorScaleTonic.addEventListener("change", toggle_scale_highlight_click_handler) : console.log("n");
   selectorScaleInterval ? selectorScaleInterval.addEventListener("change", toggle_scale_highlight_click_handler) : console.log("n");
   function keyboard_hide_button_click_handler() {
-    console.log(123);
     keyboard.classList.toggle("hidden");
   }
   function guitar_hide_button_click_handler() {
     guitar.classList.toggle("hidden");
+  }
+  function duplicate_button_click_handler() {
+    let newClone = template.cloneNode(true);
+    newClone.id = newClone.id + "" + expansionCount;
+    newClone.className = newClone.className + "" + expansionCount;
+    expansionButtonArray[expansionCount][0] = document.querySelector("div." + newClone.className + " button[id='toggleNoteNames']");
+
+    
+    console.log(newClone.className);
+    console.log(document.querySelector("div." + newClone.className + " button[id='toggleNoteNames']"));
+    console.log(expansionButtonArray[expansionCount][0]);
+
+
+    expansionCount++;
+    expansion.appendChild(newClone);
   }
   function toggle_note_highlight_click_handler() {
     if (notes_highlighted) {
@@ -53,11 +74,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
   function toggle_scale_highlight_click_handler(e) {
+    let target = this.parentElement.className;
+    console.log(target);
     if (e.type == "change") {
       return;
     }
-    let scale_tonic = scale_highlighted ? stored_scale_tonic : document.querySelector("select[id='tonic']").value;
-    let scale_interval = scale_highlighted ? stored_scale_interval : document.querySelector("select[id='interval']").value;
+    let scale_tonic = scale_highlighted ? stored_scale_tonic : document.querySelector("div." + target + " select[id='tonic']").value;
+    let scale_interval = scale_highlighted ? stored_scale_interval : document.querySelector("div." + target + " select[id='interval']").value;
     let running = +scale_tonic;
     if (scale_highlighted) {
       scale_map[stored_scale_interval].forEach((item, i) => {
@@ -65,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if (running > 12) {
           running = running - 12;
         }
-        let y = document.querySelectorAll("div[data-n='"+running+"']");
+        let y = document.querySelectorAll("div." + target + " div[data-n='"+running+"']");
         y.forEach((item, i) => {
           item.classList.toggle("notes_highlighted");
         });
@@ -78,14 +101,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if (running > 12) {
           running = running - 12;
         }
-        let y = document.querySelectorAll("div[data-n='"+running+"']");
+        let y = document.querySelectorAll("div." + target + " div[data-n='"+running+"']");
         y.forEach((item, i) => {
           item.classList.toggle("notes_highlighted");
         });
       });
       running = 0;
-      stored_scale_tonic = document.querySelector("select[id='tonic']").value;
-      stored_scale_interval = document.querySelector("select[id='interval']").value;
+      stored_scale_tonic = document.querySelector("div." + target + " select[id='tonic']").value;
+      stored_scale_interval = document.querySelector("div." + target + " select[id='interval']").value;
       scale_highlighted = true;
     }
   }
