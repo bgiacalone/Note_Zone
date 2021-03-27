@@ -17,8 +17,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let keyboard = document.getElementById("keyboard");
   let guitar = document.getElementById("guitar");
   let duplicateButton = document.getElementById("duplicateButton");
+
   let template = document.getElementById("template");
-  let expansion = document.getElementById("expansion");
+  let templates = document.getElementById("templates");
   let expansionButtonArray = [ []
                                   ];
   let keyboardHideButton = document.querySelector("button[name='hideKeyboard']");
@@ -53,14 +54,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     newClone.className = newClone.className + "" + expansionCount;
     expansionButtonArray[expansionCount][0] = document.querySelector("div." + newClone.className + " button[id='toggleNoteNames']");
 
-    
+
     console.log(newClone.className);
     console.log(document.querySelector("div." + newClone.className + " button[id='toggleNoteNames']"));
     console.log(expansionButtonArray[expansionCount][0]);
 
 
     expansionCount++;
-    expansion.appendChild(newClone);
+    templates.appendChild(newClone);
   }
   function toggle_note_highlight_click_handler() {
     if (notes_highlighted) {
