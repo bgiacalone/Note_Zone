@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let guitar = document.getElementById("guitar");
   let duplicateButton = document.getElementById("duplicateButton");
 
-  let template = document.getElementById("template");
   let templates = document.getElementById("templates");
   let expansionButtonArray = [ []
                                   ];
@@ -49,19 +48,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
     guitar.classList.toggle("hidden");
   }
   function duplicate_button_click_handler() {
-    let newClone = template.cloneNode(true);
-    newClone.id = newClone.id + "" + expansionCount;
-    newClone.className = newClone.className + "" + expansionCount;
-    expansionButtonArray[expansionCount][0] = document.querySelector("div." + newClone.className + " button[id='toggleNoteNames']");
+    var sorted_templates = Array.from(document.querySelectorAll("#templates .template"))
+                            .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b)); // To reverse it, use `b.localeCompare(a)`.
+    console.log("number of templates: " + `${sorted_templates.length}`);
+    console.log("largest template id: " + `${sorted_templates[sorted_templates.length - 1].dataset.id}`);
 
+    var new_template = sorted_templates[sorted_templates.length - 1].cloneNode(true);
+    new_template.dataset.id = parseInt(new_template.dataset.id) + 1;
+    console.log("new template id: " + `${new_template.dataset.id}`)
 
-    console.log(newClone.className);
-    console.log(document.querySelector("div." + newClone.className + " button[id='toggleNoteNames']"));
-    console.log(expansionButtonArray[expansionCount][0]);
-
-
-    expansionCount++;
-    templates.appendChild(newClone);
+    templates.appendChild(new_template);
+    console.log("new template added to dom !!!");
+    // let newClone = template.cloneNode(true);
+    // newClone.id = newClone.id + "" + expansionCount;
+    // newClone.className = newClone.className + "" + expansionCount;
+    // expansionButtonArray[expansionCount][0] = document.querySelector("div." + newClone.className + " button[id='toggleNoteNames']");
+    // console.log(newClone.className);
+    // console.log(document.querySelector("div." + newClone.className + " button[id='toggleNoteNames']"));
+    // console.log(expansionButtonArray[expansionCount][0]);
+    // expansionCount++;
+    // templates.appendChild(newClone);
   }
   function toggle_note_highlight_click_handler() {
     if (notes_highlighted) {
@@ -136,3 +142,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     notes_named = true;
   }
 });
+function test() {
+  alert("DING");
+}

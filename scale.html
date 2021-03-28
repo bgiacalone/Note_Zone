@@ -11,184 +11,187 @@
 <body ondragstart="return false;" ondrop="return false;">
   <nav class="tn">
     <div class="logo"><a href="./home.html"><img class="note_logo" src="32n.png"><img src="logo.png" alt-text="The Note Zone"></a></div>
-    <div><a href="./scale.html" id="Scales">Scales</a></div>
+    <div><a href="./scale.html" id="Scales">DING</a></div>
     <div class="amburgla"><a href="#" id="burger"><img src="amburgla.png"></a></div>
   </nav>
   <main>
     <div id="templates">
-      <div class="template" id="template" data-id="1">
-        <button id="toggleNoteNames">Toggle Note Names</button>
-        <button id="toggleNoteHighlight">Toggle All Note Highlight</button>
-        <button id="toggleScaleHighlight">Toggle Scale Highlight</button>
-        <select name="scale tonic" id="tonic">
-          <option value="1">C</option>
-          <option value="2">D♭</option>
-          <option value="3">D</option>
-          <option value="4">E♭</option>
-          <option value="5">E</option>
-          <option value="6">F</option>
-          <option value="7">G♭</option>
-          <option value="8">G</option>
-          <option value="9">A♭</option>
-          <option value="10">A</option>
-          <option value="11">B♭</option>
-          <option value="12">B</option>
-        </select>
-        <select name="scale interval" id="interval">
-          <option value="0">Major (Ionian mode)</option>
-          <option value="1">Minor (Aeolian mode)</option>
-          <option value="2">Locrian mode</option>
-          <option value="3">Dorian mode</option>
-          <option value="4">Phrygian mode</option>
-          <option value="5">Lydian mode</option>
-          <option value="6">Mixolydian mode</option>
-        </select>
-        <div style="display:flex;">
+
+      <div class="template" data-id="1">
+        <div class="controls">
+          <button id="toggleNoteNames">Toggle Note Names</button>
+          <button id="toggleNoteHighlight">Toggle All Note Highlight</button>
+          <button id="toggleScaleHighlight">Toggle Scale Highlight</button>
+          <select name="scale tonic" id="tonic">
+            <option value="1">C</option>
+            <option value="2">D♭</option>
+            <option value="3">D</option>
+            <option value="4">E♭</option>
+            <option value="5">E</option>
+            <option value="6">F</option>
+            <option value="7">G♭</option>
+            <option value="8">G</option>
+            <option value="9">A♭</option>
+            <option value="10">A</option>
+            <option value="11">B♭</option>
+            <option value="12">B</option>
+          </select>
+          <select name="scale interval" id="interval">
+            <option value="0">Major (Ionian mode)</option>
+            <option value="1">Minor (Aeolian mode)</option>
+            <option value="2">Locrian mode</option>
+            <option value="3">Dorian mode</option>
+            <option value="4">Phrygian mode</option>
+            <option value="5">Lydian mode</option>
+            <option value="6">Mixolydian mode</option>
+          </select>
+        </div>
+        <div class="instrument">
           <button name="hideKeyboard">Toggle Keyboard</button>
           <div class="k" id="keyboard">
-          <div class="o" data-oi="0">
-            <div class="_1 n" data-o="0" data-n="1"></div>
-            <div class="_2 n" data-o="0" data-n="2"></div>
-            <div class="_3 n" data-o="0" data-n="3"></div>
-            <div class="_4 n" data-o="0" data-n="4"></div>
-            <div class="_5 n" data-o="0" data-n="5"></div>
-            <div class="_6 n" data-o="0" data-n="6"></div>
-            <div class="_7 n" data-o="0" data-n="7"></div>
-            <div class="_8 n" data-o="0" data-n="8"></div>
-            <div class="_9 n" data-o="0" data-n="9"></div>
-            <div class="_10 n" data-o="0" data-n="10"></div>
-            <div class="_11 n" data-o="0" data-n="11"></div>
-            <div class="_12 n" data-o="0" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="1">
-            <div class="_1 n" data-o="1" data-n="1"></div>
-            <div class="_2 n" data-o="1" data-n="2"></div>
-            <div class="_3 n" data-o="1" data-n="3"></div>
-            <div class="_4 n" data-o="1" data-n="4"></div>
-            <div class="_5 n" data-o="1" data-n="5"></div>
-            <div class="_6 n" data-o="1" data-n="6"></div>
-            <div class="_7 n" data-o="1" data-n="7"></div>
-            <div class="_8 n" data-o="1" data-n="8"></div>
-            <div class="_9 n" data-o="1" data-n="9"></div>
-            <div class="_10 n" data-o="1" data-n="10"></div>
-            <div class="_11 n" data-o="1" data-n="11"></div>
-            <div class="_12 n" data-o="1" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="2">
-            <div class="_1 n" data-o="2" data-n="1"></div>
-            <div class="_2 n" data-o="2" data-n="2"></div>
-            <div class="_3 n" data-o="2" data-n="3"></div>
-            <div class="_4 n" data-o="2" data-n="4"></div>
-            <div class="_5 n" data-o="2" data-n="5"></div>
-            <div class="_6 n" data-o="2" data-n="6"></div>
-            <div class="_7 n" data-o="2" data-n="7"></div>
-            <div class="_8 n" data-o="2" data-n="8"></div>
-            <div class="_9 n" data-o="2" data-n="9"></div>
-            <div class="_10 n" data-o="2" data-n="10"></div>
-            <div class="_11 n" data-o="2" data-n="11"></div>
-            <div class="_12 n" data-o="2" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="3">
-            <div class="_1 n" data-o="3" data-n="1"></div>
-            <div class="_2 n" data-o="3" data-n="2"></div>
-            <div class="_3 n" data-o="3" data-n="3"></div>
-            <div class="_4 n" data-o="3" data-n="4"></div>
-            <div class="_5 n" data-o="3" data-n="5"></div>
-            <div class="_6 n" data-o="3" data-n="6"></div>
-            <div class="_7 n" data-o="3" data-n="7"></div>
-            <div class="_8 n" data-o="3" data-n="8"></div>
-            <div class="_9 n" data-o="3" data-n="9"></div>
-            <div class="_10 n" data-o="3" data-n="10"></div>
-            <div class="_11 n" data-o="3" data-n="11"></div>
-            <div class="_12 n" data-o="3" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="4">
-            <div class="_1 n" data-o="4" data-n="1"></div>
-            <div class="_2 n" data-o="4" data-n="2"></div>
-            <div class="_3 n" data-o="4" data-n="3"></div>
-            <div class="_4 n" data-o="4" data-n="4"></div>
-            <div class="_5 n" data-o="4" data-n="5"></div>
-            <div class="_6 n" data-o="4" data-n="6"></div>
-            <div class="_7 n" data-o="4" data-n="7"></div>
-            <div class="_8 n" data-o="4" data-n="8"></div>
-            <div class="_9 n" data-o="4" data-n="9"></div>
-            <div class="_10 n" data-o="4" data-n="10"></div>
-            <div class="_11 n" data-o="4" data-n="11"></div>
-            <div class="_12 n" data-o="4" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="5">
-            <div class="_1 n" data-o="5" data-n="1"></div>
-            <div class="_2 n" data-o="5" data-n="2"></div>
-            <div class="_3 n" data-o="5" data-n="3"></div>
-            <div class="_4 n" data-o="5" data-n="4"></div>
-            <div class="_5 n" data-o="5" data-n="5"></div>
-            <div class="_6 n" data-o="5" data-n="6"></div>
-            <div class="_7 n" data-o="5" data-n="7"></div>
-            <div class="_8 n" data-o="5" data-n="8"></div>
-            <div class="_9 n" data-o="5" data-n="9"></div>
-            <div class="_10 n" data-o="5" data-n="10"></div>
-            <div class="_11 n" data-o="5" data-n="11"></div>
-            <div class="_12 n" data-o="5" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="6">
-            <div class="_1 n" data-o="6" data-n="1"></div>
-            <div class="_2 n" data-o="6" data-n="2"></div>
-            <div class="_3 n" data-o="6" data-n="3"></div>
-            <div class="_4 n" data-o="6" data-n="4"></div>
-            <div class="_5 n" data-o="6" data-n="5"></div>
-            <div class="_6 n" data-o="6" data-n="6"></div>
-            <div class="_7 n" data-o="6" data-n="7"></div>
-            <div class="_8 n" data-o="6" data-n="8"></div>
-            <div class="_9 n" data-o="6" data-n="9"></div>
-            <div class="_10 n" data-o="6" data-n="10"></div>
-            <div class="_11 n" data-o="6" data-n="11"></div>
-            <div class="_12 n" data-o="6" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="7">
-            <div class="_1 n" data-o="7" data-n="1"></div>
-            <div class="_2 n" data-o="7" data-n="2"></div>
-            <div class="_3 n" data-o="7" data-n="3"></div>
-            <div class="_4 n" data-o="7" data-n="4"></div>
-            <div class="_5 n" data-o="7" data-n="5"></div>
-            <div class="_6 n" data-o="7" data-n="6"></div>
-            <div class="_7 n" data-o="7" data-n="7"></div>
-            <div class="_8 n" data-o="7" data-n="8"></div>
-            <div class="_9 n" data-o="7" data-n="9"></div>
-            <div class="_10 n" data-o="7" data-n="10"></div>
-            <div class="_11 n" data-o="7" data-n="11"></div>
-            <div class="_12 n" data-o="7" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="8">
-            <div class="_1 n" data-o="8" data-n="1"></div>
-            <div class="_2 n" data-o="8" data-n="2"></div>
-            <div class="_3 n" data-o="8" data-n="3"></div>
-            <div class="_4 n" data-o="8" data-n="4"></div>
-            <div class="_5 n" data-o="8" data-n="5"></div>
-            <div class="_6 n" data-o="8" data-n="6"></div>
-            <div class="_7 n" data-o="8" data-n="7"></div>
-            <div class="_8 n" data-o="8" data-n="8"></div>
-            <div class="_9 n" data-o="8" data-n="9"></div>
-            <div class="_10 n" data-o="8" data-n="10"></div>
-            <div class="_11 n" data-o="8" data-n="11"></div>
-            <div class="_12 n" data-o="8" data-n="12"></div>
-          </div>
-          <div class="o" data-oi="9">
-            <div class="_1 n" data-o="9" data-n="1"></div>
-            <div class="_2 n" data-o="9" data-n="2"></div>
-            <div class="_3 n" data-o="9" data-n="3"></div>
-            <div class="_4 n" data-o="9" data-n="4"></div>
-            <div class="_5 n" data-o="9" data-n="5"></div>
-            <div class="_6 n" data-o="9" data-n="6"></div>
-            <div class="_7 n" data-o="9" data-n="7"></div>
-            <div class="_8 n" data-o="9" data-n="8"></div>
-            <div class="_9 n" data-o="9" data-n="9"></div>
-            <div class="_10 n" data-o="9" data-n="10"></div>
-            <div class="_11 n" data-o="9" data-n="11"></div>
-            <div class="_12 n" data-o="9" data-n="12"></div>
+            <div class="o" data-oi="0">
+              <div class="_1 n" data-o="0" data-n="1"></div>
+              <div class="_2 n" data-o="0" data-n="2"></div>
+              <div class="_3 n" data-o="0" data-n="3"></div>
+              <div class="_4 n" data-o="0" data-n="4"></div>
+              <div class="_5 n" data-o="0" data-n="5"></div>
+              <div class="_6 n" data-o="0" data-n="6"></div>
+              <div class="_7 n" data-o="0" data-n="7"></div>
+              <div class="_8 n" data-o="0" data-n="8"></div>
+              <div class="_9 n" data-o="0" data-n="9"></div>
+              <div class="_10 n" data-o="0" data-n="10"></div>
+              <div class="_11 n" data-o="0" data-n="11"></div>
+              <div class="_12 n" data-o="0" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="1">
+              <div class="_1 n" data-o="1" data-n="1"></div>
+              <div class="_2 n" data-o="1" data-n="2"></div>
+              <div class="_3 n" data-o="1" data-n="3"></div>
+              <div class="_4 n" data-o="1" data-n="4"></div>
+              <div class="_5 n" data-o="1" data-n="5"></div>
+              <div class="_6 n" data-o="1" data-n="6"></div>
+              <div class="_7 n" data-o="1" data-n="7"></div>
+              <div class="_8 n" data-o="1" data-n="8"></div>
+              <div class="_9 n" data-o="1" data-n="9"></div>
+              <div class="_10 n" data-o="1" data-n="10"></div>
+              <div class="_11 n" data-o="1" data-n="11"></div>
+              <div class="_12 n" data-o="1" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="2">
+              <div class="_1 n" data-o="2" data-n="1"></div>
+              <div class="_2 n" data-o="2" data-n="2"></div>
+              <div class="_3 n" data-o="2" data-n="3"></div>
+              <div class="_4 n" data-o="2" data-n="4"></div>
+              <div class="_5 n" data-o="2" data-n="5"></div>
+              <div class="_6 n" data-o="2" data-n="6"></div>
+              <div class="_7 n" data-o="2" data-n="7"></div>
+              <div class="_8 n" data-o="2" data-n="8"></div>
+              <div class="_9 n" data-o="2" data-n="9"></div>
+              <div class="_10 n" data-o="2" data-n="10"></div>
+              <div class="_11 n" data-o="2" data-n="11"></div>
+              <div class="_12 n" data-o="2" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="3">
+              <div class="_1 n" data-o="3" data-n="1"></div>
+              <div class="_2 n" data-o="3" data-n="2"></div>
+              <div class="_3 n" data-o="3" data-n="3"></div>
+              <div class="_4 n" data-o="3" data-n="4"></div>
+              <div class="_5 n" data-o="3" data-n="5"></div>
+              <div class="_6 n" data-o="3" data-n="6"></div>
+              <div class="_7 n" data-o="3" data-n="7"></div>
+              <div class="_8 n" data-o="3" data-n="8"></div>
+              <div class="_9 n" data-o="3" data-n="9"></div>
+              <div class="_10 n" data-o="3" data-n="10"></div>
+              <div class="_11 n" data-o="3" data-n="11"></div>
+              <div class="_12 n" data-o="3" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="4">
+              <div class="_1 n" data-o="4" data-n="1"></div>
+              <div class="_2 n" data-o="4" data-n="2"></div>
+              <div class="_3 n" data-o="4" data-n="3"></div>
+              <div class="_4 n" data-o="4" data-n="4"></div>
+              <div class="_5 n" data-o="4" data-n="5"></div>
+              <div class="_6 n" data-o="4" data-n="6"></div>
+              <div class="_7 n" data-o="4" data-n="7"></div>
+              <div class="_8 n" data-o="4" data-n="8"></div>
+              <div class="_9 n" data-o="4" data-n="9"></div>
+              <div class="_10 n" data-o="4" data-n="10"></div>
+              <div class="_11 n" data-o="4" data-n="11"></div>
+              <div class="_12 n" data-o="4" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="5">
+              <div class="_1 n" data-o="5" data-n="1"></div>
+              <div class="_2 n" data-o="5" data-n="2"></div>
+              <div class="_3 n" data-o="5" data-n="3"></div>
+              <div class="_4 n" data-o="5" data-n="4"></div>
+              <div class="_5 n" data-o="5" data-n="5"></div>
+              <div class="_6 n" data-o="5" data-n="6"></div>
+              <div class="_7 n" data-o="5" data-n="7"></div>
+              <div class="_8 n" data-o="5" data-n="8"></div>
+              <div class="_9 n" data-o="5" data-n="9"></div>
+              <div class="_10 n" data-o="5" data-n="10"></div>
+              <div class="_11 n" data-o="5" data-n="11"></div>
+              <div class="_12 n" data-o="5" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="6">
+              <div class="_1 n" data-o="6" data-n="1"></div>
+              <div class="_2 n" data-o="6" data-n="2"></div>
+              <div class="_3 n" data-o="6" data-n="3"></div>
+              <div class="_4 n" data-o="6" data-n="4"></div>
+              <div class="_5 n" data-o="6" data-n="5"></div>
+              <div class="_6 n" data-o="6" data-n="6"></div>
+              <div class="_7 n" data-o="6" data-n="7"></div>
+              <div class="_8 n" data-o="6" data-n="8"></div>
+              <div class="_9 n" data-o="6" data-n="9"></div>
+              <div class="_10 n" data-o="6" data-n="10"></div>
+              <div class="_11 n" data-o="6" data-n="11"></div>
+              <div class="_12 n" data-o="6" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="7">
+              <div class="_1 n" data-o="7" data-n="1"></div>
+              <div class="_2 n" data-o="7" data-n="2"></div>
+              <div class="_3 n" data-o="7" data-n="3"></div>
+              <div class="_4 n" data-o="7" data-n="4"></div>
+              <div class="_5 n" data-o="7" data-n="5"></div>
+              <div class="_6 n" data-o="7" data-n="6"></div>
+              <div class="_7 n" data-o="7" data-n="7"></div>
+              <div class="_8 n" data-o="7" data-n="8"></div>
+              <div class="_9 n" data-o="7" data-n="9"></div>
+              <div class="_10 n" data-o="7" data-n="10"></div>
+              <div class="_11 n" data-o="7" data-n="11"></div>
+              <div class="_12 n" data-o="7" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="8">
+              <div class="_1 n" data-o="8" data-n="1"></div>
+              <div class="_2 n" data-o="8" data-n="2"></div>
+              <div class="_3 n" data-o="8" data-n="3"></div>
+              <div class="_4 n" data-o="8" data-n="4"></div>
+              <div class="_5 n" data-o="8" data-n="5"></div>
+              <div class="_6 n" data-o="8" data-n="6"></div>
+              <div class="_7 n" data-o="8" data-n="7"></div>
+              <div class="_8 n" data-o="8" data-n="8"></div>
+              <div class="_9 n" data-o="8" data-n="9"></div>
+              <div class="_10 n" data-o="8" data-n="10"></div>
+              <div class="_11 n" data-o="8" data-n="11"></div>
+              <div class="_12 n" data-o="8" data-n="12"></div>
+            </div>
+            <div class="o" data-oi="9">
+              <div class="_1 n" data-o="9" data-n="1"></div>
+              <div class="_2 n" data-o="9" data-n="2"></div>
+              <div class="_3 n" data-o="9" data-n="3"></div>
+              <div class="_4 n" data-o="9" data-n="4"></div>
+              <div class="_5 n" data-o="9" data-n="5"></div>
+              <div class="_6 n" data-o="9" data-n="6"></div>
+              <div class="_7 n" data-o="9" data-n="7"></div>
+              <div class="_8 n" data-o="9" data-n="8"></div>
+              <div class="_9 n" data-o="9" data-n="9"></div>
+              <div class="_10 n" data-o="9" data-n="10"></div>
+              <div class="_11 n" data-o="9" data-n="11"></div>
+              <div class="_12 n" data-o="9" data-n="12"></div>
+            </div>
           </div>
         </div>
-        </div>
-        <div style="display:flex;">
+        <div class="instrument">
           <button name="hideGuitar">Toggle Guitar</button>
           <div class="g" id="guitar">
             <div class="sg">
@@ -361,10 +364,11 @@
             </div>
           </div>
         </div>
-        <hr/>
       </div>
+
     </div>
-    <button id="duplicateButton" onclick="alert('ding')"> do duplicating </button>
+    <button id="duplicateButton"> do duplicating </button>
+    <button id="onclickTester" onclick="test()"> DING DING </button>
   </main>
   <script src="js.js"></script>
 </body>
