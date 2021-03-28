@@ -12,37 +12,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let toggleNoteNamesButton = document.getElementById("toggleNoteNames");
   let toggleNoteHighlightButton = document.getElementById("toggleNoteHighlight");
   let toggleScaleHighlightButton = document.getElementById("toggleScaleHighlight");
-
   let selectorScaleTonic = document.getElementById("tonic");
   let selectorScaleInterval = document.getElementById("interval");
+  let stored_scale_tonic = document.querySelector("select[id='tonic']").value;
+  let stored_scale_interval = document.querySelector("select[id='interval']").value;
 
   let g = document.getElementById("guitar");
   let k = document.getElementById("keyboard");
   let keyboard = document.getElementById("keyboard");
   let guitar = document.getElementById("guitar");
 
-  let keyboardHideButton = document.querySelector("button[name='hideKeyboard']");
-  let guitarHideButton = document.querySelector("button[name='hideGuitar']");
-  let stored_scale_tonic = document.querySelector("select[id='tonic']").value;
-  let stored_scale_interval = document.querySelector("select[id='interval']").value;
-
   let notes_highlighted = false;
   let scale_highlighted = false;
 
   toggleNoteHighlightButton.addEventListener("click", toggle_note_highlight_click_handler);
-  keyboardHideButton.addEventListener("click", keyboard_hide_button_click_handler);
-  guitarHideButton.addEventListener("click", guitar_hide_button_click_handler);
-
   toggleScaleHighlightButton ? toggleScaleHighlightButton.addEventListener("click", toggle_scale_highlight_click_handler) : console.log("n");
+
   selectorScaleTonic ? selectorScaleTonic.addEventListener("change", toggle_scale_highlight_click_handler) : console.log("n");
   selectorScaleInterval ? selectorScaleInterval.addEventListener("change", toggle_scale_highlight_click_handler) : console.log("n");
-
-  function keyboard_hide_button_click_handler() {
-    keyboard.classList.toggle("hidden");
-  }
-  function guitar_hide_button_click_handler() {
-    guitar.classList.toggle("hidden");
-  }
 
   function toggle_note_highlight_click_handler() {
     if (notes_highlighted) {
@@ -93,6 +80,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
       stored_scale_interval = document.querySelector("div." + target + " select[id='interval']").value;
       scale_highlighted = true;
     }
+  }
+
+  let keyboardHideButton = document.querySelector("button[name='hideKeyboard']");
+  let guitarHideButton = document.querySelector("button[name='hideGuitar']");
+  keyboardHideButton.addEventListener("click", keyboard_hide_button_click_handler);
+  guitarHideButton.addEventListener("click", guitar_hide_button_click_handler);
+  function keyboard_hide_button_click_handler() {
+    keyboard.classList.toggle("hidden");
+  }
+  function guitar_hide_button_click_handler() {
+    guitar.classList.toggle("hidden");
   }
 });
 
