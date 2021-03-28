@@ -18,9 +18,9 @@
     <div id="templates">
       <div class="template" data-id="1">
         <div class="controls">
-          <button id="toggleNoteNames" onclick="toggle_note_names(this)">Toggle Note Names</button>
-          <button id="toggleChromaticHighlight" onclick="toggle_chromatic_highlight(this)">Toggle Chromatic Highlighting</button>
-          <div style=" background-color:rgba(0,0,0,.4); border-radius:2px; padding:0 5px;">
+          <button id="toggleNoteNames" onclick="toggle_note_names(this)" style="background-color:white;color:black;border:1px solid black;border-radius:2px">Toggle Note Names</button>
+          <button id="toggleChromaticHighlight" onclick="toggle_chromatic_highlight(this)" style="background-color:white;color:black;border:1px solid black;border-radius:2px">Toggle Chromatic Highlighting</button>
+          <div style=" background-color:rgba(0,0,0,.4); border-radius:2px; padding:0 5px; margin-left:5px;">
             <select name="scale root" id="root">
               <option value="1">C</option>
               <option value="2">D♭</option>
@@ -44,12 +44,12 @@
               <option value="5">Lydian mode</option>
               <option value="6">Mixolydian mode</option>
             </select>
-            <button id="scaleHighlight" onclick="highlight_scale(this)" style="background-color:blue;color:White;border:0;border-radius:2px">Highlight Scale</button>
-            <button id="clearScaleHighlight" onclick="clear_scale(this)">Clear</button>
+            <button id="scaleHighlight" onclick="highlight_scale(this)" style="background-color:blue;color:White;border:1px solid transparent;border-radius:2px">Highlight Scale</button>
+            <button id="clearScaleHighlight" onclick="clear_scale(this)" style="background-color:white;color:black;border:1px solid black;border-radius:2px">Clear</button>
           </div>
           <div style="margin-left: auto;">
-            <button id="cloneTemplate" onclick="clone_template(this)">Clone</button>
-            <button id="removeTemplate" onclick="remove_template(this)">Remove</button>
+            <button id="cloneTemplate" onclick="clone_template(this)" style="background-color:white;color:black;border:1px solid black;border-radius:2px">Clone</button>
+            <button id="removeTemplate" onclick="remove_template(this)" style="background-color:darkred;color:White;border:1px solid transparent;border-radius:2px">Remove</button>
           </div>
         </div>
         <div class="instrument">
@@ -372,7 +372,9 @@
         </div>
       </div>
     </div>
-    <button id="duplicateButton" onclick="add_template()"> ADD NEW TEMPLATE </button>
+    <div style="text-align:Center; margin-top:10px;">
+      <button id="duplicateButton" onclick="add_template()" style="background-color:white;color:black;border:1px solid black;border-radius:2px"> ADD NEW TEMPLATE </button>
+    </div>
   </main>
   <script src="js.js"></script>
 </body>
