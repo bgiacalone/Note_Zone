@@ -4,10 +4,12 @@ main { padding:35px 10px; }
 
 .tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); }
 .tn .logo img, .tn .amburgla img { border-radius:5px; height:50px; }
-.logo, .amburgla { display:flex; width:50%; padding:5px; }
+.nav_item { position:relative; padding: 0 10px; }
+.nav_item:hover { background-color:rgba(0,0,0,.1); }
+.logo, .amburgla { padding:5px; }
 .logo { justify-content: flex-start; align-items: middle; }
 .note_logo { height:50px !important; width:50px; }
-.amburgla { justify-content: flex-end; }
+.amburgla { margin-left:auto; }
 
 .template { display: flex; justify-content: space-between; flex-direction: column; border: 2px dashed rgba(0,0,0,.75); padding:5px; margin-bottom:5px; background-color:#ddd; }
 .instrument { display:flex; margin-top:20px; text-align:center; }
