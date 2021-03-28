@@ -85,6 +85,7 @@ function add_template() {
 }
 
 function clone_template(b) {
+  // NEEDS TO ALSO CLONE SELECT BOX VALUES ..........
   let templates = document.getElementById("templates");
   var this_template = b.closest('.template');
   var sorted_templates = Array.from(templates.querySelectorAll(".template"))
