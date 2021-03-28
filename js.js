@@ -82,16 +82,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
 
-  let keyboardHideButton = document.querySelector("button[name='hideKeyboard']");
-  let guitarHideButton = document.querySelector("button[name='hideGuitar']");
-  keyboardHideButton.addEventListener("click", keyboard_hide_button_click_handler);
-  guitarHideButton.addEventListener("click", guitar_hide_button_click_handler);
-  function keyboard_hide_button_click_handler() {
-    keyboard.classList.toggle("hidden");
-  }
-  function guitar_hide_button_click_handler() {
-    guitar.classList.toggle("hidden");
-  }
 });
 
 function name_notes() {
@@ -102,10 +92,10 @@ function name_notes() {
   }
 }
 
-function toggle_note_names(ding) {
+function toggle_note_names(b) {
   // should be added to template initializer , but here will do for now
   name_notes();
-  var this_template = ding.closest('.template');
+  var this_template = b.closest('.template');
   var this_guitar = this_template.querySelector('.g');
   var this_keyboard = this_template.querySelector('.k');
   this_keyboard.classList.toggle("names_shown");
@@ -121,4 +111,14 @@ function add_template() {
   var new_template = sorted_templates[sorted_templates.length - 1].cloneNode(true);
   new_template.dataset.id = parseInt(new_template.dataset.id) + 1;
   templates.appendChild(new_template);
+}
+
+function hide_keyboard(b) {
+  var this_keyboard = b.closest('.instrument').querySelector('.k');
+  this_keyboard.classList.toggle("hidden");
+}
+
+function hide_guitar(b) {
+  var this_guitar = b.closest('.instrument').querySelector('.g');
+  this_guitar.classList.toggle("hidden");
 }
