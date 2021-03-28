@@ -10,7 +10,7 @@ main { padding:35px 10px; }
 .amburgla { justify-content: flex-end; }
 
 .template { display: flex; justify-content: space-between; flex-direction: column; border: 2px dashed rgba(0,0,0,.75); padding:5px; margin-bottom:5px; background-color:#ddd; }
-.instrument { display:flex; margin-top:20px; }
+.instrument { display:flex; margin-top:20px; text-align:center; }
 .controls { background-color:rgba(0,255,0,.25); padding:5px; border-radius:3px; }
 
 .k {}
