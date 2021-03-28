@@ -19,31 +19,38 @@
       <div class="template" data-id="1">
         <div class="controls">
           <button id="toggleNoteNames" onclick="toggle_note_names(this)">Toggle Note Names</button>
-          <button id="toggleNoteHighlight">Toggle All Note Highlight</button>
-          <button id="toggleScaleHighlight">Toggle Scale Highlight</button>
-          <select name="scale tonic" id="tonic">
-            <option value="1">C</option>
-            <option value="2">D♭</option>
-            <option value="3">D</option>
-            <option value="4">E♭</option>
-            <option value="5">E</option>
-            <option value="6">F</option>
-            <option value="7">G♭</option>
-            <option value="8">G</option>
-            <option value="9">A♭</option>
-            <option value="10">A</option>
-            <option value="11">B♭</option>
-            <option value="12">B</option>
-          </select>
-          <select name="scale interval" id="interval">
-            <option value="0">Major (Ionian mode)</option>
-            <option value="1">Minor (Aeolian mode)</option>
-            <option value="2">Locrian mode</option>
-            <option value="3">Dorian mode</option>
-            <option value="4">Phrygian mode</option>
-            <option value="5">Lydian mode</option>
-            <option value="6">Mixolydian mode</option>
-          </select>
+          <button id="toggleChromaticHighlight" onclick="toggle_chromatic_highlight(this)">Toggle Chromatic Highlighting</button>
+          <div style=" background-color:rgba(0,0,0,.4); border-radius:2px; padding:0 5px;">
+            <select name="scale root" id="root">
+              <option value="1">C</option>
+              <option value="2">D♭</option>
+              <option value="3">D</option>
+              <option value="4">E♭</option>
+              <option value="5">E</option>
+              <option value="6">F</option>
+              <option value="7">G♭</option>
+              <option value="8">G</option>
+              <option value="9">A♭</option>
+              <option value="10">A</option>
+              <option value="11">B♭</option>
+              <option value="12">B</option>
+            </select>
+            <select name="scale mode" id="mode">
+              <option value="0">Major (Ionian mode)</option>
+              <option value="1">Minor (Aeolian mode)</option>
+              <option value="2">Locrian mode</option>
+              <option value="3">Dorian mode</option>
+              <option value="4">Phrygian mode</option>
+              <option value="5">Lydian mode</option>
+              <option value="6">Mixolydian mode</option>
+            </select>
+            <button id="scaleHighlight" onclick="highlight_scale(this)" style="background-color:blue;color:White;border:0;border-radius:2px">Highlight Scale</button>
+            <button id="clearScaleHighlight" onclick="clear_scale(this)">Clear</button>
+          </div>
+          <div style="margin-left: auto;">
+            <button id="cloneTemplate" onclick="clone_template(this)">Clone</button>
+            <button id="removeTemplate" onclick="remove_template(this)">Remove</button>
+          </div>
         </div>
         <div class="instrument">
           <button name="hideKeyboard" onclick="hide_keyboard(this)">Toggle Keyboard</button>
