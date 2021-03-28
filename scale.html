@@ -18,7 +18,7 @@
     <div id="templates">
       <div class="template" data-id="1">
         <div class="controls">
-          <button id="toggleNoteNames">Toggle Note Names</button>
+          <button id="toggleNoteNames" onclick="toggle_note_names(this)">Toggle Note Names</button>
           <button id="toggleNoteHighlight">Toggle All Note Highlight</button>
           <button id="toggleScaleHighlight">Toggle Scale Highlight</button>
           <select name="scale tonic" id="tonic">
@@ -47,7 +47,7 @@
         </div>
         <div class="instrument">
           <button name="hideKeyboard">Toggle Keyboard</button>
-          <div class="k" id="keyboard">
+          <div class="k names_hidden" id="keyboard">
             <div class="o" data-oi="0">
               <div class="_1 n" data-o="0" data-n="1"></div>
               <div class="_2 n" data-o="0" data-n="2"></div>
@@ -192,7 +192,7 @@
         </div>
         <div class="instrument">
           <button name="hideGuitar">Toggle Guitar</button>
-          <div class="g" id="guitar">
+          <div class="g names_hidden" id="guitar">
             <div class="sg">
               <div class="sgn" data-f="21">_</div>
               <div class="sgn" data-f="20">_</div>
@@ -365,8 +365,7 @@
         </div>
       </div>
     </div>
-    <button id="duplicateButton"> do duplicating </button>
-    <button id="onclickTester" onclick="test()"> DING DING </button>
+    <button id="duplicateButton" onclick="add_template()"> ADD NEW TEMPLATE </button>
   </main>
   <script src="js.js"></script>
 </body>
