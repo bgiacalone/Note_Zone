@@ -1,13 +1,17 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-  name_notes();
+  add_template();
 });
 
-function clear_scale(b) {
-  let this_template = b.closest('.template');
-  var notes_to_clear = this_template.querySelectorAll(".g .notes_highlighted, .k .notes_highlighted");
-  notes_to_clear.forEach((item, i) => {
-    item.classList.remove("notes_highlighted");
-  });
+function add_template() {
+  let templates = document.getElementById("templates");
+  var sorted_templates = Array.from(templates.querySelectorAll(".template"))
+                              .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
+  let new_template = document.getElementById("source_template").cloneNode(true);
+  new_template.classList.add("template");
+  new_template.removeAttribute('id');
+  new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
+  templates.appendChild(new_template);
+  name_notes();
 }
 
 function highlight_scale(b) {
@@ -36,6 +40,13 @@ function highlight_scale(b) {
   });
 }
 
+function clear_scale(b) {
+  let this_template = b.closest('.template');
+  var notes_to_clear = this_template.querySelectorAll(".g .notes_highlighted, .k .notes_highlighted");
+  notes_to_clear.forEach((item, i) => {
+    item.classList.remove("notes_highlighted");
+  });
+}
 
 function name_notes() {
   let note_map = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"];
@@ -75,21 +86,12 @@ function hide_guitar(b) {
   this_guitar.classList.toggle("hidden");
 }
 
-function add_template() {
-  let templates = document.getElementById("templates");
-  var sorted_templates = Array.from(templates.querySelectorAll(".template"))
-                          .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
-  var new_template = sorted_templates[sorted_templates.length - 1].cloneNode(true);
-  new_template.dataset.id = parseInt(new_template.dataset.id) + 1;
-  templates.appendChild(new_template);
-}
-
 function clone_template(b) {
   // NEEDS TO ALSO CLONE SELECT BOX VALUES ..........
   let templates = document.getElementById("templates");
   var this_template = b.closest('.template');
   var sorted_templates = Array.from(templates.querySelectorAll(".template"))
-                          .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
+                              .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
   var new_template = this_template.cloneNode(true);
   new_template.dataset.id = parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1;
   templates.insertBefore(new_template, this_template.nextSibling);
