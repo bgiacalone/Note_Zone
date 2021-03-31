@@ -1,6 +1,19 @@
 body { padding:0; margin:0; background-color:#fafafa; }
 button {cursor:pointer;}
-main { padding:35px 10px; margin:0 auto; max-width:1370px; }
+main { padding:20px 10px; margin:0 auto; max-width:1370px; }
+table { border: 3px dashed pink; }
+th { font-weight:bold; }
+td, th { border:1px solid black; padding:5px 2px; }
+button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
+
+.btn { background-color:white; color:black; border:1px solid black; border-radius:2px; }
+.btn.btn-chromatic {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  color: white;
+  text-shadow: -1px -1px 0 rgba(0,0,0,.4), 1px -1px 0  rgba(0,0,0,.4), -1px 1px 0  rgba(0,0,0,.4), 1px 1px 0  rgba(0,0,0,.4);
+ }
+ .btn.btn-blu { background-color:blue; color:white; }
+ .btn.btn-red { background-color:rgb(200,0,0); color:white; }
 
 .tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); }
 .tn_content { display:flex; width:100%; max-width:1390px; margin:0 auto; }
@@ -14,10 +27,11 @@ main { padding:35px 10px; margin:0 auto; max-width:1370px; }
 .note_logo { height:50px !important; width:50px; }
 .amburgla { margin-left:auto; }
 
-
-.template { display: flex; justify-content: space-between; flex-direction: column; border: 2px dashed rgba(0,0,0,.75); padding:5px; margin-bottom:5px; background-color:#ddd; }
-.instrument { display:flex; margin-top:20px; text-align:center; }
-.controls { display:flex; flex-direction: row; background-color:rgba(0,255,0,.25); padding:5px; border-radius:3px; }
+.template { display: flex; justify-content: space-between; flex-direction: column; padding-bottom:5px; margin-bottom:8px; background-color:#dadada; border-radius:4px; box-shadow:-1px 2px 5px rgba(0,0,0,.2);border:1px solid rgba(0,0,0,.2); border-right:1px solid transparent; }
+.instrument { display:flex; margin-top:20px; text-align:center; padding-left:5px; }
+.controls { display:flex; flex-direction: row; background-color:rgba(0,0,0,.25); padding:5px; border-top-left-radius:3px; border-top-right-radius:3px; }
+.scale-form { background-color:rgba(0,0,0,.4); border-radius:4px; padding:0 5px; margin-left:5px; }
+.g.hidden, .k.hidden { display: none !important; }
 
 .k {}
 .k .o, .k .n { display: inline-block; }
@@ -63,30 +77,23 @@ main { padding:35px 10px; margin:0 auto; max-width:1370px; }
 .notes_highlighted.names_shown .n[data-n="7"], .names_shown .notes_highlighted.n[data-n="7"] { color:black; }
 
 
-.g.hidden, .k.hidden { display: none; }
-
-/* -start TODOLIST
-
-a. octave brackets
-b. hamburgler css wiggle on hover
-c. left aligned nav pullout menu
-d. circle of fifths page
-e. chords page
-f. staff notation view
-g. frequency spectrum view
-1. make instruments collapsible/hide-show
-2. add "piano" instrument with 88keys
-3. add "keyboard octave" instrument with 12 larger keys
-4. add Toggle Octave Highlight button , toggles per-octave color highlights
-5. add form & button to generate pseudo random note combinations and highlight them
-6. add buttons to guitar instrument section (submenu?) that allow for orientation flipping (x & y)
-7. guitar graphics upgrade - scaled fretboard , add head and body
-8. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
-9. display MIDI input
-
- --end TODOLIST  */
-
-
-table {border: 3px dashed pink;}
-th { font-weight:bold; }
-td ,th { border:1px solid black; padding:5px 2px;}
+/* -start _OLD_ TODOLIST
+......................................................
+[ ]a. octave brackets
+[ ]b. hamburgler css wiggle on hover
+[ ]c. left aligned nav pullout menu
+[ ]d. circle of fifths page
+[ ]e. chords page
+[ ]f. staff notation view
+[ ]g. frequency spectrum view
+[x]1. make instruments collapsible/hide-show
+[x]2. add "piano" instrument with 88keys
+[ ]3. add "keyboard octave" instrument with 12 larger keys
+[x]4. add Toggle Octave Highlight button , toggles per-octave color highlights
+[ ]5. add form & button to generate pseudo random note combinations and highlight them
+[ ]6. add buttons to guitar instrument section (submenu?) that allow for orientation flipping (x & y)
+[ ]7. guitar graphics upgrade - scaled fretboard , add head and body
+[ ]8. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
+[ ]9. MIDI input
+......................................................
+ --end  _OLD_ TODOLIST  */
