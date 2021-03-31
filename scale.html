@@ -12,6 +12,7 @@
   <nav class="tn">
     <div class="logo"><a href="./home.html"><img class="note_logo" src="32n.png"><img src="logo.png" alt-text="The Note Zone"></a></div>
     <a href="./scale.html" id="Scales"  class="nav_item"><span style="position:relative;top:25px;">SCALES</span></a>
+    <a href="./tempo.html" id="tempo"  class="nav_item"><span style="position:relative;top:25px;">TEMPO</span></a>
     <div class="amburgla"><a href="#" id="burger"><img src="amburgla.png"></a></div>
   </nav>
   <main>
@@ -29,10 +30,7 @@
         <button id="toggleNoteNames" onclick="toggle_note_names(this)" style="background-color:white;color:black;border:1px solid black;border-radius:2px">Toggle Note Names</button>
         <button id="toggleChromaticHighlight" onclick="toggle_chromatic_highlight(this)" style="background-color:white;color:black;border:1px solid black;border-radius:2px">Toggle Chromatic Highlighting</button>
         <div style=" background-color:rgba(0,0,0,.4); border-radius:2px; padding:0 5px; margin-left:5px;">
-          <select name="scale root" id="root">
-            <option value="10">A</option>
-            <option value="11">B♭</option>
-            <option value="12">B</option>
+          <select name="scale tonic" id="tonic">
             <option value="1">C</option>
             <option value="2">D♭</option>
             <option value="3">D</option>
@@ -42,6 +40,9 @@
             <option value="7">G♭</option>
             <option value="8">G</option>
             <option value="9">A♭</option>
+            <option value="10">A</option>
+            <option value="11">B♭</option>
+            <option value="12">B</option>
           </select>
           <select name="scale mode" id="mode">
             <option value="0">Ionian mode (Major) [1]</option>
@@ -381,6 +382,6 @@
     </div>
 
   </div>
-  <script src="js.js"></script>
+  <script src="scales.js"></script>
 </body>
 </html>

@@ -18,6 +18,7 @@ function highlight_scale(b) {
   clear_scale(b);
   let this_template = b.closest('.template');
   var target = `.template[data-id='${this_template.dataset.id}']`;
+  // before i forget -- these 7 are the _diatonic_ scales
   let scale_map = [ [2,2,1,2,2,2,1],
                     [2,1,2,2,1,2,2],
                     [1,2,2,1,2,2,2],
@@ -25,9 +26,9 @@ function highlight_scale(b) {
                     [1,2,2,2,1,2,2],
                     [2,2,2,1,2,2,1],
                     [2,2,1,2,2,1,2] ];
-  let scale_root = document.querySelector(target + " select[id='root']").value;
+  let scale_tonic = document.querySelector(target + " select[id='tonic']").value;
   let scale_mode = document.querySelector(target + " select[id='mode']").value;
-  let running = +scale_root;
+  let running = +scale_tonic;
   scale_map[scale_mode].forEach((item, i) => {
     running = running + scale_map[scale_mode][i];
     if (running > 12) {

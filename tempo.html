@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to TheNoteZone!</title>
+  <meta name="description" content="Listen up - you better take some notes!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body ondragstart="return false;" ondrop="return false;">
+  <nav class="tn">
+    <div class="logo"><a href="./home.html"><img class="note_logo" src="32n.png"><img src="logo.png" alt-text="The Note Zone"></a></div>
+    <a href="./scale.html" id="Scales"  class="nav_item"><span style="position:relative;top:25px;">SCALES</span></a>
+    <a href="./tempo.html" id="tempo"  class="nav_item"><span style="position:relative;top:25px;">TEMPO</span></a>
+    <div class="amburgla"><a href="#" id="burger"><img src="amburgla.png"></a></div>
+  </nav>
+  <main style="text-align:center;">
+
+    <h1> time / tempo </h1>
+    <table style="margin:0 auto;">
+      <thead>
+        <tr>
+          <th>BPM</th>
+          <th>1:1 (ms)</th>
+          <th>1:2 (ms)</th>
+          <th>1:4 (ms)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>120</td>
+          <td>2000</td>
+          <td>1000</td>
+          <td>500</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </main>
+  <div id="source_materials" style="display:none;">
+  </div>
+  <script src="tempo.js"></script>
+</body>
+</html>
+
+<!--
+BPM:
+  Standard Divisions:
+  ..................................................
+  whole note
+  half notes
+  quarter note
+  eighth note
+  sixteenth note
+  thirty-second note
+
+  Dotted Notes: have an additional 50% duration tacked on to them, so if a 1/4
+  note occupies 25% of a 4/4 measure, a dotted quarter note occupies 37.5% of
+  a measure, or three 1/8th notes.
+  ..................................................
+  1/1 dotted
+  1/2 dotted
+  1/4 dotted
+  1/8 dotted
+  1/16 dotted
+  1/32 dotted
+
+  Triplet (marked by T) ::: 2/3 of equivalent Standard Division
+  ..................................................
+  1/1 T    ( @ 100BPM (2400ms = standard whole note ) && (1600ms = triplet whole note)  )
+  1/2 T
+  1/4 T
+  1/8 T
+  1/16 T
+  1/32 T
+
+
+  Milliseconds
+  Hertz
+
+  .......................................................
+
+  REFERENCE
+  http://www.sengpielaudio.com/calculator-bpmtempotime.htm
+
+ -->

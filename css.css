@@ -80,3 +80,8 @@ g. frequency spectrum view
 9. display MIDI input
 
  --end TODOLIST  */
+
+
+table {border: 3px dashed pink;}
+th { font-weight:bold; }
+td ,th { border:1px solid black; padding:5px 2px;}
