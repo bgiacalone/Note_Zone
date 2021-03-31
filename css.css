@@ -4,10 +4,11 @@ main { padding:35px 10px; }
 
 .tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); }
 .tn .logo img, .tn .amburgla img { border-radius:5px; height:50px; }
-.nav_item { position:relative; padding: 0 10px; }
-.nav_item:hover { background-color:rgba(0,0,0,.1); }
+.nav_item { position:relative; padding: 0 20px; text-decoration: none; color: darkblue; }
+.nav_item:hover { background-color:rgba(0,0,0,.1); color:blue; }
+.nav_item svg { height:1em; width:1em;top: 2px; position: relative; }
 .logo, .amburgla { padding:5px; }
-.logo { justify-content: flex-start; align-items: middle; }
+.logo { justify-content: flex-start; align-items: middle; margin-righT:15px; }
 .note_logo { height:50px !important; width:50px; }
 .amburgla { margin-left:auto; }
 
