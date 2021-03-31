@@ -6,13 +6,13 @@ th { font-weight:bold; }
 td, th { border:1px solid black; padding:5px 2px; background-color:white; }
 button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
 
-.btn { background-color:white; color:black; border:1px solid black; border-radius:2px; }
+.btn { background-color:white; color:black; border:1px solid rgba(0,0,0,.5); border-radius:2px; }
 .btn.btn-chromatic {
   background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
   color: white;
   text-shadow: -1px -1px 0 rgba(0,0,0,.4), 1px -1px 0  rgba(0,0,0,.4), -1px 1px 0  rgba(0,0,0,.4), 1px 1px 0  rgba(0,0,0,.4);
  }
- .btn.btn-blu { background-color:blue; color:white; }
+ .btn.btn-blu { background-color:rgb(30,90,255); color:white; }
  .btn.btn-red { background-color:rgb(200,0,0); color:white; }
 
 .tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); }
@@ -29,7 +29,7 @@ button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
 .amburgla img:hover { filter:invert(100%); }
 
 .template { display: flex; justify-content: space-between; flex-direction: column; padding-bottom:5px; margin-bottom:8px; background-color:#eaeaea; border-radius:4px; box-shadow:-2px 2px 4px rgba(0,0,0,.1);border:1px solid #bbb; }
-.instrument { display:flex; margin-top:20px; text-align:center; padding-left:5px; }
+.instrument { display:flex; margin-top:15px; text-align:center; padding-left:5px; }
 .controls { display:flex; flex-direction: row; background-color:#bbb; padding:5px; border-top-left-radius:3px; border-top-right-radius:3px; }
 .scale-form { background-color:rgba(0,0,0,.4); border-radius:4px; padding:0 5px; margin-left:5px; }
 .g.hidden, .k.hidden { display: none !important; }
