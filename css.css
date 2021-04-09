@@ -52,8 +52,14 @@ button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
 .g .s .n { border-right: 2px solid black; line-height: 22px; width: 38px; font-size:.8em; }
 .g .s .n:first-child { border-right: 4px solid white; }
 .g .s .n:last-child { border-right: 4px solid black; }
+.g .w1 { min-width:80px; }
+.g .w2 { min-width:70px; }
+.g .w3 { min-width:55px; }
+.g .w4 { min-width:47px;max-width:47px; }
+.g .w5 { min-width:38px;min-width:38px; }
+.g .w6 { min-width:30px;min-width:30px; }
 
-.n {letter-spacing: -3px;}
+.n { letter-spacing: -3px; }
 .names_hidden .n { color: transparent; }
 .names_shown.g .n, .names_shown .n._1, .names_shown .n._3, .names_shown .n._5, .names_shown .n._6, .names_shown .n._8, .names_shown .n._10, .names_shown .n._12 { color: black; }
 .names_shown .n._2, .names_shown .n._4, .names_shown .n._7, .names_shown .n._9, .names_shown .n._11 { color: white; }
