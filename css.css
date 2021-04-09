@@ -55,10 +55,10 @@ button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
 
 .g .sgn.w1, .g .w1 { width:80px;min-width:80px;max-width:80px; }
 .g .sgn.w2, .g .w2 { width:70px;min-width:70px;max-width:70px; }
-.g .sgn.w3, .g .w3 { width:55px;min-width:55px;max-width:55px; }
-.g .sgn.w4, .g .w4 { width:47px;min-width:47px;max-width:47px; }
-.g .sgn.w5, .g .w5 { width:38px;min-width:38px;max-width:38px; }
-.g .sgn.w6, .g .w6 { width:30px;min-width:30px;max-width:30px; }
+.g .sgn.w3, .g .w3 { width:58px;min-width:58px;max-width:58px; }
+.g .sgn.w4, .g .w4 { width:49px;min-width:49px;max-width:49px; }
+.g .sgn.w5, .g .w5 { width:42px;min-width:42px;max-width:42px; }
+.g .sgn.w6, .g .w6 { width:36px;min-width:36px;max-width:36px; }
 
 .n { letter-spacing: -3px; }
 .names_hidden .n { color: transparent; }
