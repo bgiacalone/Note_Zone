@@ -33,29 +33,29 @@ function fill_template() {
       if (i == 1) {
         item.innerHTML = bpm;
       } else if (i == 3){
-        item.innerHTML = (quarter_beat_ms*4);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms*4)).toFixed(2);
       } else if (i == 5) {
-        item.innerHTML = (quarter_beat_ms*4*(2/3));
+        item.innerHTML = Number.parseFloat((quarter_beat_ms*4*(2/3))).toFixed(2);
       } else if (i == 7) {
-        item.innerHTML = (quarter_beat_ms*2);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms*2)).toFixed(2);
       } else if (i == 9) {
-        item.innerHTML = (quarter_beat_ms*4*(1/3));
+        item.innerHTML = Number.parseFloat((quarter_beat_ms*4*(1/3))).toFixed(2);
       } else if (i == 11) {
-        item.innerHTML = (quarter_beat_ms);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms)).toFixed(2);
       } else if (i == 13) {
-        item.innerHTML = (quarter_beat_ms*4*(1/6));
+        item.innerHTML = Number.parseFloat((quarter_beat_ms*4*(1/6))).toFixed(2);
       } else if (i == 15) {
-        item.innerHTML = (quarter_beat_ms/2);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms/2)).toFixed(2);
       } else if (i == 17) {
-        item.innerHTML = (quarter_beat_ms/3);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms/3)).toFixed(2);
       } else if (i == 19) {
-        item.innerHTML = (quarter_beat_ms/4);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms/4)).toFixed(2);
       } else if (i == 21) {
-        item.innerHTML = (quarter_beat_ms/6);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms/6)).toFixed(2);
       } else if (i == 23) {
-        item.innerHTML = (quarter_beat_ms/8);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms/8)).toFixed(2);
       } else if (i == 25) {
-        item.innerHTML = (quarter_beat_ms/12);
+        item.innerHTML = Number.parseFloat((quarter_beat_ms/12)).toFixed(2);
       }
     });
     target.appendChild(new_row.cloneNode(true));
