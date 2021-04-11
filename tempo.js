@@ -23,9 +23,7 @@ function fill_template() {
   let bpm_start = 1;
   let bpm_increment = 1;
   let table_length = 199;
-
   for (var i = 0; i < table_length; i++) {
-
     let bpm = bpm_start + i;
     let ms = 60000;
     let quarter_beat_ms = ms/bpm;
@@ -59,8 +57,5 @@ function fill_template() {
       }
     });
     target.appendChild(new_row.cloneNode(true));
-
   }
-
-
 }
