@@ -16,15 +16,23 @@ function add_template() {
 }
 
 function fill_template() {
+  let start = document.querySelector("div.controls input[id='start']");
+  let end = document.querySelector("div.controls input[id='end']");
+  let interval = document.querySelector("div.controls input[id='interval']");
   let source = document.querySelector("div[id='source_template'] tr[id='content']");
   let new_row = source.cloneNode(true);
   new_row.removeAttribute('id');
   let target = document.querySelector("div.template tbody");
-  let bpm_start = 1;
-  let bpm_increment = 1;
-  let table_length = 199;
+  let bpm_start = +start.value;
+  let bpm_increment = +interval.value;
+  let table_length = Math.floor((+end.value - +start.value)/bpm_increment);
+  let bpm_counter = bpm_start;
+  console.log(bpm_start);
+  console.log(table_length);
+  console.log(bpm_increment);
   for (var i = 0; i < table_length; i++) {
-    let bpm = bpm_start + i;
+    let bpm = bpm_counter + bpm_increment;
+    bpm_counter = bpm_counter + bpm_increment;
     let ms = 60000;
     let quarter_beat_ms = ms/bpm;
     new_row.childNodes.forEach((item, i) => {

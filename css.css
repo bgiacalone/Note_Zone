@@ -90,6 +90,8 @@ th.twos { background-color:rgba(0,0,100,.4) }
 td.twos { background-color:rgba(0,0,100,.1) }
 th.bpm { background-color:black; color:White;}
 
+.number_input {max-width: 50px;}
+.text-center {text-align: center;}
 /* -start _OLD_ TODOLIST
 ......................................................
 [ ]a. octave brackets
