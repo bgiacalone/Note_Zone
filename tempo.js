@@ -27,17 +27,12 @@ function fill_template() {
   let bpm_increment = +interval.value;
   let table_length = Math.floor((+end.value - +start.value)/bpm_increment);
   let bpm_counter = bpm_start;
-  console.log(bpm_start);
-  console.log(table_length);
-  console.log(bpm_increment);
-  for (var i = 0; i < table_length; i++) {
-    let bpm = bpm_counter + bpm_increment;
-    bpm_counter = bpm_counter + bpm_increment;
-    let ms = 60000;
-    let quarter_beat_ms = ms/bpm;
+  let ms = 60000;
+  for (var i = 0; i <= table_length; i++) {
+    let quarter_beat_ms = ms/bpm_counter;
     new_row.childNodes.forEach((item, i) => {
       if (i == 1) {
-        item.innerHTML = bpm;
+        item.innerHTML = bpm_counter;
       } else if (i == 3){
         item.innerHTML = Number.parseFloat((quarter_beat_ms*4)).toFixed(2);
       } else if (i == 5) {
@@ -64,6 +59,7 @@ function fill_template() {
         item.innerHTML = Number.parseFloat((quarter_beat_ms/12)).toFixed(2);
       }
     });
+    bpm_counter = bpm_counter + bpm_increment;
     target.appendChild(new_row.cloneNode(true));
   }
 }
