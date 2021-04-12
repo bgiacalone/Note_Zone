@@ -19,10 +19,14 @@ function fill_template() {
   let start = document.querySelector("div.controls input[id='start']");
   let end = document.querySelector("div.controls input[id='end']");
   let interval = document.querySelector("div.controls input[id='interval']");
-  let source = document.querySelector("div[id='source_template'] tr[id='content']");
-  let new_row = source.cloneNode(true);
+  let new_row = document.querySelector("div[id='source_template'] tr[id='content']").cloneNode(true);
   new_row.removeAttribute('id');
+  let template_tbody = document.querySelector("div[id='source_template'] tbody");
+  let target_table = document.querySelector("div.template table");
   let target = document.querySelector("div.template tbody");
+  target_table.removeChild(target);
+  target_table.appendChild(template_tbody.cloneNode());
+  target = document.querySelector("div.template tbody");
   let bpm_start = +start.value;
   let bpm_increment = +interval.value;
   let table_length = Math.floor((+end.value - +start.value)/bpm_increment);
