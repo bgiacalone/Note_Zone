@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   fill_template();
 });
 
+function ms_to_hz(ms) {
+  return ((1/ms)*1000);
+}
+
 function add_template() {
   let templates = document.getElementById("templates");
   var sorted_templates = Array.from(templates.querySelectorAll(".template"))
@@ -47,6 +51,7 @@ function fill_template() {
         item.innerHTML = Number.parseFloat((quarter_beat_ms*4*(1/3))).toFixed(2);
       } else if (i == 11) {
         item.innerHTML = Number.parseFloat((quarter_beat_ms)).toFixed(2);
+        console.log("bpm: " + bpm_counter + " 1/4ms: " + item.innerHTML + " hz: " + ms_to_hz(item.innerHTML));
       } else if (i == 13) {
         item.innerHTML = Number.parseFloat((quarter_beat_ms*4*(1/6))).toFixed(2);
       } else if (i == 15) {
