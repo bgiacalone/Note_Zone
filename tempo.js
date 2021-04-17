@@ -20,9 +20,9 @@ function add_template() {
 }
 
 function fill_template() {
-  let start = document.querySelector("div.controls input[id='start']");
-  let end = document.querySelector("div.controls input[id='end']");
-  let interval = document.querySelector("div.controls input[id='interval']");
+  let bpm_start = parseInt(document.querySelector("div.controls input[id='start']").value);
+  let end = parseInt(document.querySelector("div.controls input[id='end']").value);
+  let interval = parseInt(document.querySelector("div.controls input[id='interval']").value);
   let row_template = document.querySelector("div[id='source_template'] tr[id='content']").cloneNode(true);
   row_template.removeAttribute('id');
   while (row_template.firstChild) {
@@ -34,9 +34,7 @@ function fill_template() {
   target_table.removeChild(target);
   target_table.appendChild(template_tbody.cloneNode());
   target = document.querySelector("div.template tbody");
-  let bpm_start = +start.value;
-  let bpm_increment = +interval.value;
-  let table_length = Math.floor((+end.value - +start.value)/bpm_increment);
+  let table_length = Math.floor((end - bpm_start)/interval);
   let bpm_counter = bpm_start;
   let ms = 60000;
   for (var i = 0; i <= table_length; i++) {
@@ -83,7 +81,7 @@ function fill_template() {
       cell.classList.add( (j % 2 == 0) ? "twos" : "thirds")
       new_row.appendChild(cell);
     }
-    bpm_counter = bpm_counter + bpm_increment;
+    bpm_counter = bpm_counter + interval;
     target.appendChild(new_row);
   }
 }
