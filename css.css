@@ -1,7 +1,7 @@
 body { padding:0; margin:0; background-color:#fafafa; }
 button {cursor:pointer;}
 main { padding:20px 10px; margin:0 auto; max-width:1370px; }
-table { border: 3px dashed pink; }
+table { border:5px dotted salmon; }
 th { font-weight:bold; }
 td, th { border:1px solid black; padding:5px 2px; background-color:white; }
 button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
@@ -11,9 +11,9 @@ button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
   background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
   color: white;
   text-shadow: -1px -1px 0 rgba(0,0,0,.4), 1px -1px 0  rgba(0,0,0,.4), -1px 1px 0  rgba(0,0,0,.4), 1px 1px 0  rgba(0,0,0,.4);
- }
- .btn.btn-blu { background-color:rgb(30,90,255); color:white; }
- .btn.btn-red { background-color:rgb(200,0,0); color:white; }
+}
+.btn.btn-blu { background-color:rgb(30,90,255); color:white; }
+.btn.btn-red { background-color:rgb(200,0,0); color:white; }
 
 .tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); }
 .tn_content { display:flex; width:100%; max-width:1390px; margin:0 auto; }

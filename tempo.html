@@ -38,15 +38,19 @@
       <div id="source_template">
         <h1>time / tempo</h1>
         <div class="controls">
-          <label for="start">From:</label>
+          <label for="start"><strong>From:</strong></label>
           <input id="start" class="number_input" type="number" value="1" min="0" max="500" step="any">
-          <label for="end">To:</label>
+          <label for="end"><strong>To:</strong></label>
           <input id="end" class="number_input" type="number"  value="200" min="0" max="500" step="any">
-          <label for="interval">Interval:</label>
+          <label for="interval"><strong>Interval:</strong></label>
           <input id="interval" class="number_input" type="number" value="1" min="0" step="any">
           <button class="btn btn-blu" onclick="fill_template()">OK</button>
+          <div class="right" style="margin-left:auto;">
+            <button class="btn btn-blu" id="ms" onclick="table_format(this, 'ms')">MILLISECONDS</button>
+            <button class="btn" id="hz" onclick="table_format(this, 'hz')">HERTZ</button>
+          </div>
         </div>
-        <table style="margin:0 auto;">
+        <table style="margin:0 auto; width:100%;">
           <thead>
             <tr>
               <th class="bpm">BPM</th>
@@ -88,44 +92,3 @@
   <script src="tempo.js"></script>
 </body>
 </html>
-<!--
-BPM:
-  Standard Divisions:
-  ..................................................
-  whole note
-  half notes
-  quarter note
-  eighth note
-  sixteenth note
-  thirty-second note
-
-  Dotted Notes: have an additional 50% duration tacked on to them, so if a 1/4
-  note occupies 25% of a 4/4 measure, a dotted quarter note occupies 37.5% of
-  a measure, or three 1/8th notes.
-  ..................................................
-  1/1 dotted
-  1/2 dotted
-  1/4 dotted
-  1/8 dotted
-  1/16 dotted
-  1/32 dotted
-
-  Triplet (marked by T) ::: 2/3 of equivalent Standard Division
-  ..................................................
-  1/1 T    ( @ 100BPM (2400ms = standard whole note ) && (1600ms = triplet whole note)  )
-  1/2 T
-  1/4 T
-  1/8 T
-  1/16 T
-  1/32 T
-
-
-  Milliseconds
-  Hertz
-
-  .......................................................
-
-  REFERENCE
-  http://www.sengpielaudio.com/calculator-bpmtempotime.htm
-
- -->

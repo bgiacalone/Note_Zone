@@ -39,7 +39,6 @@ function fill_template() {
   let table_length = Math.floor((+end.value - +start.value)/bpm_increment);
   let bpm_counter = bpm_start;
   let ms = 60000;
-
   for (var i = 0; i <= table_length; i++) {
     var new_row = row_template.cloneNode(true);
     let quarter_beat_ms = ms/bpm_counter;
@@ -76,7 +75,7 @@ function fill_template() {
     bpm_cell_bold.innerHTML = bpm_counter;
     bpm_cell.appendChild(bpm_cell_bold);
     new_row.appendChild(bpm_cell);
-    for (var j = 0; j <= 11; j++) {
+    for (var j = 0; j < 12; j++) {
       const cell = document.createElement("td");
       cell.dataset.ms = ms_array[j];
       cell.dataset.hz = hz_array[j];
@@ -86,5 +85,28 @@ function fill_template() {
     }
     bpm_counter = bpm_counter + bpm_increment;
     target.appendChild(new_row);
+  }
+}
+
+function table_format(el, format) {
+  var table = el.closest("#templates").querySelector("table");
+  var cells_to_update = table.querySelectorAll('td.twos, td.thirds');
+  for(let i = 0; i < cells_to_update.length; ++i) {
+    var dest;
+    switch (format) {
+      case 'ms':
+        el.classList.add('btn-blu');
+        var hz_btn = el.closest("#templates").querySelector("#hz");
+        hz_btn.classList.remove("btn-blu");
+        dest = cells_to_update[i].dataset.ms;
+        break;
+      case 'hz':
+        el.classList.add('btn-blu');
+        var ms_btn = el.closest("#templates").querySelector("#ms");
+        ms_btn.classList.remove("btn-blu");
+        dest = Number.parseFloat(cells_to_update[i].dataset.hz).toFixed(3);
+        break;
+    }
+    cells_to_update[i].innerHTML = dest;
   }
 }
