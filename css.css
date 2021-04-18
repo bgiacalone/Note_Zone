@@ -1,11 +1,13 @@
 body { padding:0; margin:0; background-color:#fafafa; }
 button {cursor:pointer;}
 main { padding:20px 10px; margin:0 auto; max-width:1370px; }
-table { border:5px dotted salmon; }
+table { background-color:ivory; }
 th { font-weight:bold; }
 td, th { border:1px solid black; padding:5px 2px; background-color:white; }
-button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
+button, input[type="number"], select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px; }
+input[type="number"], select { height:18px; border-radius:5px; border:1px solid default; padding:0 6px 1px; }
 
+.text-center { text-align:center; }
 .btn { background-color:white; color:black; border:1px solid rgba(0,0,0,.5); border-radius:2px; }
 .btn.btn-chromatic {
   background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
@@ -23,17 +25,21 @@ button, input, select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px;}
 .nav_item>span { position:relative; top:28px; }
 .nav_item svg { height:1em; width:1em;top: 2px; position: relative; }
 .logo, .amburgla { padding:5px; }
-.logo { justify-content: flex-start; align-items: middle; margin-righT:15px; }
+.logo { justify-content: flex-start; align-items: middle; margin-right:15px; }
 .note_logo { height:50px !important; width:50px; }
 .amburgla { margin-left:auto; }
 .amburgla img:hover { filter:invert(100%); }
 
+.controls { display:flex; flex-direction: row; background-color:#bbb; padding:5px; border-top-left-radius:3px; border-top-right-radius:3px; }
+.scale-form, .range-form { background-color:rgba(0,0,0,.4); border-radius:4px; padding:1px 5px; margin-left:5px; font-family: sans-serif; }
+.range-form label { color: white; font-size:13px; position:relative; top:1px; }
+.range-form input[type="number"] { padding-right:0px; margin-left:-1px; margin-right:7px; border:.5px solid black !important; }
+.number_input { max-width: 50px; }
+.tempo.template { padding-bottom:0px; }
+
 .template { display: flex; justify-content: space-between; flex-direction: column; padding-bottom:5px; margin-bottom:8px; background-color:#eaeaea; border-radius:4px; box-shadow:-2px 2px 4px rgba(0,0,0,.1);border:1px solid #bbb; }
 .instrument { display:flex; margin-top:15px; text-align:center; padding-left:5px; }
-.controls { display:flex; flex-direction: row; background-color:#bbb; padding:5px; border-top-left-radius:3px; border-top-right-radius:3px; }
-.scale-form { background-color:rgba(0,0,0,.4); border-radius:4px; padding:0 5px; margin-left:5px; }
 .g.hidden, .k.hidden { display: none !important; }
-
 .k {}
 .k .o, .k .n { display: inline-block; }
 .k .n { padding: 15px 0; position: relative; width: 10px; font-size:.6em; }
@@ -88,26 +94,16 @@ th.thirds { background-color:rgba(0,200,0,.4) }
 td.thirds { background-color:rgba(0,200,0,.1) }
 th.twos { background-color:rgba(0,0,100,.4) }
 td.twos { background-color:rgba(0,0,100,.1) }
-th.bpm { background-color:black; color:White;}
+th.bpm { background-color:black; color:white; }
 
-.number_input {max-width: 50px;}
-.text-center {text-align: center;}
 /* -start _OLD_ TODOLIST
 ......................................................
-[ ]a. octave brackets
-[ ]b. hamburgler css wiggle on hover
-[ ]c. left aligned nav pullout menu
 [ ]d. circle of fifths page
 [ ]e. chords page
 [ ]f. staff notation view
 [ ]g. frequency spectrum view
-[x]1. make instruments collapsible/hide-show
-[x]2. add "piano" instrument with 88keys
-[ ]3. add "keyboard octave" instrument with 12 larger keys
-[x]4. add Toggle Octave Highlight button , toggles per-octave color highlights
 [ ]5. add form & button to generate pseudo random note combinations and highlight them
 [ ]6. add buttons to guitar instrument section (submenu?) that allow for orientation flipping (x & y)
-[ ]7. guitar graphics upgrade - scaled fretboard , add head and body
 [ ]8. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
 [ ]9. MIDI input
 ......................................................
