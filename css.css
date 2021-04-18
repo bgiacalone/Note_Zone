@@ -101,6 +101,10 @@ th.twos { background-color:rgba(0,0,100,.4) }
 td.twos { background-color:rgba(0,0,100,.1) }
 table .bpm { background-color:black; color:white; width:50px; }
 
+.items {}
+.img-item {}
+.img-item img {}
+
 /* -start _OLD_ TODOLIST
 ......................................................
 [ ]d. circle of fifths page
