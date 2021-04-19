@@ -102,7 +102,7 @@ th.twos { background-color:rgba(0,0,100,.4) }
 td.twos { background-color:rgba(0,0,100,.1) }
 table .bpm { background-color:black; color:white; width:50px; }
 
-.items { position:relative; width:100%; height:calc(100vh - 130px); border:10px solid green; overflow:hidden; }
+.items { position:relative; top:-10px;width:100%; height:calc(100vh - 130px); border:10px solid green; overflow:hidden; }
 .img_item {
   position:absolute;
   border:1px solid rgba(0,0,0,.75);
