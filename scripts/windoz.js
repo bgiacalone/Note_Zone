@@ -15,7 +15,7 @@ function min(el) {
 }
 
 var position = { x: 0, y: 0 };
-interact('.img_item')
+interact('.img_item, .template')
   .draggable({
     // enable inertial throwing
     inertia: true,

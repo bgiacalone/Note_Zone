@@ -112,21 +112,20 @@ table .bpm { background-color:black; color:white; width:50px; }
   overflow: hidden;
   touch-action: none;
 }
-.img_item .controls .btn-group { margin-left:auto; min-width:89px; position:absolute;top:2px;right:4px;}
+.img_item .controls .btn-group { margin-left:auto; min-width:89px; position:absolute;top:2px;right:4px; }
 .img_item .controls .btn { margin-right:0px; }
 .img_item .controls { position:relative; max-height:24px;text-overflow: ellipsis; overflow:hidden; overflow: hidden; white-space: nowrap;  }
 .img_item .controls strong { text-overflow: ellipsis; padding-right:89px; cursor:default; position:relative; top:1px; }
-.img_item img {height:calc(100% - 40px);max-width:100%;max-height:100%;}
-.max {width:100%;height:100%;}
+.img_item img { height:calc(100% - 40px);max-width:100%;max-height:100%; }
+.max { width:100%;height:100%; }
 
 /* -start _OLD_ TODOLIST
 ......................................................
-[ ]d. circle of fifths page
 [ ]e. chords page
 [ ]f. staff notation view
 [ ]g. frequency spectrum view
 [ ]5. add form & button to generate pseudo random note combinations and highlight them
-[ ]6. add buttons to guitar instrument section (submenu?) that allow for orientation flipping (x & y)
+[ ]6. add buttons to guitar instrument section (submenu?) that allow for tuning & orientation flipping (x & y)
 [ ]8. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
 [ ]9. MIDI input
 ......................................................
