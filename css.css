@@ -101,9 +101,10 @@ th.twos { background-color:rgba(0,0,100,.4) }
 td.twos { background-color:rgba(0,0,100,.1) }
 table .bpm { background-color:black; color:white; width:50px; }
 
-.items {}
-.img-item {}
-.img-item img {}
+.items { position:relative;width:100%;height:calc(100vh - 110px);border:10px solid green;}
+.img_item { display:inline-block;border:2px solid red; }
+.img_item .controls button { margin-left:auto; }
+.img_item img {}
 
 /* -start _OLD_ TODOLIST
 ......................................................

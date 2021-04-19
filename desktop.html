@@ -10,7 +10,12 @@
 <body ondragstart="return false;" ondrop="return false;">
   <main>
     <div class="items">
-      <div class="img_item"><img src="images/circle.jpg"></div>
+      <div class="img_item">
+        <div class="controls">
+          <button onclick="remove(this)">remove</button>
+        </div>
+        <img src="images/circle.jpg">
+      </div>
     </div>
   </main>
   <script src="scripts/main.js"></script>
