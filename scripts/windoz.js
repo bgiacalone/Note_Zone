@@ -13,8 +13,46 @@ function min(el) {
   parent.classList.remove('max');
   console.log("min");
 }
+function add_img_item(top, left, txt, src) {
+  var itms = document.querySelector("#items");
+  var ii = document.createElement("div");
+  ii.classList.add("img_item");
+  ii.style = `top:${top}px;left:${left}px;`;
+  var img_item = `
+    <div class="controls">
+      <strong>${txt}</strong>
+      <div class="btn-group">
+        <button class="btn" onclick="min(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" style="top:5px;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        <button class="btn" onclick="maximize(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        <button class="btn btn-red" onclick="remove(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <img src="${src}">`;
+  ii.innerHTML = img_item;
+  itms.appendChild(ii);
+  console.log(`img_item ${txt} added`);
+}
+add_img_item(4, 80, "files://note-zone-picz/circle_of_fifs.jpg", "images/circle.jpg");
+add_img_item(48, 420, "files://note-zone-picz/graph.gif", "images/stolen_graph.gif");
 
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////interact.js setup shiiiiiiiiiiiiiit////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var position = { x: 0, y: 0 };
+
 interact('.img_item, .template')
   .draggable({
     // enable inertial throwing

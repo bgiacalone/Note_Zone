@@ -1,16 +1,3 @@
-
-function add_template() {
-  let templates = document.getElementById("items");
-  var sorted_templates = Array.from(templates.querySelectorAll(".template"))
-                              .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
-  let new_template = document.getElementById("source_template").cloneNode(true);
-  new_template.classList.add("template");
-  new_template.removeAttribute("id");
-  new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
-  templates.appendChild(new_template);
-  name_notes();
-}
-
 function highlight_scale(b) {
   clear_scale(b);
   let this_template = b.closest(".template");
@@ -95,3 +82,379 @@ function remove_template(b) {
   var this_template = b.closest(".template");
   this_template.remove();
 }
+
+function add_template() {
+  let templates = document.getElementById("items");
+  var sorted_templates = Array.from(templates.querySelectorAll(".template"))
+                              .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
+  let new_template = document.createElement("div");
+  new_template.innerHTML = inst_template;
+  new_template.classList.add("template");
+  new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
+  templates.appendChild(new_template);
+  name_notes();
+}
+
+var inst_template = `
+  <div class="controls">
+    <button id="toggleNoteNames" onclick="toggle_note_names(this)" class="btn">Toggle Note Names</button>
+    <button id="toggleChromaticHighlight" class="btn btn-chromatic" onclick="toggle_chromatic_highlight(this)" class="btn btn-chromatic">Toggle Chromatic Highlighting</button>
+    <div class="scale-form">
+      <select name="scale tonic" id="tonic">
+        <option value="1">C</option>
+        <option value="2">D♭</option>
+        <option value="3">D</option>
+        <option value="4">E♭</option>
+        <option value="5">E</option>
+        <option value="6">F</option>
+        <option value="7">G♭</option>
+        <option value="8">G</option>
+        <option value="9">A♭</option>
+        <option value="10">A</option>
+        <option value="11">B♭</option>
+        <option value="12">B</option>
+      </select>
+      <select name="scale mode" id="mode">
+        <option value="0">Ionian mode (Major) [1]</option>
+        <option value="3">Dorian mode [2]</option>
+        <option value="4">Phrygian mode [3]</option>
+        <option value="5">Lydian mode [4]</option>
+        <option value="6">Mixolydian mode [5]</option>
+        <option value="1">Aeolian mode (Minor) [6]</option>
+        <option value="2">Locrian mode [7]</option>
+      </select>
+      <button id="scaleHighlight" onclick="highlight_scale(this)" class="btn btn-blu">Highlight Scale</button>
+      <button id="clearScaleHighlight" onclick="clear_scale(this)" class="btn">Clear</button>
+    </div>
+    <div style="margin-left: auto;">
+      <button id="cloneTemplate" onclick="clone_template(this)" class="btn">Clone</button>
+      <button id="removeTemplate" onclick="remove_template(this)" class="btn btn-red">Remove</button>
+    </div>
+  </div>
+  <div class="instrument">
+    <button name="hideKeyboard" onclick="hide_keyboard(this)">
+      Toggle
+      <br>
+      Keyboard
+    </button>
+    <div class="k names_hidden" id="keyboard">
+      <div class="o" data-oi="0">
+        <div class="_1 n" data-o="0" data-n="1"></div>
+        <div class="_2 n" data-o="0" data-n="2"></div>
+        <div class="_3 n" data-o="0" data-n="3"></div>
+        <div class="_4 n" data-o="0" data-n="4"></div>
+        <div class="_5 n" data-o="0" data-n="5"></div>
+        <div class="_6 n" data-o="0" data-n="6"></div>
+        <div class="_7 n" data-o="0" data-n="7"></div>
+        <div class="_8 n" data-o="0" data-n="8"></div>
+        <div class="_9 n" data-o="0" data-n="9"></div>
+        <div class="_10 n" data-o="0" data-n="10"></div>
+        <div class="_11 n" data-o="0" data-n="11"></div>
+        <div class="_12 n" data-o="0" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="1">
+        <div class="_1 n" data-o="1" data-n="1"></div>
+        <div class="_2 n" data-o="1" data-n="2"></div>
+        <div class="_3 n" data-o="1" data-n="3"></div>
+        <div class="_4 n" data-o="1" data-n="4"></div>
+        <div class="_5 n" data-o="1" data-n="5"></div>
+        <div class="_6 n" data-o="1" data-n="6"></div>
+        <div class="_7 n" data-o="1" data-n="7"></div>
+        <div class="_8 n" data-o="1" data-n="8"></div>
+        <div class="_9 n" data-o="1" data-n="9"></div>
+        <div class="_10 n" data-o="1" data-n="10"></div>
+        <div class="_11 n" data-o="1" data-n="11"></div>
+        <div class="_12 n" data-o="1" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="2">
+        <div class="_1 n" data-o="2" data-n="1"></div>
+        <div class="_2 n" data-o="2" data-n="2"></div>
+        <div class="_3 n" data-o="2" data-n="3"></div>
+        <div class="_4 n" data-o="2" data-n="4"></div>
+        <div class="_5 n" data-o="2" data-n="5"></div>
+        <div class="_6 n" data-o="2" data-n="6"></div>
+        <div class="_7 n" data-o="2" data-n="7"></div>
+        <div class="_8 n" data-o="2" data-n="8"></div>
+        <div class="_9 n" data-o="2" data-n="9"></div>
+        <div class="_10 n" data-o="2" data-n="10"></div>
+        <div class="_11 n" data-o="2" data-n="11"></div>
+        <div class="_12 n" data-o="2" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="3">
+        <div class="_1 n" data-o="3" data-n="1"></div>
+        <div class="_2 n" data-o="3" data-n="2"></div>
+        <div class="_3 n" data-o="3" data-n="3"></div>
+        <div class="_4 n" data-o="3" data-n="4"></div>
+        <div class="_5 n" data-o="3" data-n="5"></div>
+        <div class="_6 n" data-o="3" data-n="6"></div>
+        <div class="_7 n" data-o="3" data-n="7"></div>
+        <div class="_8 n" data-o="3" data-n="8"></div>
+        <div class="_9 n" data-o="3" data-n="9"></div>
+        <div class="_10 n" data-o="3" data-n="10"></div>
+        <div class="_11 n" data-o="3" data-n="11"></div>
+        <div class="_12 n" data-o="3" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="4">
+        <div class="_1 n" data-o="4" data-n="1"></div>
+        <div class="_2 n" data-o="4" data-n="2"></div>
+        <div class="_3 n" data-o="4" data-n="3"></div>
+        <div class="_4 n" data-o="4" data-n="4"></div>
+        <div class="_5 n" data-o="4" data-n="5"></div>
+        <div class="_6 n" data-o="4" data-n="6"></div>
+        <div class="_7 n" data-o="4" data-n="7"></div>
+        <div class="_8 n" data-o="4" data-n="8"></div>
+        <div class="_9 n" data-o="4" data-n="9"></div>
+        <div class="_10 n" data-o="4" data-n="10"></div>
+        <div class="_11 n" data-o="4" data-n="11"></div>
+        <div class="_12 n" data-o="4" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="5">
+        <div class="_1 n" data-o="5" data-n="1"></div>
+        <div class="_2 n" data-o="5" data-n="2"></div>
+        <div class="_3 n" data-o="5" data-n="3"></div>
+        <div class="_4 n" data-o="5" data-n="4"></div>
+        <div class="_5 n" data-o="5" data-n="5"></div>
+        <div class="_6 n" data-o="5" data-n="6"></div>
+        <div class="_7 n" data-o="5" data-n="7"></div>
+        <div class="_8 n" data-o="5" data-n="8"></div>
+        <div class="_9 n" data-o="5" data-n="9"></div>
+        <div class="_10 n" data-o="5" data-n="10"></div>
+        <div class="_11 n" data-o="5" data-n="11"></div>
+        <div class="_12 n" data-o="5" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="6">
+        <div class="_1 n" data-o="6" data-n="1"></div>
+        <div class="_2 n" data-o="6" data-n="2"></div>
+        <div class="_3 n" data-o="6" data-n="3"></div>
+        <div class="_4 n" data-o="6" data-n="4"></div>
+        <div class="_5 n" data-o="6" data-n="5"></div>
+        <div class="_6 n" data-o="6" data-n="6"></div>
+        <div class="_7 n" data-o="6" data-n="7"></div>
+        <div class="_8 n" data-o="6" data-n="8"></div>
+        <div class="_9 n" data-o="6" data-n="9"></div>
+        <div class="_10 n" data-o="6" data-n="10"></div>
+        <div class="_11 n" data-o="6" data-n="11"></div>
+        <div class="_12 n" data-o="6" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="7">
+        <div class="_1 n" data-o="7" data-n="1"></div>
+        <div class="_2 n" data-o="7" data-n="2"></div>
+        <div class="_3 n" data-o="7" data-n="3"></div>
+        <div class="_4 n" data-o="7" data-n="4"></div>
+        <div class="_5 n" data-o="7" data-n="5"></div>
+        <div class="_6 n" data-o="7" data-n="6"></div>
+        <div class="_7 n" data-o="7" data-n="7"></div>
+        <div class="_8 n" data-o="7" data-n="8"></div>
+        <div class="_9 n" data-o="7" data-n="9"></div>
+        <div class="_10 n" data-o="7" data-n="10"></div>
+        <div class="_11 n" data-o="7" data-n="11"></div>
+        <div class="_12 n" data-o="7" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="8">
+        <div class="_1 n" data-o="8" data-n="1"></div>
+        <div class="_2 n" data-o="8" data-n="2"></div>
+        <div class="_3 n" data-o="8" data-n="3"></div>
+        <div class="_4 n" data-o="8" data-n="4"></div>
+        <div class="_5 n" data-o="8" data-n="5"></div>
+        <div class="_6 n" data-o="8" data-n="6"></div>
+        <div class="_7 n" data-o="8" data-n="7"></div>
+        <div class="_8 n" data-o="8" data-n="8"></div>
+        <div class="_9 n" data-o="8" data-n="9"></div>
+        <div class="_10 n" data-o="8" data-n="10"></div>
+        <div class="_11 n" data-o="8" data-n="11"></div>
+        <div class="_12 n" data-o="8" data-n="12"></div>
+      </div>
+      <div class="o" data-oi="9">
+        <div class="_1 n" data-o="9" data-n="1"></div>
+        <div class="_2 n" data-o="9" data-n="2"></div>
+        <div class="_3 n" data-o="9" data-n="3"></div>
+        <div class="_4 n" data-o="9" data-n="4"></div>
+        <div class="_5 n" data-o="9" data-n="5"></div>
+        <div class="_6 n" data-o="9" data-n="6"></div>
+        <div class="_7 n" data-o="9" data-n="7"></div>
+        <div class="_8 n" data-o="9" data-n="8"></div>
+        <div class="_9 n" data-o="9" data-n="9"></div>
+        <div class="_10 n" data-o="9" data-n="10"></div>
+        <div class="_11 n" data-o="9" data-n="11"></div>
+        <div class="_12 n" data-o="9" data-n="12"></div>
+      </div>
+    </div>
+  </div>
+  <div class="instrument">
+    <button name="hideGuitar" onclick="hide_guitar(this)">
+      Toggle
+      <br>
+      Guitar
+    </button>
+    <div class="g names_hidden" id="guitar">
+      <div class="sg">
+        <div class="sgn" data-f="21">_</div>
+        <div class="sgn w1" data-f="20">_</div>
+        <div class="sgn w1" data-f="19">_</div>
+        <div class="sgn m w2" data-f="18">o</div>
+        <div class="sgn w2" data-f="17">_</div>
+        <div class="sgn m w2" data-f="16">o</div>
+        <div class="sgn w3" data-f="15">_</div>
+        <div class="sgn m w3" data-f="14">o</div>
+        <div class="sgn w3" data-f="13">_</div>
+        <div class="sgn m w4" data-f="12">o</div>
+        <div class="sgn w4" data-f="11">_</div>
+        <div class="sgn w4" data-f="10">_</div>
+        <div class="sgn m w4" data-f="9">8</div>
+        <div class="sgn w5" data-f="8">_</div>
+        <div class="sgn w5" data-f="7">_</div>
+        <div class="sgn m w5" data-f="6">o</div>
+        <div class="sgn w5" data-f="5">_</div>
+        <div class="sgn m w5" data-f="4">o</div>
+        <div class="sgn w6" data-f="3">_</div>
+        <div class="sgn w6" data-f="2">_</div>
+        <div class="sgn w6" data-f="1">_</div>
+        <div class="sgn w6" data-f="0">_</div>
+      </div>
+      <div class="s" data-si="6">
+        <div class="n" data-f="0" data-o="4" data-n="5"></div>
+        <div class="n w1" data-f="1" data-o="4" data-n="6"></div>
+        <div class="n w1" data-f="2" data-o="4" data-n="7"></div>
+        <div class="n w2" data-f="3" data-o="4" data-n="8"></div>
+        <div class="n w2" data-f="4" data-o="4" data-n="9"></div>
+        <div class="n w2" data-f="5" data-o="4" data-n="10"></div>
+        <div class="n w3" data-f="6" data-o="4" data-n="11"></div>
+        <div class="n w3" data-f="7" data-o="4" data-n="12"></div>
+        <div class="n w3" data-f="8" data-o="5" data-n="1"></div>
+        <div class="n w4" data-f="9" data-o="5" data-n="2"></div>
+        <div class="n w4" data-f="10" data-o="5" data-n="3"></div>
+        <div class="n w4" data-f="11" data-o="5" data-n="4"></div>
+        <div class="n w4" data-f="12" data-o="5" data-n="5"></div>
+        <div class="n w5" data-f="13" data-o="5" data-n="6"></div>
+        <div class="n w5" data-f="14" data-o="5" data-n="7"></div>
+        <div class="n w5" data-f="15" data-o="5" data-n="8"></div>
+        <div class="n w5" data-f="16" data-o="5" data-n="9"></div>
+        <div class="n w5" data-f="17" data-o="5" data-n="10"></div>
+        <div class="n w6" data-f="18" data-o="5" data-n="11"></div>
+        <div class="n w6" data-f="19" data-o="5" data-n="12"></div>
+        <div class="n w6" data-f="20" data-o="6" data-n="1"></div>
+        <div class="n w6" data-f="21" data-o="6" data-n="2"></div>
+      </div>
+      <div class="s" data-si="5">
+        <div class="n" data-f="0" data-o="3" data-n="12"></div>
+        <div class="n w1" data-f="1" data-o="4" data-n="1"></div>
+        <div class="n w1" data-f="2" data-o="4" data-n="2"></div>
+        <div class="n w2" data-f="3" data-o="4" data-n="3"></div>
+        <div class="n w2" data-f="4" data-o="4" data-n="4"></div>
+        <div class="n w2" data-f="5" data-o="4" data-n="5"></div>
+        <div class="n w3" data-f="6" data-o="4" data-n="6"></div>
+        <div class="n w3" data-f="7" data-o="4" data-n="7"></div>
+        <div class="n w3" data-f="8" data-o="4" data-n="8"></div>
+        <div class="n w4" data-f="9" data-o="4" data-n="9"></div>
+        <div class="n w4" data-f="10" data-o="4" data-n="10"></div>
+        <div class="n w4" data-f="11" data-o="4" data-n="11"></div>
+        <div class="n w4" data-f="12" data-o="4" data-n="12"></div>
+        <div class="n w5" data-f="13" data-o="5" data-n="1"></div>
+        <div class="n w5" data-f="14" data-o="5" data-n="2"></div>
+        <div class="n w5" data-f="15" data-o="5" data-n="3"></div>
+        <div class="n w5" data-f="16" data-o="5" data-n="4"></div>
+        <div class="n w5" data-f="17" data-o="5" data-n="5"></div>
+        <div class="n w6" data-f="18" data-o="5" data-n="6"></div>
+        <div class="n w6" data-f="19" data-o="5" data-n="7"></div>
+        <div class="n w6" data-f="20" data-o="5" data-n="8"></div>
+        <div class="n w6" data-f="21" data-o="5" data-n="9"></div>
+      </div>
+      <div class="s" data-si="4">
+        <div class="n" data-f="0" data-o="3" data-n="8"></div>
+        <div class="n w1" data-f="1" data-o="3" data-n="9"></div>
+        <div class="n w1" data-f="2" data-o="3" data-n="10"></div>
+        <div class="n w2" data-f="3" data-o="3" data-n="11"></div>
+        <div class="n w2" data-f="4" data-o="3" data-n="12"></div>
+        <div class="n w2" data-f="5" data-o="4" data-n="1"></div>
+        <div class="n w3" data-f="6" data-o="4" data-n="2"></div>
+        <div class="n w3" data-f="7" data-o="4" data-n="3"></div>
+        <div class="n w3" data-f="8" data-o="4" data-n="4"></div>
+        <div class="n w4" data-f="9" data-o="4" data-n="5"></div>
+        <div class="n w4" data-f="10" data-o="4" data-n="6"></div>
+        <div class="n w4" data-f="11" data-o="4" data-n="7"></div>
+        <div class="n w4" data-f="12" data-o="4" data-n="8"></div>
+        <div class="n w5" data-f="13" data-o="4" data-n="9"></div>
+        <div class="n w5" data-f="14" data-o="4" data-n="10"></div>
+        <div class="n w5" data-f="15" data-o="4" data-n="11"></div>
+        <div class="n w5" data-f="16" data-o="4" data-n="12"></div>
+        <div class="n w5" data-f="17" data-o="5" data-n="1"></div>
+        <div class="n w6" data-f="18" data-o="5" data-n="2"></div>
+        <div class="n w6" data-f="19" data-o="5" data-n="3"></div>
+        <div class="n w6" data-f="20" data-o="5" data-n="4"></div>
+        <div class="n w6" data-f="21" data-o="5" data-n="5"></div>
+      </div>
+      <div class="s" data-si="3">
+        <div class="n" data-f="0" data-o="3" data-n="3"></div>
+        <div class="n w1" data-f="1" data-o="3" data-n="4"></div>
+        <div class="n w1" data-f="2" data-o="3" data-n="5"></div>
+        <div class="n w2" data-f="3" data-o="3" data-n="6"></div>
+        <div class="n w2" data-f="4" data-o="3" data-n="7"></div>
+        <div class="n w2" data-f="5" data-o="3" data-n="8"></div>
+        <div class="n w3" data-f="6" data-o="3" data-n="9"></div>
+        <div class="n w3" data-f="7" data-o="3" data-n="10"></div>
+        <div class="n w3" data-f="8" data-o="3" data-n="11"></div>
+        <div class="n w4" data-f="9" data-o="3" data-n="12"></div>
+        <div class="n w4" data-f="10" data-o="4" data-n="1"></div>
+        <div class="n w4" data-f="11" data-o="4" data-n="2"></div>
+        <div class="n w4" data-f="12" data-o="4" data-n="3"></div>
+        <div class="n w5" data-f="13" data-o="4" data-n="4"></div>
+        <div class="n w5" data-f="14" data-o="4" data-n="5"></div>
+        <div class="n w5" data-f="15" data-o="4" data-n="6"></div>
+        <div class="n w5" data-f="16" data-o="4" data-n="7"></div>
+        <div class="n w5" data-f="17" data-o="4" data-n="8"></div>
+        <div class="n w6" data-f="18" data-o="4" data-n="9"></div>
+        <div class="n w6" data-f="19" data-o="4" data-n="10"></div>
+        <div class="n w6" data-f="20" data-o="4" data-n="11"></div>
+        <div class="n w6" data-f="21" data-o="4" data-n="12"></div>
+      </div>
+      <div class="s" data-si="2">
+        <div class="n" data-f="0" data-o="2" data-n="10"></div>
+        <div class="n w1" data-f="1" data-o="2" data-n="11"></div>
+        <div class="n w1" data-f="2" data-o="2" data-n="12"></div>
+        <div class="n w2" data-f="3" data-o="3" data-n="1"></div>
+        <div class="n w2" data-f="4" data-o="3" data-n="2"></div>
+        <div class="n w2" data-f="5" data-o="3" data-n="3"></div>
+        <div class="n w3" data-f="6" data-o="3" data-n="4"></div>
+        <div class="n w3" data-f="7" data-o="3" data-n="5"></div>
+        <div class="n w3" data-f="8" data-o="3" data-n="6"></div>
+        <div class="n w4" data-f="9" data-o="3" data-n="7"></div>
+        <div class="n w4" data-f="10" data-o="3" data-n="8"></div>
+        <div class="n w4" data-f="11" data-o="3" data-n="9"></div>
+        <div class="n w4" data-f="12" data-o="3" data-n="10"></div>
+        <div class="n w5" data-f="13" data-o="3" data-n="11"></div>
+        <div class="n w5" data-f="14" data-o="3" data-n="12"></div>
+        <div class="n w5" data-f="15" data-o="4" data-n="1"></div>
+        <div class="n w5" data-f="16" data-o="4" data-n="2"></div>
+        <div class="n w5" data-f="17" data-o="4" data-n="3"></div>
+        <div class="n w6" data-f="18" data-o="4" data-n="4"></div>
+        <div class="n w6" data-f="19" data-o="4" data-n="5"></div>
+        <div class="n w6" data-f="20" data-o="4" data-n="6"></div>
+        <div class="n w6" data-f="21" data-o="4" data-n="7"></div>
+      </div>
+      <div class="s" data-si="1">
+        <div class="n" data-f="0" data-o="2" data-n="5"></div>
+        <div class="n w1" data-f="1" data-o="2" data-n="6"></div>
+        <div class="n w1" data-f="2" data-o="2" data-n="7"></div>
+        <div class="n w2" data-f="3" data-o="2" data-n="8"></div>
+        <div class="n w2" data-f="4" data-o="2" data-n="9"></div>
+        <div class="n w2" data-f="5" data-o="2" data-n="10"></div>
+        <div class="n w3" data-f="6" data-o="2" data-n="11"></div>
+        <div class="n w3" data-f="7" data-o="2" data-n="12"></div>
+        <div class="n w3" data-f="8" data-o="3" data-n="1"></div>
+        <div class="n w4" data-f="9" data-o="3" data-n="2"></div>
+        <div class="n w4" data-f="10" data-o="3" data-n="3"></div>
+        <div class="n w4" data-f="11" data-o="3" data-n="4"></div>
+        <div class="n w4" data-f="12" data-o="3" data-n="5"></div>
+        <div class="n w5" data-f="13" data-o="3" data-n="6"></div>
+        <div class="n w5" data-f="14" data-o="3" data-n="7"></div>
+        <div class="n w5" data-f="15" data-o="3" data-n="8"></div>
+        <div class="n w5" data-f="16" data-o="3" data-n="9"></div>
+        <div class="n w5" data-f="17" data-o="3" data-n="10"></div>
+        <div class="n w6" data-f="18" data-o="3" data-n="11"></div>
+        <div class="n w6" data-f="19" data-o="3" data-n="12"></div>
+        <div class="n w6" data-f="20" data-o="4" data-n="1"></div>
+        <div class="n w6" data-f="21" data-o="4" data-n="2"></div>
+      </div>
+    </div>
+  </div>
+`;
