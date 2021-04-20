@@ -81,6 +81,7 @@ function add_table() {
   let new_template = document.createElement("div");
   new_template.classList.add("template");
   new_template.classList.add("tempo");
+  new_template.classList.add("itm");
   new_template.innerHTML = ttt;
   new_template.querySelector("tr[id='content']").remove();
   templates.appendChild(new_template);

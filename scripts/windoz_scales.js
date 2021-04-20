@@ -78,11 +78,6 @@ function clone_template(b) {
   templates.insertBefore(new_template, this_template.nextSibling);
 }
 
-function remove_template(b) {
-  var this_template = b.closest(".template");
-  this_template.remove();
-}
-
 function add_template() {
   let templates = document.getElementById("items");
   var sorted_templates = Array.from(templates.querySelectorAll(".template"))
@@ -90,6 +85,7 @@ function add_template() {
   let new_template = document.createElement("div");
   new_template.innerHTML = inst_template;
   new_template.classList.add("template");
+  new_template.classList.add("itm");
   new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
   templates.appendChild(new_template);
   name_notes();
@@ -128,7 +124,13 @@ var inst_template = `
     </div>
     <div style="margin-left: auto;">
       <button id="cloneTemplate" onclick="clone_template(this)" class="btn">Clone</button>
-      <button id="removeTemplate" onclick="remove_template(this)" class="btn btn-red">Remove</button>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-red" onclick="remove(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
     </div>
   </div>
   <div class="instrument">
@@ -138,20 +140,6 @@ var inst_template = `
       Keyboard
     </button>
     <div class="k names_hidden" id="keyboard">
-      <div class="o" data-oi="0">
-        <div class="_1 n" data-o="0" data-n="1"></div>
-        <div class="_2 n" data-o="0" data-n="2"></div>
-        <div class="_3 n" data-o="0" data-n="3"></div>
-        <div class="_4 n" data-o="0" data-n="4"></div>
-        <div class="_5 n" data-o="0" data-n="5"></div>
-        <div class="_6 n" data-o="0" data-n="6"></div>
-        <div class="_7 n" data-o="0" data-n="7"></div>
-        <div class="_8 n" data-o="0" data-n="8"></div>
-        <div class="_9 n" data-o="0" data-n="9"></div>
-        <div class="_10 n" data-o="0" data-n="10"></div>
-        <div class="_11 n" data-o="0" data-n="11"></div>
-        <div class="_12 n" data-o="0" data-n="12"></div>
-      </div>
       <div class="o" data-oi="1">
         <div class="_1 n" data-o="1" data-n="1"></div>
         <div class="_2 n" data-o="1" data-n="2"></div>
@@ -263,20 +251,6 @@ var inst_template = `
         <div class="_10 n" data-o="8" data-n="10"></div>
         <div class="_11 n" data-o="8" data-n="11"></div>
         <div class="_12 n" data-o="8" data-n="12"></div>
-      </div>
-      <div class="o" data-oi="9">
-        <div class="_1 n" data-o="9" data-n="1"></div>
-        <div class="_2 n" data-o="9" data-n="2"></div>
-        <div class="_3 n" data-o="9" data-n="3"></div>
-        <div class="_4 n" data-o="9" data-n="4"></div>
-        <div class="_5 n" data-o="9" data-n="5"></div>
-        <div class="_6 n" data-o="9" data-n="6"></div>
-        <div class="_7 n" data-o="9" data-n="7"></div>
-        <div class="_8 n" data-o="9" data-n="8"></div>
-        <div class="_9 n" data-o="9" data-n="9"></div>
-        <div class="_10 n" data-o="9" data-n="10"></div>
-        <div class="_11 n" data-o="9" data-n="11"></div>
-        <div class="_12 n" data-o="9" data-n="12"></div>
       </div>
     </div>
   </div>

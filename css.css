@@ -66,7 +66,7 @@ input[type="number"], select { height:18px; border-radius:5px; border:1px solid 
 .g .s .n:last-child { border-right: 4px solid black; }
 
 .g .sgn.w1, .g .w1 { width:80px;min-width:80px;max-width:80px; }
-.g .sgn.w2, .g .w2 { width:70px;min-width:70px;max-width:70px; }
+.g .sgn.w2, .g .w2 { width:68px;min-width:70px;max-width:70px; }
 .g .sgn.w3, .g .w3 { width:58px;min-width:58px;max-width:58px; }
 .g .sgn.w4, .g .w4 { width:49px;min-width:49px;max-width:49px; }
 .g .sgn.w5, .g .w5 { width:42px;min-width:42px;max-width:42px; }
@@ -102,7 +102,7 @@ th.twos { background-color:rgba(0,0,100,.4) }
 td.twos { background-color:rgba(0,0,100,.1) }
 table .bpm { background-color:black; color:white; width:50px; }
 
-.items { position:relative; top:-10px;width:100%; height:calc(100vh - 130px); border:10px solid green; overflow:hidden; }
+.items { position:relative; top:-10px;width:100%; height:calc(100vh - 130px); border:10px solid limegreen; border-radius:10px;overflow:hidden; }
 .img_item {
   position:absolute;
   border:1px solid rgba(0,0,0,.75);
@@ -118,8 +118,9 @@ table .bpm { background-color:black; color:white; width:50px; }
 .img_item .controls strong { text-overflow: ellipsis; padding-right:89px; cursor:default; position:relative; top:1px; }
 .img_item img { height:calc(100% - 40px);max-width:100%;max-height:100%; }
 .max { width:100%;height:100%;top:0;left:0; }
-.items_controls {position:absolute; left:-45px; text-align:center;margin-top:10px;}
+.items_controls { position:absolute; left:-45px; text-align:center;margin-top:10px; }
 
+.itm.focus { z-index:6; }
 /* -start _OLD_ TODOLIST
 ......................................................
 [ ]e. chords page

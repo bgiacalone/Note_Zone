@@ -1,5 +1,5 @@
 function remove(el) {
-  var parent = el.closest('.img_item');
+  var parent = el.closest('.itm');
   parent.remove();
   console.log("delete");
 }
@@ -17,6 +17,7 @@ function add_img_item(top, left, txt, src) {
   var itms = document.querySelector("#items");
   var ii = document.createElement("div");
   ii.classList.add("img_item");
+  ii.classList.add("itm");
   ii.style = `top:${top}px;left:${left}px;`;
   var img_item = `
     <div class="controls">
@@ -91,7 +92,7 @@ interact('.img_item, .template')
         Object.assign(event.target.dataset, { x, y })
       }
     }
-  });
+  })
 
 function dragMoveListener (event) {
   var target = event.target
