@@ -1,38 +1,17 @@
-document.addEventListener("DOMContentLoaded", function(event) {
-  add_table();
-  fill_table();
-});
-
 function ms_to_hz(ms) {
   return ((1/ms)*1000);
-}
-
-function add_table() {
-  let templates = document.getElementById("templates");
-  var sorted_templates = Array.from(templates.querySelectorAll(".template"))
-                              .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
-  let new_template = document.getElementById("source_template").cloneNode(true);
-  new_template.classList.add("template");
-  new_template.removeAttribute('id');
-  new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
-  new_template.querySelector("tr[id='content']").remove();
-  templates.appendChild(new_template);
 }
 
 function fill_table() {
   let bpm_start = parseInt(document.querySelector("div.controls input[id='start']").value);
   let end = parseInt(document.querySelector("div.controls input[id='end']").value);
   let interval = parseInt(document.querySelector("div.controls input[id='interval']").value);
-  let row_template = document.querySelector("div[id='source_template'] tr[id='content']").cloneNode(true);
-  row_template.removeAttribute('id');
-  while (row_template.firstChild) {
-    row_template.removeChild(row_template.firstChild);
-  }
-  let template_tbody = document.querySelector("div[id='source_template'] tbody");
+  let row_template = document.createElement("tr");
+  let template_tbody = document.createElement("tbody");
   let target_table = document.querySelector("div.template table");
   let target = document.querySelector("div.template tbody");
   target_table.removeChild(target);
-  target_table.appendChild(template_tbody.cloneNode());
+  target_table.appendChild(template_tbody);
   target = document.querySelector("div.template tbody");
   let table_length = Math.floor((end - bpm_start)/interval);
   let bpm_counter = bpm_start;
@@ -73,19 +52,19 @@ function fill_table() {
 }
 
 function table_format(el, format) {
-  var table = el.closest("#templates").querySelector("table");
+  var table = el.closest(".template").querySelector("table");
   var cells_to_update = table.querySelectorAll("td.twos, td.thirds");
   for(let i = 0; i < cells_to_update.length; ++i) {
     var dest;
     switch (format) {
       case "ms":
-        var hz_btn = el.closest("#templates").querySelector("#hz");
+        var hz_btn = el.closest(".template").querySelector("#hz");
         hz_btn.classList.remove("btn-blu");
         el.classList.add("btn-blu");
         dest = Number.parseFloat(cells_to_update[i].dataset.ms).toFixed(2);
         break;
       case "hz":
-        var ms_btn = el.closest("#templates").querySelector("#ms");
+        var ms_btn = el.closest(".template").querySelector("#ms");
         ms_btn.classList.remove("btn-blu");
         el.classList.add("btn-blu");
         dest = Number.parseFloat(cells_to_update[i].dataset.hz).toFixed(4);
@@ -94,3 +73,71 @@ function table_format(el, format) {
     cells_to_update[i].innerHTML = dest;
   }
 }
+
+
+
+function add_table() {
+  let templates = document.getElementById("items");
+  let new_template = document.createElement("div");
+  new_template.classList.add("template");
+  new_template.classList.add("tempo");
+  new_template.innerHTML = ttt;
+  new_template.querySelector("tr[id='content']").remove();
+  templates.appendChild(new_template);
+  fill_table();
+}
+
+var ttt = `
+  <h1>tempo / time / rate</h1>
+  <div class="controls">
+    <div class="range-form">
+      <label for="start">Search BPMs from:</label>
+      <input id="start" class="number_input" type="number" value="1" min="0" max="500" step="any">
+      <label for="end">to:</label>
+      <input id="end" class="number_input" type="number"  value="200" min="0" max="500" step="any">
+      <label for="interval">interval:</label>
+      <input id="interval" class="number_input" type="number" value="1" min="0" step="any">
+      <button class="btn btn-blu" onclick="fill_table()">OK</button>
+    </div>
+    <div class="right" style="margin-left:auto;">
+      <button class="btn btn-blu" id="ms" onclick="table_format(this, 'ms')">Milliseconds</button>
+      <button class="btn" id="hz" onclick="table_format(this, 'hz')">Hertz</button>
+    </div>
+  </div>
+  <table style="margin:0 auto; width:100%;">
+    <thead>
+      <tr>
+        <th class="bpm">BPM</th>
+        <th class="twos">1/1</th>
+        <th class="thirds">2/3</th>
+        <th class="twos">1/2</th>
+        <th class="thirds">1/3</th>
+        <th class="twos">1/4</th>
+        <th class="thirds">1/6</th>
+        <th class="twos">1/8</th>
+        <th class="thirds">1/12</th>
+        <th class="twos">1/16</th>
+        <th class="thirds">1/24</th>
+        <th class="twos">1/32</th>
+        <th class="thirds">1/48</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="content">
+        <td><strong></strong></td>
+        <td class="twos"></td>
+        <td class="thirds"></td>
+        <td class="twos"></td>
+        <td class="thirds"></td>
+        <td class="twos"></td>
+        <td class="thirds"></td>
+        <td class="twos"></td>
+        <td class="thirds"></td>
+        <td class="twos"></td>
+        <td class="thirds"></td>
+        <td class="twos"></td>
+        <td class="thirds"></td>
+      </tr>
+    </tbody>
+  </table>
+`;

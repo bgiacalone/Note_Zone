@@ -12,6 +12,7 @@
   <main style="text-align:center;">
     <div id="templates"></div>
     <div id="source_materials" class="hidden">
+      
       <div id="source_template" class="tempo">
         <h1>tempo / time / rate</h1>
         <div class="controls">
@@ -22,7 +23,7 @@
             <input id="end" class="number_input" type="number"  value="200" min="0" max="500" step="any">
             <label for="interval">interval:</label>
             <input id="interval" class="number_input" type="number" value="1" min="0" step="any">
-            <button class="btn btn-blu" onclick="fill_template()">OK</button>
+            <button class="btn btn-blu" onclick="fill_table()">OK</button>
           </div>
           <div class="right" style="margin-left:auto;">
             <button class="btn btn-blu" id="ms" onclick="table_format(this, 'ms')">Milliseconds</button>
@@ -66,6 +67,7 @@
           </tbody>
         </table>
       </div>
+
     </div>
   </main>
   <script src="scripts/main.js"></script>
