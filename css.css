@@ -22,7 +22,7 @@ input[type="number"], select { height:18px; border-radius:5px; border:1px solid 
 .btn.btn-red { background-color:rgb(200,0,0); color:white; }
 .btn svg { height:11px; width:11px; position:relative; }
 
-.tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); }
+.tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); z-index:999; }
 .tn_content { display:flex; width:100%; max-width:1390px; margin:0 auto; }
 .tn .logo img, .tn .amburgla img { border-radius:5px; height:50px; }
 .nav_item { position:relative; padding: 0 20px; text-decoration: none; color: rgba(0,0,0,.7); font-weight:Bold; font-size:.82em; }
@@ -103,8 +103,20 @@ td.thirds { background-color:rgba(0,200,0,.1) }
 th.twos { background-color:rgba(0,0,100,.4) }
 td.twos { background-color:rgba(0,0,100,.1) }
 table .bpm { background-color:black; color:white; width:50px; }
-
-.items { position:relative; top:-10px;width:100%; height:calc(100vh - 130px); border:10px solid limegreen; border-radius:10px;overflow:hidden; }
+.border { border:10px solid limegreen; border-top:20px solid limegreen; border-radius:10px; }
+.items {
+  background-color:white;
+  position:relative;
+  top:-10px;
+  width:100%;
+  height:calc(100vh - 130px);
+  border-radius:2px;
+  overflow:hidden;
+  background-image:url('images/desktop.jpeg');
+  background-position:center;
+  background-size: 110% 100%;
+  border-bottom:2px solid gray;
+}
 .img_item, .itm {
   position:absolute;
   border:1px solid rgba(0,0,0,.75);
@@ -126,6 +138,9 @@ table .bpm { background-color:black; color:white; width:50px; }
 .items_controls { position:absolute; left:-45px; text-align:center;margin-top:10px; }
 
 .itm.focus { z-index:6; }
+
+.desktop { background-color:limegreen; }
+.desktop main { padding:0;}
 /* -start _OLD_ TODOLIST
 ......................................................
 [ ]e. chords page

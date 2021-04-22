@@ -55,7 +55,30 @@ add_img_item(48, 420, "files://note-zone-picz/graph.gif", "images/stolen_graph.g
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var position = { x: 0, y: 0 };
 
+// fast click
+interact('.img_item, .itm').on('tap', function (event) {
+  console.log('tap;');
+  event.target.style.zIndex = parseInt(new Date().getTime() / 1000);
+})
+
 interact('.img_item, .template')
+  .resizable({
+    edges: { top: true, left: true, bottom: true, right: true },
+    listeners: {
+      move: function (event) {
+        event.target.style.zIndex = parseInt(new Date().getTime() / 1000);
+        let { x, y } = event.target.dataset
+        x = (parseFloat(x) || 0) + event.deltaRect.left
+        y = (parseFloat(y) || 0) + event.deltaRect.top
+        Object.assign(event.target.style, {
+          width: `${event.rect.width}px`,
+          height: `${event.rect.height}px`,
+          transform: `translate(${x}px, ${y}px)`
+        })
+        Object.assign(event.target.dataset, { x, y })
+      }
+    }
+  })
   .draggable({
     // enable inertial throwing
     inertia: true,
@@ -74,25 +97,6 @@ interact('.img_item, .template')
       },
       move: dragMoveListener,
       end (event) {  }
-    }
-  })
-  .resizable({
-    edges: { top: true, left: true, bottom: true, right: true },
-    listeners: {
-      move: function (event) {
-        let { x, y } = event.target.dataset
-
-        x = (parseFloat(x) || 0) + event.deltaRect.left
-        y = (parseFloat(y) || 0) + event.deltaRect.top
-
-        Object.assign(event.target.style, {
-          width: `${event.rect.width}px`,
-          height: `${event.rect.height}px`,
-          transform: `translate(${x}px, ${y}px)`
-        })
-
-        Object.assign(event.target.dataset, { x, y })
-      }
     }
   })
 
