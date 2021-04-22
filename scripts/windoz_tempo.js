@@ -84,6 +84,7 @@ function add_table() {
   new_template.classList.add("itm");
   new_template.innerHTML = ttt;
   new_template.querySelector("tr[id='content']").remove();
+  new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
   templates.appendChild(new_template);
   fill_table();
 }
