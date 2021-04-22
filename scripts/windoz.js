@@ -42,6 +42,7 @@ function add_img_item(top, left, txt, src) {
     </div>
     <img src="${src}">`;
   ii.innerHTML = img_item;
+  ii.style.zIndex = parseInt(new Date().getTime() / 1000);
   itms.appendChild(ii);
   console.log(`img_item ${txt} added`);
 }
@@ -67,6 +68,7 @@ interact('.img_item, .template')
     ],
     listeners: {
       start (event) {
+        event.target.style.zIndex = parseInt(new Date().getTime() / 1000);
         console.log(event.type, event.target);
         position = { x: 0, y: 0 };
       },

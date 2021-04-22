@@ -87,6 +87,7 @@ function add_template() {
   new_template.classList.add("template");
   new_template.classList.add("itm");
   new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
+  new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
   templates.appendChild(new_template);
   name_notes();
 }

@@ -43,7 +43,7 @@ input[type="number"], select { height:18px; border-radius:5px; border:1px solid 
 .tempo.template { padding-bottom:0px; }
 .tempo h1 { margin:5px; }
 
-.template {padding-bottom:5px; margin-bottom:8px; background-color:#eaeaea; border-radius:4px;}
+.template { padding-bottom:5px; margin-bottom:8px; background-color:#eaeaea; border-radius:4px;}
 .template:not('.itm') { display: flex; justify-content: space-between; flex-direction: column;box-shadow:-2px 2px 4px rgba(0,0,0,.1); border:1px solid #bbb; }
 .template.itm { }
 .instrument { display:flex; margin-top:15px; text-align:center; padding-left:5px; }
