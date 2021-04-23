@@ -76,27 +76,26 @@ function add_note_item() {
       </div>
     </div>
     <div style="position:absolute;width:100%;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
 
       <br>
-      <br>
 
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
-      <hr style="background-color:black;border:0;border-top:1px solid black;margin:11px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
     </div>
     <svg viewBox="0 0 100px 100px" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" version="1.1">
       <!-- rect x="0" y="0" width="100px" height="100px"
       fill="white" stroke="black" /> -->
       <!-- <path fill="grey" d="M5,10 C10,0 25,0 20,10 S0,20 5,10" stroke="salmon" stroke-width="1" /> -->
       <!-- <path fill="salmon" d="M20,60 C15,70 0,70 5,60 S25,50 20,60 m0.5,-1 v-50px" stroke="limegreen" stroke-width="1.5" /> -->
-      <path fill="black" d="M20,60 C15,70 0,70 5,60 S25,50 20,60 m.85,-2 v-50px" stroke="black" stroke-width="1.5" />
+      <path fill="black" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57px" stroke="black" stroke-width="1.5" />
     </svg>
   `;
   ii.innerHTML = asdf;
