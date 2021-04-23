@@ -49,7 +49,45 @@ function add_img_item(top, left, txt, src) {
 add_img_item(4, 80, "files://note-zone-picz/circle_of_fifs.jpg", "images/circle.jpg");
 add_img_item(48, 420, "files://note-zone-picz/graph.gif", "images/stolen_graph.gif");
 
-
+function add_note_item() {
+  var itms = document.querySelector("#items");
+  var ii = document.createElement("div");
+  ii.classList.add("img_item");
+  ii.classList.add("itm");
+  var asdf = `
+    <div class="controls">
+      <strong>note item !!!!</strong>
+      <div class="btn-group">
+        <button class="btn" onclick="min(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" style="top:5px;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        <button class="btn" onclick="maximize(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        <button class="btn btn-red" onclick="remove(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <svg viewBox="0 0 100px 100px" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <rect x="0" y="0" width="100px" height="100px"
+      fill="grey" stroke="blue" />
+      <!-- <path fill="grey" d="M5,10 C10,0 25,0 20,10 S0,20 5,10" stroke="salmon" stroke-width="1" /> -->
+      <!-- <path fill="salmon" d="M20,60 C15,70 0,70 5,60 S25,50 20,60 m0.5,-1 v-50px" stroke="limegreen" stroke-width="1.5" /> -->
+      <path fill="salmon" d="M20,60 C15,70 0,70 5,60 S25,50 20,60 m.85,-2 v-50px" stroke="limegreen" stroke-width="1.5" />
+    </svg>
+  `;
+  ii.innerHTML = asdf;
+  ii.style.zIndex = parseInt(new Date().getTime() / 1000);
+  itms.appendChild(ii);
+  console.log(`note_item added`);
+}
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ///////////////////////////////////interact.js setup shiiiiiiiiiiiiiit////////////////////////////////////////////////////////////////
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
