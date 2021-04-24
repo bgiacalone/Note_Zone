@@ -438,7 +438,11 @@ var inst_template = `
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
       </div>
       <svg viewBox="0 0 100 100" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <path fill="black" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="black" transform="translate(12)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="salmon" transform="translate(50,9)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="salmon" transform="translate(75,-17)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="black" transform="translate(99,100)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="salmon" transform="translate(100,42)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
       </svg>
     </div>
   </div>
