@@ -127,7 +127,7 @@ table .bpm { background-color:black; color:white; width:50px; }
   touch-action: none;
   min-height:30px;
   max-height:100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .controls .btn-group { margin-left:auto; min-width:89px; position:absolute;top:2px;right:4px; }
 .img_item .controls .btn { margin-right:0px; }

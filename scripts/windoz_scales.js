@@ -58,8 +58,8 @@ function toggle_chromatic_highlight(b) {
   this_guitar.classList.toggle("notes_highlighted");
 }
 
-function hide_instrument(b) {
-  var this_instrument = b.closest(".instrument").querySelector(".k, .g, .s");
+function hide_instrument(t,b) {
+  var this_instrument = t.closest(".template").querySelector(b).closest(".instrument");
   this_instrument.classList.toggle("hidden");
 }
 
@@ -120,9 +120,10 @@ var inst_template = `
       <button id="clearScaleHighlight" onclick="clear_scale(this)" class="btn">Clear</button>
     </div>
     <div class="btn-group">
-      <button id="cloneTemplate" onclick="clone_template(this)" class="btn">
-        Clone
-      </button>
+      <button name="hideKeyboard" class="btn" onclick="hide_instrument(this,'#keyboard')">Keys</button>
+      <button name="hideGuitar" class="btn" onclick="hide_instrument(this,'#guitar')">Guitar</button>
+      <button name="hideStaff" class="btn" onclick="hide_instrument(this,'#staff')">Staff</button>
+      <button id="cloneTemplate" onclick="clone_template(this)" class="btn">Clone</button>
       <button class="btn btn-red" onclick="remove(this)">
         <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -131,11 +132,6 @@ var inst_template = `
     </div>
   </div>
   <div class="instrument">
-    <button name="hideKeyboard" onclick="hide_instrument(this)">
-      Toggle
-      <br>
-      Keyboard
-    </button>
     <div class="k names_hidden" id="keyboard">
       <div class="o" data-oi="1">
         <div class="_1 n" data-o="1" data-n="1"></div>
@@ -252,11 +248,6 @@ var inst_template = `
     </div>
   </div>
   <div class="instrument">
-    <button name="hideGuitar" onclick="hide_instrument(this)">
-      Toggle
-      <br>
-      Guitar
-    </button>
     <div class="g names_hidden" id="guitar">
       <div class="sg">
         <div class="sgn" data-f="21">_</div>
@@ -429,26 +420,24 @@ var inst_template = `
     </div>
   </div>
   <div class="instrument">
-    <button name="hideStaff" onclick="hide_instrument(this)">
-      Toggle
-      <br>
-      Staff
-    </button>
     <div class="s names_hidden" id="staff" style="min-height:220px;">
+      <br>
       <div style="position:absolute;width:100%;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <br>
+
+        <hr style="background-color:transparent;border:0;border-top:1px transparent;margin:16px;">
+
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
         <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
       </div>
-      <svg viewBox="0 0 100px 100px" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <svg viewBox="0 0 100 100" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <path fill="black" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
       </svg>
     </div>

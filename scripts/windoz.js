@@ -1,17 +1,14 @@
 function remove(el) {
   var parent = el.closest('.itm');
   parent.remove();
-  console.log("delete");
 }
 function maximize(el) {
   var parent = el.closest('.img_item');
   parent.classList.add('max');
-  console.log("max");
 }
 function min(el) {
   var parent = el.closest('.img_item');
   parent.classList.remove('max');
-  console.log("min");
 }
 function add_img_item(top, left, txt, src) {
   var itms = document.querySelector("#items");
@@ -44,7 +41,6 @@ function add_img_item(top, left, txt, src) {
   ii.innerHTML = img_item;
   ii.style.zIndex = parseInt(new Date().getTime() / 1000);
   itms.appendChild(ii);
-  console.log(`img_item ${txt} added`);
 }
 add_img_item(4, 80, "files://note-zone-picz/circle_of_fifs.jpg", "images/circle.jpg");
 add_img_item(48, 420, "files://note-zone-picz/graph.gif", "images/stolen_graph.gif");
@@ -76,13 +72,14 @@ function add_note_item() {
       </div>
     </div>
     <div style="position:absolute;width:100%;">
+      <br>
       <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
       <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
       <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
       <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
       <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
 
-      <br>
+      <hr style="background-color:transparent;border:0;border-top:1px transparent;margin:16px;">
 
       <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
       <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
@@ -97,7 +94,6 @@ function add_note_item() {
   ii.innerHTML = asdf;
   ii.style.zIndex = parseInt(new Date().getTime() / 1000);
   itms.appendChild(ii);
-  console.log(`note_item added`);
 }
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ///////////////////////////////////interact.js setup shiiiiiiiiiiiiiit////////////////////////////////////////////////////////////////
@@ -106,7 +102,6 @@ var position = { x: 0, y: 0 };
 
 // fast click
 interact('.img_item, .itm').on('tap', function (event) {
-  console.log('tap;');
   event.target.style.zIndex = parseInt(new Date().getTime() / 1000);
 })
 
@@ -141,7 +136,6 @@ interact('.img_item, .template')
     listeners: {
       start (event) {
         event.target.style.zIndex = parseInt(new Date().getTime() / 1000);
-        console.log(event.type, event.target);
         position = { x: 0, y: 0 };
       },
       move: dragMoveListener,
