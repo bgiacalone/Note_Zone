@@ -58,14 +58,9 @@ function toggle_chromatic_highlight(b) {
   this_guitar.classList.toggle("notes_highlighted");
 }
 
-function hide_keyboard(b) {
-  var this_keyboard = b.closest(".instrument").querySelector(".k");
-  this_keyboard.classList.toggle("hidden");
-}
-
-function hide_guitar(b) {
-  var this_guitar = b.closest(".instrument").querySelector(".g");
-  this_guitar.classList.toggle("hidden");
+function hide_instrument(b) {
+  var this_instrument = b.closest(".instrument").querySelector(".k, .g, .s");
+  this_instrument.classList.toggle("hidden");
 }
 
 function clone_template(b) {
@@ -75,7 +70,8 @@ function clone_template(b) {
                               .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
   var new_template = this_template.cloneNode(true);
   new_template.dataset.id = parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1;
-  templates.insertBefore(new_template, this_template.nextSibling);
+  new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
+  templates.appendChild(new_template);
 }
 
 function add_template() {
@@ -135,7 +131,7 @@ var inst_template = `
     </div>
   </div>
   <div class="instrument">
-    <button name="hideKeyboard" onclick="hide_keyboard(this)">
+    <button name="hideKeyboard" onclick="hide_instrument(this)">
       Toggle
       <br>
       Keyboard
@@ -256,7 +252,7 @@ var inst_template = `
     </div>
   </div>
   <div class="instrument">
-    <button name="hideGuitar" onclick="hide_guitar(this)">
+    <button name="hideGuitar" onclick="hide_instrument(this)">
       Toggle
       <br>
       Guitar
@@ -430,6 +426,31 @@ var inst_template = `
         <div class="n w6" data-f="20" data-o="4" data-n="1"></div>
         <div class="n w6" data-f="21" data-o="4" data-n="2"></div>
       </div>
+    </div>
+  </div>
+  <div class="instrument">
+    <button name="hideStaff" onclick="hide_instrument(this)">
+      Toggle
+      <br>
+      Staff
+    </button>
+    <div class="s names_hidden" id="staff" style="min-height:220px;">
+      <div style="position:absolute;width:100%;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <br>
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
+      </div>
+      <svg viewBox="0 0 100px 100px" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <path fill="black" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+      </svg>
     </div>
   </div>
 `;
