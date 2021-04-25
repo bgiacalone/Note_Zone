@@ -21,12 +21,17 @@ function highlight_scale(b) {
     y.forEach((item, i) => {
       item.classList.toggle("notes_highlighted");
     })
-    notes_to_highlight.push(running);
     running = running + scale_map[scale_mode][i];
   });
-  notes_to_highlight.sort((a, b) => a - b);
+  let note_run = +scale_tonic;
+  scale_map[scale_mode].forEach((item, i) => {
+    notes_to_highlight.push(note_run);
+    note_run = note_run + scale_map[scale_mode][i];
+  });
+  note_y = +scale_tonic;
   notes_to_highlight.forEach((item, i) => { add_note(item); });
   notes_in_use = [];
+  note_run = 0;
 }
 
 function clear_scale(b) {
@@ -94,83 +99,21 @@ function add_template() {
 }
 
 var note_x = 0;
-var notes_in_use = [];
+let note_y = 0;
 
 function add_note(n) {
-  let note = 0;
-  switch (n) {
-    case 1:
-      note = 1;
-      break;
-    case 2:
-      if (notes_in_use.includes(1)) {
-        note = 2;
-      } else {
-        note = 1;
-      }
-      break;
-    case 3:
-      note = 2;
-      break;
-    case 4:
-      if (notes_in_use.includes(2)) {
-        note = 3;
-      } else {
-        note = 2;
-      }
-      break;
-    case 5:
-      note = 3;
-      break;
-    case 6:
-      note = 4;
-      break;
-    case 7:
-      if (notes_in_use.includes(4)) {
-        note = 5;
-      } else {
-        note = 4;
-      }
-      break;
-    case 8:
-      note = 5;
-      break;
-    case 9:
-      if (notes_in_use.includes(5)) {
-        note = 6;
-      } else {
-        note = 5;
-      }
-      break;
-    case 10:
-      note = 6;
-      break;
-    case 11:
-      if (notes_in_use.includes(6)) {
-        note = 7;
-      } else {
-        note = 6;
-      }
-      break;
-    case 12:
-      note = 7;
-      break;
-    
-    // default: note = n; notes_in_use.push(note);
-    notes_in_use.push(note);
-  }
-  // console.log(note);
+
   var node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
   node_note.setAttribute('fill', "black");
   node_note.setAttribute('stroke', "black");
   node_note.setAttribute('stroke-width', "1.5");
-  node_note.setAttribute('transform', "translate(" + (15+(35*note_x)) + "," + (43-(8.5*note)) + ")");
+  node_note.setAttribute('transform', "translate(" + (15+(35*note_x)) + "," + (43-(8.5*note_y)) + ")");
   node_note.setAttribute('d', "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57");
   node_note.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
   let templates = document.getElementById("staff");
   note_x++;
+  note_y++;
   templates.appendChild(node_note);
-  // console.log(n);
 }
 
 var inst_template = `
@@ -506,7 +449,7 @@ var inst_template = `
   </div>
   <div class="instrument">
     <div class="s names_hidden" style="min-height:220px;">
-      <svg id="staff" viewBox="0 0 2000 2000" width="2000" height="2000" xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <svg id="staff" viewBox="0 0 2000 130" width="2000" height="130" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <path id="staff" d="M0,25 h2000 M0,42 h2000 M0,59 h2000 M0,76 h2000 M0,93 h2000" stroke="black" stroke-width="1.5" />
         <line id="staff_dashed0" x1="0" y1="8" x2="2000" y2="8" stroke="black" stroke-dasharray="8" />
         <line id="staff_dashed1" x1="0" y1="110" x2="2000" y2="110" stroke="black" stroke-dasharray="8" />
