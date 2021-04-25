@@ -94,15 +94,25 @@ let note_x = 0;
 function add_note(n) {
   let note = 0;
   switch (n) {
+    case 2: note = 2;
+      break;
     case 3: note = 2;
+      break;
+    case 4: note = 3;
       break;
     case 5: note = 3;
       break;
     case 6: note = 4;
       break;
+    case 7: note = 4;
+      break;
     case 8: note = 5;
       break;
+    case 9: note = 5;
+      break;
     case 10: note = 6;
+      break;
+    case 11: note = 7;
       break;
     case 12: note = 7;
       break;
@@ -455,10 +465,10 @@ var inst_template = `
   </div>
   <div class="instrument">
     <div class="s names_hidden" style="min-height:220px;">
-      <svg id="staff" viewBox="0 0 500 500" width="500" height="500" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <path id="staff" d="M0,25 h500 M0,42 h500 M0,59 h500 M0,76 h500 M0,93 h500" stroke="black" stroke-width="1.5" />
-        <line id="staff_dashed0" x1="0" y1="8" x2="500" y2="8" stroke="black" stroke-dasharray="8" />
-        <line id="staff_dashed1" x1="0" y1="110" x2="500" y2="110" stroke="black" stroke-dasharray="8" />
+      <svg id="staff" viewBox="0 0 1000 1000" width="1000" height="1000" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <path id="staff" d="M0,25 h1000 M0,42 h1000 M0,59 h1000 M0,76 h1000 M0,93 h1000" stroke="black" stroke-width="1.5" />
+        <line id="staff_dashed0" x1="0" y1="8" x2="1000" y2="8" stroke="black" stroke-dasharray="8" />
+        <line id="staff_dashed1" x1="0" y1="110" x2="1000" y2="110" stroke="black" stroke-dasharray="8" />
       </svg>
     </div>
   </div>
