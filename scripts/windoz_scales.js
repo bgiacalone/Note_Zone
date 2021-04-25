@@ -421,28 +421,16 @@ var inst_template = `
   </div>
   <div class="instrument">
     <div class="s names_hidden" id="staff" style="min-height:220px;">
-      <br>
-      <div style="position:absolute;width:100%;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-
-        <hr style="background-color:transparent;border:0;border-top:1px transparent;margin:16px;">
-
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-        <hr style="background-color:black;border:0;border-top:1px solid black;margin:16px;">
-      </div>
-      <svg viewBox="0 0 100 100" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <path fill="black" transform="translate(12)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="salmon" transform="translate(50,9)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="salmon" transform="translate(75,-17)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="black" transform="translate(99,100)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="salmon" transform="translate(100,42)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+      <svg viewBox="0 0 500 500" width="500" height="500" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <circle cx="5" cy="5" r="5" />
+        <path id="staff" d="M0,25 h500 M0,42 h500 M0,59 h500 M0,76 h500 M0,93 h500" stroke="black" stroke-width="1" />
+        <line id="staff_dashed0" x1="0" y1="8" x2="500" y2="8" stroke="black" stroke-dasharray="8" />
+        <line id="staff_dashed1" x1="0" y1="110" x2="500" y2="110" stroke="black" stroke-dasharray="8" />
+        <path fill="black" transform="translate(15,34)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="white" transform="translate(50,-17)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="salmon" transform="translate(85,-34)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="tan" transform="translate(120,-51)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="red" transform="translate(155,-68)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
       </svg>
     </div>
   </div>
