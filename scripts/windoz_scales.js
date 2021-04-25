@@ -101,7 +101,6 @@ function add_note(n) {
   switch (n) {
     case 1:
       note = 1;
-      notes_in_use.push(note);
       break;
     case 2:
       if (notes_in_use.includes(1)) {
@@ -109,11 +108,9 @@ function add_note(n) {
       } else {
         note = 1;
       }
-      notes_in_use.push(note);
       break;
     case 3:
       note = 2;
-      notes_in_use.push(note);
       break;
     case 4:
       if (notes_in_use.includes(2)) {
@@ -121,15 +118,12 @@ function add_note(n) {
       } else {
         note = 2;
       }
-      notes_in_use.push(note);
       break;
     case 5:
       note = 3;
-      notes_in_use.push(note);
       break;
     case 6:
       note = 4;
-      notes_in_use.push(note);
       break;
     case 7:
       if (notes_in_use.includes(4)) {
@@ -137,11 +131,9 @@ function add_note(n) {
       } else {
         note = 4;
       }
-      notes_in_use.push(note);
       break;
     case 8:
       note = 5;
-      notes_in_use.push(note);
       break;
     case 9:
       if (notes_in_use.includes(5)) {
@@ -149,11 +141,9 @@ function add_note(n) {
       } else {
         note = 5;
       }
-      notes_in_use.push(note);
       break;
     case 10:
       note = 6;
-      notes_in_use.push(note);
       break;
     case 11:
       if (notes_in_use.includes(6)) {
@@ -161,13 +151,13 @@ function add_note(n) {
       } else {
         note = 6;
       }
-      notes_in_use.push(note);
       break;
     case 12:
       note = 7;
-      notes_in_use.push(note);
       break;
+    
     // default: note = n; notes_in_use.push(note);
+    notes_in_use.push(note);
   }
   // console.log(note);
   var node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
