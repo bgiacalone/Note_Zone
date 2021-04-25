@@ -13,7 +13,6 @@ function highlight_scale(b) {
   let scale_mode = document.querySelector(target + " select[id='mode']").value;
   let running = +scale_tonic;
   scale_map[scale_mode].forEach((item, i) => {
-    running = running + scale_map[scale_mode][i];
     if (running > 12) {
       running = running - 12;
     }
@@ -21,6 +20,8 @@ function highlight_scale(b) {
     y.forEach((item, i) => {
       item.classList.toggle("notes_highlighted");
     })
+    add_note(running);
+    running = running + scale_map[scale_mode][i];
   });
 }
 
@@ -86,6 +87,39 @@ function add_template() {
   new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
   templates.appendChild(new_template);
   name_notes();
+}
+
+let note_x = 0;
+
+function add_note(n) {
+  let note = 0;
+  switch (n) {
+    case 3: note = 2;
+      break;
+    case 5: note = 3;
+      break;
+    case 6: note = 4;
+      break;
+    case 8: note = 5;
+      break;
+    case 10: note = 6;
+      break;
+    case 12: note = 7;
+      break;
+      default: note = n;
+  }
+  console.log(note);
+  var node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  node_note.setAttribute('fill', "black");
+  node_note.setAttribute('stroke', "black");
+  node_note.setAttribute('stroke-width', "1.5");
+  node_note.setAttribute('transform', "translate(" + (15+(35*note_x)) + "," + (43-(8.5*note)) + ")");
+  node_note.setAttribute('d', "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57");
+  node_note.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+  let templates = document.getElementById("staff");
+  note_x++;
+  templates.appendChild(node_note);
+  // console.log(n);
 }
 
 var inst_template = `
@@ -420,20 +454,11 @@ var inst_template = `
     </div>
   </div>
   <div class="instrument">
-    <div class="s names_hidden" id="staff" style="min-height:220px;">
-      <svg viewBox="0 0 500 500" width="500" height="500" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <circle cx="5" cy="5" r="5" />
+    <div class="s names_hidden" style="min-height:220px;">
+      <svg id="staff" viewBox="0 0 500 500" width="500" height="500" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <path id="staff" d="M0,25 h500 M0,42 h500 M0,59 h500 M0,76 h500 M0,93 h500" stroke="black" stroke-width="1.5" />
         <line id="staff_dashed0" x1="0" y1="8" x2="500" y2="8" stroke="black" stroke-dasharray="8" />
         <line id="staff_dashed1" x1="0" y1="110" x2="500" y2="110" stroke="black" stroke-dasharray="8" />
-        <path fill="black" transform="translate(15,34)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="red" transform="translate(50,26)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="orange" transform="translate(85,17)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="yellow" transform="translate(120,9)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="green" transform="translate(155,0)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="blue" transform="translate(190,-8)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="purple" transform="translate(225,-17)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-
       </svg>
     </div>
   </div>

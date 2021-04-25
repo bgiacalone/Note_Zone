@@ -38,5 +38,4 @@ function load_nav() {
   body.innerHTML = "";
   body.appendChild(tn);
   body.appendChild(oldbody);
-  console.log("nav loaded");
 }
