@@ -12,6 +12,7 @@ function highlight_scale(b) {
   let scale_tonic = document.querySelector(target + " select[id='tonic']").value;
   let scale_mode = document.querySelector(target + " select[id='mode']").value;
   let running = +scale_tonic;
+  let notes_to_highlight = [];
   scale_map[scale_mode].forEach((item, i) => {
     if (running > 12) {
       running = running - 12;
@@ -20,9 +21,11 @@ function highlight_scale(b) {
     y.forEach((item, i) => {
       item.classList.toggle("notes_highlighted");
     })
-    add_note(running);
+    notes_to_highlight.push(running);
     running = running + scale_map[scale_mode][i];
   });
+  notes_to_highlight.sort((a, b) => a - b);
+  notes_to_highlight.forEach((item, i) => { add_note(item); });
   notes_in_use = [];
 }
 
@@ -153,7 +156,11 @@ function add_note(n) {
       notes_in_use.push(note);
       break;
     case 11:
-      note = 7;
+      if (notes_in_use.includes(6)) {
+        note = 7;
+      } else {
+        note = 6;
+      }
       notes_in_use.push(note);
       break;
     case 12:
