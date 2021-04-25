@@ -423,14 +423,17 @@ var inst_template = `
     <div class="s names_hidden" id="staff" style="min-height:220px;">
       <svg viewBox="0 0 500 500" width="500" height="500" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <circle cx="5" cy="5" r="5" />
-        <path id="staff" d="M0,25 h500 M0,42 h500 M0,59 h500 M0,76 h500 M0,93 h500" stroke="black" stroke-width="1" />
+        <path id="staff" d="M0,25 h500 M0,42 h500 M0,59 h500 M0,76 h500 M0,93 h500" stroke="black" stroke-width="1.5" />
         <line id="staff_dashed0" x1="0" y1="8" x2="500" y2="8" stroke="black" stroke-dasharray="8" />
         <line id="staff_dashed1" x1="0" y1="110" x2="500" y2="110" stroke="black" stroke-dasharray="8" />
         <path fill="black" transform="translate(15,34)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="white" transform="translate(50,-17)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="salmon" transform="translate(85,-34)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="tan" transform="translate(120,-51)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
-        <path fill="red" transform="translate(155,-68)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="red" transform="translate(50,26)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="orange" transform="translate(85,17)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="yellow" transform="translate(120,9)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="green" transform="translate(155,0)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="blue" transform="translate(190,-8)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+        <path fill="purple" transform="translate(225,-17)" d="M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" stroke="black" stroke-width="1.5" />
+
       </svg>
     </div>
   </div>
