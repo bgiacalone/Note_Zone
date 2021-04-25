@@ -23,6 +23,7 @@ function highlight_scale(b) {
     add_note(running);
     running = running + scale_map[scale_mode][i];
   });
+  notes_in_use = [];
 }
 
 function clear_scale(b) {
@@ -89,36 +90,79 @@ function add_template() {
   name_notes();
 }
 
-let note_x = 0;
+var note_x = 0;
+var notes_in_use = [];
 
 function add_note(n) {
   let note = 0;
   switch (n) {
-    case 2: note = 2;
+    case 1:
+      note = 1;
+      notes_in_use.push(note);
       break;
-    case 3: note = 2;
+    case 2:
+      if (notes_in_use.includes(1)) {
+        note = 2;
+      } else {
+        note = 1;
+      }
+      notes_in_use.push(note);
       break;
-    case 4: note = 3;
+    case 3:
+      note = 2;
+      notes_in_use.push(note);
       break;
-    case 5: note = 3;
+    case 4:
+      if (notes_in_use.includes(2)) {
+        note = 3;
+      } else {
+        note = 2;
+      }
+      notes_in_use.push(note);
       break;
-    case 6: note = 4;
+    case 5:
+      note = 3;
+      notes_in_use.push(note);
       break;
-    case 7: note = 4;
+    case 6:
+      note = 4;
+      notes_in_use.push(note);
       break;
-    case 8: note = 5;
+    case 7:
+      if (notes_in_use.includes(4)) {
+        note = 5;
+      } else {
+        note = 4;
+      }
+      notes_in_use.push(note);
       break;
-    case 9: note = 5;
+    case 8:
+      note = 5;
+      notes_in_use.push(note);
       break;
-    case 10: note = 6;
+    case 9:
+      if (notes_in_use.includes(5)) {
+        note = 6;
+      } else {
+        note = 5;
+      }
+      notes_in_use.push(note);
       break;
-    case 11: note = 7;
+    case 10:
+      note = 6;
+      notes_in_use.push(note);
       break;
-    case 12: note = 7;
+    case 11:
+      note = 7;
+      notes_in_use.push(note);
       break;
-      default: note = n;
+    case 12:
+      note = 7;
+      notes_in_use.push(note);
+      break;
+    // default: note = n; notes_in_use.push(note);
   }
-  console.log(note);
+  // console.log(note);
   var node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
   node_note.setAttribute('fill', "black");
   node_note.setAttribute('stroke', "black");
@@ -465,10 +509,10 @@ var inst_template = `
   </div>
   <div class="instrument">
     <div class="s names_hidden" style="min-height:220px;">
-      <svg id="staff" viewBox="0 0 1000 1000" width="1000" height="1000" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <path id="staff" d="M0,25 h1000 M0,42 h1000 M0,59 h1000 M0,76 h1000 M0,93 h1000" stroke="black" stroke-width="1.5" />
-        <line id="staff_dashed0" x1="0" y1="8" x2="1000" y2="8" stroke="black" stroke-dasharray="8" />
-        <line id="staff_dashed1" x1="0" y1="110" x2="1000" y2="110" stroke="black" stroke-dasharray="8" />
+      <svg id="staff" viewBox="0 0 2000 2000" width="2000" height="2000" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <path id="staff" d="M0,25 h2000 M0,42 h2000 M0,59 h2000 M0,76 h2000 M0,93 h2000" stroke="black" stroke-width="1.5" />
+        <line id="staff_dashed0" x1="0" y1="8" x2="2000" y2="8" stroke="black" stroke-dasharray="8" />
+        <line id="staff_dashed1" x1="0" y1="110" x2="2000" y2="110" stroke="black" stroke-dasharray="8" />
       </svg>
     </div>
   </div>
