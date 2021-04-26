@@ -1,7 +1,9 @@
+var note_x = 0;
+let note_y = 0;
 function highlight_scale(b) {
   clear_scale(b);
+  note_x = 0;
   let this_template = b.closest(".template");
-  var target = `.template[data-id='${this_template.dataset.id}']`;
   let scale_map = [ [2,2,1,2,2,2,1],
                     [2,1,2,2,1,2,2],
                     [1,2,2,1,2,2,2],
@@ -9,37 +11,51 @@ function highlight_scale(b) {
                     [1,2,2,2,1,2,2],
                     [2,2,2,1,2,2,1],
                     [2,2,1,2,2,1,2] ];
-  let scale_tonic = document.querySelector(target + " select[id='tonic']").value;
-  let scale_mode = document.querySelector(target + " select[id='mode']").value;
+  let scale_tonic = this_template.querySelector("select[id='tonic']").value;
+  let scale_mode = this_template.querySelector("select[id='mode']").value;
   let running = +scale_tonic;
   let notes_to_highlight = [];
   scale_map[scale_mode].forEach((item, i) => {
     if (running > 12) {
       running = running - 12;
     }
-    let y = document.querySelectorAll(target + " div[data-n='"+running+"']");
+    let y = this_template.querySelectorAll("div[data-n='"+running+"']");
     y.forEach((item, i) => {
       item.classList.toggle("notes_highlighted");
     })
-    running = running + scale_map[scale_mode][i];
+    running += scale_map[scale_mode][i];
   });
-  let note_run = +scale_tonic;
+  let staff = [1,3,5,6,8,10,12];
+  let note_run = staff.indexOf(+scale_tonic) + 1;
   scale_map[scale_mode].forEach((item, i) => {
     notes_to_highlight.push(note_run);
     note_run = note_run + scale_map[scale_mode][i];
   });
-  note_y = +scale_tonic;
-  notes_to_highlight.forEach((item, i) => { add_note(item); });
+  note_y = staff.indexOf(+scale_tonic) + 1;
+  notes_to_highlight.forEach((item, i) => { add_note(this_template, item); });
   notes_in_use = [];
   note_run = 0;
 }
 
+function add_note(template, n) {
+  var node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  node_note.classList.add('staffnote');
+  node_note.setAttribute('fill', "black");
+  node_note.setAttribute('stroke', "black");
+  node_note.setAttribute('stroke-width', "1.5");
+  node_note.setAttribute('transform', "translate(" + (15+(35*note_x)) + "," + (43-(8.5*note_y)) + ")");
+  node_note.setAttribute('d', "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57");
+  node_note.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+  let templates = template.querySelector("#staff");
+  note_x++;
+  note_y++;
+  templates.appendChild(node_note);
+}
+
 function clear_scale(b) {
   let this_template = b.closest(".template");
-  var notes_to_clear = this_template.querySelectorAll(".g .notes_highlighted, .k .notes_highlighted");
-  notes_to_clear.forEach((item, i) => {
-    item.classList.remove("notes_highlighted");
-  });
+  this_template.querySelectorAll(".g .notes_highlighted, .k .notes_highlighted").forEach((item, i) => { item.classList.remove("notes_highlighted"); });
+  this_template.querySelectorAll('.staffnote').forEach((item, i) => { item.remove(); });
 }
 
 function name_notes() {
@@ -96,24 +112,6 @@ function add_template() {
   new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
   templates.appendChild(new_template);
   name_notes();
-}
-
-var note_x = 0;
-let note_y = 0;
-
-function add_note(n) {
-
-  var node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  node_note.setAttribute('fill', "black");
-  node_note.setAttribute('stroke', "black");
-  node_note.setAttribute('stroke-width', "1.5");
-  node_note.setAttribute('transform', "translate(" + (15+(35*note_x)) + "," + (43-(8.5*note_y)) + ")");
-  node_note.setAttribute('d', "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57");
-  node_note.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
-  let templates = document.getElementById("staff");
-  note_x++;
-  note_y++;
-  templates.appendChild(node_note);
 }
 
 var inst_template = `
