@@ -41,7 +41,7 @@ function add_note(template, n) {
   node_note.setAttribute("fill", "black");
   node_note.setAttribute("stroke", "black");
   node_note.setAttribute("stroke-width", "1.5");
-  node_note.setAttribute("transform", "translate(" + (15 + (35 * note_x)) + "," + (43 - (8.5 * note_y)) + ")");
+  node_note.setAttribute("transform", "translate(" + (60 + (35 * note_x)) + "," + (43 - (8.5 * note_y)) + ")");
   node_note.setAttribute("d", "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57");
   node_note.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
   note_x++;
@@ -442,6 +442,15 @@ let inst_template = `
   <div class="instrument">
     <div class="s names_hidden" style="min-height:220px;">
       <svg id="staff" viewBox="0 0 2000 130" width="2000" height="130" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+        <!--circle cx="30" cy="76" r="7"/-->
+
+
+        <circle cx="22" cy="109" r="3"/>
+        <path id="trebble_clef" d="M23,86 C10,76 26,57 37,67 S38,102 19,88 C5,76 15,52 30,42 C40,34 42,10 35,8 C27,10 20,16 32,94 C37,115 27,115 23,110" stroke="black" stroke-width="1" fill="none" />
+
+
+
         <path id="staff" d="M0,25 h2000 M0,42 h2000 M0,59 h2000 M0,76 h2000 M0,93 h2000" stroke="black" stroke-width="1.5" />
         <line id="staff_dashed0" x1="0" y1="8" x2="2000" y2="8" stroke="black" stroke-dasharray="8" />
         <line id="staff_dashed1" x1="0" y1="110" x2="2000" y2="110" stroke="black" stroke-dasharray="8" />
