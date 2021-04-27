@@ -11,65 +11,60 @@ function highlight_scale(b) {
                     [1,2,2,2,1,2,2],
                     [2,2,2,1,2,2,1],
                     [2,2,1,2,2,1,2] ];
-  let scale_tonic = this_template.querySelector("select[id='tonic']").value;
-  let scale_mode = this_template.querySelector("select[id='mode']").value;
+  let scale_tonic = this_template.querySelector("select#tonic").value;
+  let scale_mode = this_template.querySelector("select#mode").value;
   let running = +scale_tonic;
-  let notes_to_highlight = [];
   scale_map[scale_mode].forEach((item, i) => {
     if (running > 12) {
       running = running - 12;
     }
-    let y = this_template.querySelectorAll("div[data-n='"+running+"']");
-    y.forEach((item, i) => {
-      item.classList.toggle("notes_highlighted");
-    })
+    let notes = this_template.querySelectorAll("div[data-n='"+running+"']");
+    notes.forEach((item, i) => { item.classList.toggle("notes_highlighted"); })
     running += scale_map[scale_mode][i];
   });
-  let staff = [1,3,5,6,8,10,12];
-  let note_run = staff.indexOf(+scale_tonic) + 1;
+
+  let staff_lines = [1,3,5,6,8,10,12];
+  let notes_to_highlight = [];
+  let note_run = staff_lines.indexOf(+scale_tonic) + 1;
   scale_map[scale_mode].forEach((item, i) => {
     notes_to_highlight.push(note_run);
     note_run = note_run + scale_map[scale_mode][i];
   });
-  note_y = staff.indexOf(+scale_tonic) + 1;
+  note_y = staff_lines.indexOf(+scale_tonic) + 1;
   notes_to_highlight.forEach((item, i) => { add_note(this_template, item); });
-  notes_in_use = [];
-  note_run = 0;
 }
 
 function add_note(template, n) {
-  var node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  node_note.classList.add('staffnote');
-  node_note.setAttribute('fill', "black");
-  node_note.setAttribute('stroke', "black");
-  node_note.setAttribute('stroke-width', "1.5");
-  node_note.setAttribute('transform', "translate(" + (15+(35*note_x)) + "," + (43-(8.5*note_y)) + ")");
-  node_note.setAttribute('d', "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57");
+  let staff = template.querySelector("#staff");
+  let node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  node_note.classList.add("staffnote");
+  node_note.setAttribute("fill", "black");
+  node_note.setAttribute("stroke", "black");
+  node_note.setAttribute("stroke-width", "1.5");
+  node_note.setAttribute("transform", "translate(" + (15 + (35 * note_x)) + "," + (43 - (8.5 * note_y)) + ")");
+  node_note.setAttribute("d", "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57");
   node_note.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
-  let templates = template.querySelector("#staff");
   note_x++;
   note_y++;
-  templates.appendChild(node_note);
+  staff.appendChild(node_note);
 }
 
 function clear_scale(b) {
   let this_template = b.closest(".template");
   this_template.querySelectorAll(".g .notes_highlighted, .k .notes_highlighted").forEach((item, i) => { item.classList.remove("notes_highlighted"); });
-  this_template.querySelectorAll('.staffnote').forEach((item, i) => { item.remove(); });
+  this_template.querySelectorAll(".staffnote").forEach((item, i) => { item.remove(); });
 }
 
 function name_notes() {
   let note_map = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"];
-  let notes = document.getElementsByClassName("n");
-  for (var i = 0; i < notes.length; i++) {
-    notes[i].innerHTML = note_map[notes[i].dataset.n - 1];
-  }
+  let notes = document.querySelectorAll(".n");
+  notes.forEach((item, i) => { item.innerHTML = note_map[notes[i].dataset.n - 1]; });
 }
 
 function toggle_note_names(b) {
-  var this_template = b.closest(".template");
-  var this_guitar = this_template.querySelector(".g");
-  var this_keyboard = this_template.querySelector(".k");
+  let this_template = b.closest(".template");
+  let this_keyboard = this_template.querySelector(".k");
+  let this_guitar = this_template.querySelector(".g");
   this_keyboard.classList.toggle("names_shown");
   this_keyboard.classList.toggle("names_hidden");
   this_guitar.classList.toggle("names_shown");
@@ -77,24 +72,23 @@ function toggle_note_names(b) {
 }
 
 function toggle_chromatic_highlight(b) {
-  var this_template = b.closest(".template");
-  var this_keyboard = this_template.querySelector(".k");
-  var this_guitar = this_template.querySelector(".g");
+  let this_template = b.closest(".template");
+  let this_keyboard = this_template.querySelector(".k");
+  let this_guitar = this_template.querySelector(".g");
   this_keyboard.classList.toggle("notes_highlighted");
   this_guitar.classList.toggle("notes_highlighted");
 }
 
 function hide_instrument(t,b) {
-  var this_instrument = t.closest(".template").querySelector(b).closest(".instrument");
-  this_instrument.classList.toggle("hidden");
+  t.closest(".template").querySelector(b).closest(".instrument").classList.toggle("hidden");
 }
 
 function clone_template(b) {
   let templates = document.getElementById("items");
-  var this_template = b.closest(".template");
-  var sorted_templates = Array.from(templates.querySelectorAll(".template"))
-                              .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
-  var new_template = this_template.cloneNode(true);
+  let this_template = b.closest(".template");
+  let sorted_templates = Array.from(templates.querySelectorAll(".template"))
+                              .sort(({ dataset: { id: a } }, { dataset: { id: b } }) => a.localeCompare(b));
+  let new_template = this_template.cloneNode(true);
   new_template.dataset.id = parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1;
   new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
   templates.appendChild(new_template);
@@ -102,19 +96,19 @@ function clone_template(b) {
 
 function add_template() {
   let templates = document.getElementById("items");
-  var sorted_templates = Array.from(templates.querySelectorAll(".template"))
+  let sorted_templates = Array.from(templates.querySelectorAll(".template"))
                               .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
   let new_template = document.createElement("div");
-  new_template.innerHTML = inst_template;
+  new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
   new_template.classList.add("template");
   new_template.classList.add("itm");
-  new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
   new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
+  new_template.innerHTML = inst_template;
   templates.appendChild(new_template);
   name_notes();
 }
 
-var inst_template = `
+let inst_template = `
   <div class="controls">
     <button id="toggleNoteNames" onclick="toggle_note_names(this)" class="btn">Toggle Note Names</button>
     <button id="toggleChromaticHighlight" class="btn btn-chromatic" onclick="toggle_chromatic_highlight(this)" class="btn btn-chromatic">Toggle Chromatic Highlighting</button>
