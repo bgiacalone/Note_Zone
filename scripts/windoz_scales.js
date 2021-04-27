@@ -446,8 +446,9 @@ let inst_template = `
         <!--circle cx="30" cy="76" r="7"/-->
 
 
-        <circle cx="22" cy="109" r="3"/>
-        <path id="trebble_clef" d="M23,86 C10,76 26,57 37,67 S38,102 19,88 C5,76 15,52 30,42 C40,34 42,10 35,8 C27,10 20,16 32,94 C37,115 27,115 23,110" stroke="black" stroke-width="1" fill="none" />
+        <circle cx="22" cy="109" r="5"/>
+        <path id="trebble_clef" d="M23,86 C10,76 26,57 37,67 S38,102 17,88 C3,76 15,52 26,42 C35,34 39,6 30,8 C27,10 20,16 32,94 C37,115 27,115 23,113"
+            stroke="black" stroke-width="2" fill="none" />
 
 
 
