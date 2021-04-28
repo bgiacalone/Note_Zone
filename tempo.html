@@ -1,76 +1,76 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Welcome to The Note Zone!</title>
-  <meta name="description" content="Listen up - you better take some notes!">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css.css">
-  <link rel="icon" type="image/png" href="favicon.png">
-</head>
-<body ondragstart="return false;" ondrop="return false;">
-  <main style="text-align:center;">
-    <div id="templates"></div>
-    <div id="source_materials" class="hidden">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to The Note Zone!</title>
+    <meta name="description" content="Listen up - you better take some notes!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+  </head>
+  <body ondragstart="return false;" ondrop="return false;">
+    <main style="text-align:center;">
+      <div id="templates"></div>
+      <div id="source_materials" class="hidden">
 
-      <div id="source_template" class="tempo">
-        <h1>tempo / time / rate</h1>
-        <div class="controls">
-          <div class="range-form">
-            <label for="start">Search BPMs from:</label>
-            <input id="start" class="number_input" type="number" value="1" min="0" max="500" step="any">
-            <label for="end">to:</label>
-            <input id="end" class="number_input" type="number"  value="200" min="0" max="500" step="any">
-            <label for="interval">interval:</label>
-            <input id="interval" class="number_input" type="number" value="1" min="0" step="any">
-            <button class="btn btn-blu" onclick="fill_table()">OK</button>
+        <div id="source_template" class="tempo">
+          <h1>tempo / time / rate</h1>
+          <div class="controls">
+            <div class="range-form">
+              <label for="start">Search BPMs from:</label>
+              <input id="start" class="number_input" type="number" value="1" min="0" max="500" step="any">
+              <label for="end">to:</label>
+              <input id="end" class="number_input" type="number"  value="200" min="0" max="500" step="any">
+              <label for="interval">interval:</label>
+              <input id="interval" class="number_input" type="number" value="1" min="0" step="any">
+              <button class="btn btn-blu" onclick="fill_table()">OK</button>
+            </div>
+            <div class="right" style="margin-left:auto;">
+              <button class="btn btn-blu" id="ms" onclick="table_format(this, 'ms')">Milliseconds</button>
+              <button class="btn" id="hz" onclick="table_format(this, 'hz')">Hertz</button>
+            </div>
           </div>
-          <div class="right" style="margin-left:auto;">
-            <button class="btn btn-blu" id="ms" onclick="table_format(this, 'ms')">Milliseconds</button>
-            <button class="btn" id="hz" onclick="table_format(this, 'hz')">Hertz</button>
-          </div>
+          <table style="margin:0 auto; width:100%;">
+            <thead>
+              <tr>
+                <th class="bpm">BPM</th>
+                <th class="twos">1/1</th>
+                <th class="thirds">2/3</th>
+                <th class="twos">1/2</th>
+                <th class="thirds">1/3</th>
+                <th class="twos">1/4</th>
+                <th class="thirds">1/6</th>
+                <th class="twos">1/8</th>
+                <th class="thirds">1/12</th>
+                <th class="twos">1/16</th>
+                <th class="thirds">1/24</th>
+                <th class="twos">1/32</th>
+                <th class="thirds">1/48</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="content">
+                <td><strong></strong></td>
+                <td class="twos"></td>
+                <td class="thirds"></td>
+                <td class="twos"></td>
+                <td class="thirds"></td>
+                <td class="twos"></td>
+                <td class="thirds"></td>
+                <td class="twos"></td>
+                <td class="thirds"></td>
+                <td class="twos"></td>
+                <td class="thirds"></td>
+                <td class="twos"></td>
+                <td class="thirds"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <table style="margin:0 auto; width:100%;">
-          <thead>
-            <tr>
-              <th class="bpm">BPM</th>
-              <th class="twos">1/1</th>
-              <th class="thirds">2/3</th>
-              <th class="twos">1/2</th>
-              <th class="thirds">1/3</th>
-              <th class="twos">1/4</th>
-              <th class="thirds">1/6</th>
-              <th class="twos">1/8</th>
-              <th class="thirds">1/12</th>
-              <th class="twos">1/16</th>
-              <th class="thirds">1/24</th>
-              <th class="twos">1/32</th>
-              <th class="thirds">1/48</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr id="content">
-              <td><strong></strong></td>
-              <td class="twos"></td>
-              <td class="thirds"></td>
-              <td class="twos"></td>
-              <td class="thirds"></td>
-              <td class="twos"></td>
-              <td class="thirds"></td>
-              <td class="twos"></td>
-              <td class="thirds"></td>
-              <td class="twos"></td>
-              <td class="thirds"></td>
-              <td class="twos"></td>
-              <td class="thirds"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
 
-    </div>
-  </main>
-  <script src="scripts/main.js"></script>
-  <script src="scripts/tempo.js"></script>
-</body>
+      </div>
+    </main>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/tempo.js"></script>
+  </body>
 </html>
