@@ -1,4 +1,4 @@
-var note_x = 0;
+let note_x = 0;
 let note_y = 0;
 function highlight_scale(b) {
   clear_scale(b);
@@ -12,6 +12,7 @@ function highlight_scale(b) {
                     [2,2,2,1,2,2,1],
                     [2,2,1,2,2,1,2] ];
   let scale_tonic = this_template.querySelector("select#tonic").value;
+  let scale_tonic_name = this_template.querySelector(`option[value="${+scale_tonic}"]`).innerHTML;
   let scale_mode = this_template.querySelector("select#mode").value;
   let running = +scale_tonic;
   scale_map[scale_mode].forEach((item, i) => {
@@ -115,15 +116,20 @@ let inst_template = `
     <div class="scale-form">
       <select name="scale tonic" id="tonic">
         <option value="1">C</option>
+        <option value="2">C♯</option>
         <option value="2">D♭</option>
         <option value="3">D</option>
+        <option value="4">D♯</option>
         <option value="4">E♭</option>
         <option value="5">E</option>
         <option value="6">F</option>
+        <option value="7">F♯</option>
         <option value="7">G♭</option>
         <option value="8">G</option>
+        <option value="9">G♯</option>
         <option value="9">A♭</option>
         <option value="10">A</option>
+        <option value="11">A♯</option>
         <option value="11">B♭</option>
         <option value="12">B</option>
       </select>
