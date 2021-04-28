@@ -64,14 +64,14 @@ table .bpm { background-color:black; color:white; width:50px; }
 
 .instrument { display:flex; margin-top:15px; text-align:center; margin-left:5px; }
 .g.hidden, .k.hidden { display: none !important; }
-.k { display: inline-block; margin-left:5px; }
+.k { display: inline-block; margin-left:5px; margin-right:5px; }
 .k .o, .k .n { display: inline-block; }
 .k .n { padding: 15px 0; position: relative; width: 10px; font-size:.6em; }
 .n._1, .n._6 { margin-left: -5px; }
 .n._3, .n._5, .n._8, .n._10, .n._12 { margin-left: -15px; }
 .n._2, .n._4, .n._7, .n._9, .n._11 { background-color:black; border:1px solid black;color:white; left:-4px; margin-left:-6px; top:-4px; z-index:2; }
 .n._1, .n._3, .n._5, .n._6, .n._8, .n._10, .n._12 { background-color:snow; border:1px solid black; padding-bottom:40px; width:17px; }
-.g { background-color:rgba(155,125,100,.6); display:inline-block; padding:3px 5px; }
+.g { background-color:rgba(155,125,100,.6); display:inline-block; padding:3px 5px; margin-right:5px; }
 .g .sg { background-color:rgba(255,255,255,.75); padding-top:2px; }
 .g .sg .sgn { border-right:2px solid rgba(0,0,0,.25); color:transparent; display:inline-block; margin-left:-4px; max-width:38px; overflow:hidden; width:38px; }
 .g .sg .sgn:first-child { margin-left:0; }
