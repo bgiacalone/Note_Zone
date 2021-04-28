@@ -6,21 +6,11 @@ td, th { border:1px solid black; padding:5px 2px; background-color:white; }
 button { cursor:pointer; }
 button, input[type="number"], select { padding: 2px 6px 3px 6px; font-size:11px; margin:2px; }
 input[type="number"], select { height:18px; border-radius:5px; border:1px solid default; padding:0 6px 1px; }
-
-.text-center { text-align:center; }
-.hidden { display: none !important; }
-.btn { background-color:white; color:black; border:1px solid rgba(0,0,0,.5); border-radius:2px; }
-.btn.btn-chromatic {
-  background-image: linear-gradient(to left, violet, purple, rgb(20,40,255), limegreen, yellow, orange, red);
-  color: white;
-  text-shadow: -1px -1px 0 rgba(0,0,0,.6),
-                1px -1px 0 rgba(0,0,0,.6),
-               -1px  1px 0 rgba(0,0,0,.6),
-                1px  1px 0 rgba(0,0,0,.6);
-}
-.btn.btn-blu { background-color:rgb(30,90,255); color:white; }
-.btn.btn-red { background-color:rgb(200,0,0); color:white; }
-.btn svg { height:11px; width:11px; position:relative; }
+th.thirds { background-color:rgba(0,200,0,.4) }
+td.thirds { background-color:rgba(0,200,0,.1) }
+th.twos { background-color:rgba(0,0,100,.4) }
+td.twos { background-color:rgba(0,0,100,.1) }
+table .bpm { background-color:black; color:white; width:50px; }
 
 .tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); z-index:999; }
 .tn_content { display:flex; width:100%; max-width:1390px; margin:0 auto; }
@@ -35,30 +25,49 @@ input[type="number"], select { height:18px; border-radius:5px; border:1px solid 
 .amburgla { margin-left:auto; }
 .amburgla img:hover { filter:invert(100%); }
 
+.btn { background-color:white; color:black; border:1px solid rgba(0,0,0,.5); border-radius:2px; }
+.btn.btn-chromatic { background-image:linear-gradient(to left, violet, purple, rgb(20,40,255), limegreen, yellow, orange, red); color:white; text-shadow:-1px -1px 0 rgba(0,0,0,.6),1px -1px 0 rgba(0,0,0,.6),-1px 1px 0 rgba(0,0,0,.6),1px 1px 0 rgba(0,0,0,.6); }
+.btn.btn-blu { background-color:rgb(30,90,255); color:white; }
+.btn.btn-red { background-color:rgb(200,0,0); color:white; }
+.btn svg { height:11px; width:11px; position:relative; }
+
+.text-center { text-align:center; }
+.hidden { display: none !important; }
+
 .controls { display:flex; flex-direction: row; background-color:#bbb; padding:5px; border-top-left-radius:3px; border-top-right-radius:3px; }
+.controls .btn-group { margin-left:auto; min-width:89px; position:absolute;top:2px;right:4px;text-align:right; }
 .scale-form, .range-form { background-color:rgba(0,0,0,.4); border-radius:4px; padding:1px 5px; margin-left:5px; font-family: sans-serif; }
 .range-form label { color: white; font-size:13px; position:relative; top:1px; }
 .range-form input[type="number"] { padding-right:0px; margin-left:-1px; margin-right:7px; border:.5px solid black !important; }
-.number_input { max-width: 50px; }
-.tempo.template { padding-bottom:0px; }
+.number_input { max-width:50px; }
 .tempo h1 { margin:5px; }
+.tempo.template { padding-bottom:0px; }
+.template { background-color:#eaeaea; border-radius:4px; margin-bottom:8px; max-height:606px; max-width:1212px !important; padding-bottom:5px; }
+.template:not('.itm') { display:flex; justify-content:space-between; flex-direction:column; box-shadow:-2px 2px 4px rgba(0,0,0,.1); border:1px solid #bbb; }
 
-.template { padding-bottom:5px; margin-bottom:8px; background-color:#eaeaea; border-radius:4px;}
-.template:not('.itm') { display: flex; justify-content: space-between; flex-direction: column;box-shadow:-2px 2px 4px rgba(0,0,0,.1); border:1px solid #bbb; }
-.template.itm { }
-.instrument { display:flex; margin-top:15px; text-align:center; padding-left:5px; }
+.items { background: no-repeat center/110% 100% url('images/desktop.jpeg'); border-radius:2px; border-bottom:2px solid gray; height:calc(100vh - 130px); overflow:hidden; position:relative; top:-10px; width:100%; }
+.img_item, .itm { background-color:white; border:1px solid rgba(0,0,0,.75); border-radius:4px; box-sizing:border-box; min-height:30px; max-height:100%; overflow:hidden auto; position:absolute; touch-action: none; }
+.img_item .controls .btn { margin-right:0px; }
+.img_item .controls { position:relative; max-height:24px;text-overflow:ellipsis;overflow:hidden;overflow:hidden;white-space:nowrap; }
+.img_item .controls strong { text-overflow:ellipsis;padding-right:89px;cursor:default;position:relative;top:1px; }
+.img_item img { height:calc(100% - 40px);width:auto;min-width:auto;max-width:100%;max-height:100%; }
+.items_controls { position:absolute;top:-33px;left: calc(50% - 60px);text-align:center;margin-top:10px; }
+.desktop { background-color:limegreen; }
+.border { border:10px solid rgba(255,255,255,0);border-top:20px solid rgba(255,255,255,0);border-radius:10px;margin-top:33px;padding:0;background-color:rgba(255,255,255,.1); }
+.desktop main { padding:0; max-width:calc(100% - 30px); }
+
+.instrument { display:flex; margin-top:15px; text-align:center; margin-left:5px; }
 .g.hidden, .k.hidden { display: none !important; }
-.k {}
+.k { display: inline-block; margin-left:5px; }
 .k .o, .k .n { display: inline-block; }
 .k .n { padding: 15px 0; position: relative; width: 10px; font-size:.6em; }
 .n._1, .n._6 { margin-left: -5px; }
 .n._3, .n._5, .n._8, .n._10, .n._12 { margin-left: -15px; }
 .n._2, .n._4, .n._7, .n._9, .n._11 { background-color:black; border:1px solid black;color:white; left:-4px; margin-left:-6px; top:-4px; z-index:2; }
 .n._1, .n._3, .n._5, .n._6, .n._8, .n._10, .n._12 { background-color:snow; border:1px solid black; padding-bottom:40px; width:17px; }
-
 .g { background-color:rgba(155,125,100,.6); display:inline-block; padding:3px 5px; }
 .g .sg { background-color:rgba(255,255,255,.75); padding-top:2px; }
-.g .sg .sgn { border-right:2px solid rgba(0,0,0,.25); color: transparent; display:inline-block; margin-left:-4px; max-width:38px; overflow:hidden; width:38px; }
+.g .sg .sgn { border-right:2px solid rgba(0,0,0,.25); color:transparent; display:inline-block; margin-left:-4px; max-width:38px; overflow:hidden; width:38px; }
 .g .sg .sgn:first-child { margin-left:0; }
 .g .sg .sgn.m { color: black; }
 .g .s { border-top: 4px solid grey; display: flex; }
@@ -66,19 +75,16 @@ input[type="number"], select { height:18px; border-radius:5px; border:1px solid 
 .g .s .n { border-right: 2px solid black; line-height: 22px; width: 38px; font-size:.8em; }
 .g .s .n:first-child { border-right: 4px solid white; }
 .g .s .n:last-child { border-right: 4px solid black; }
-
 .g .sgn.w1, .g .w1 { width:80px;min-width:80px;max-width:80px; }
 .g .sgn.w2, .g .w2 { width:68px;min-width:70px;max-width:70px; }
 .g .sgn.w3, .g .w3 { width:58px;min-width:58px;max-width:58px; }
 .g .sgn.w4, .g .w4 { width:49px;min-width:49px;max-width:49px; }
 .g .sgn.w5, .g .w5 { width:42px;min-width:42px;max-width:42px; }
 .g .sgn.w6, .g .w6 { width:36px;min-width:36px;max-width:36px; }
-
 .n { letter-spacing: -3px; }
 .names_hidden .n { color: transparent; }
 .names_shown.g .n, .names_shown .n._1, .names_shown .n._3, .names_shown .n._5, .names_shown .n._6, .names_shown .n._8, .names_shown .n._10, .names_shown .n._12 { color: black; }
 .names_shown .n._2, .names_shown .n._4, .names_shown .n._7, .names_shown .n._9, .names_shown .n._11 { color: white; }
-
 .notes_highlighted .n[data-n="1"], .notes_highlighted.n[data-n="1"] { background-color:#f00; }
 .notes_highlighted .n[data-n="2"], .notes_highlighted.n[data-n="2"] { background-color:#f90; }
 .notes_highlighted .n[data-n="3"], .notes_highlighted.n[data-n="3"] { background-color:#ff0; }
@@ -98,57 +104,13 @@ input[type="number"], select { height:18px; border-radius:5px; border:1px solid 
 .notes_highlighted.names_shown .n[data-n="6"], .names_shown .notes_highlighted.n[data-n="6"] { color:black; }
 .notes_highlighted.names_shown .n[data-n="7"], .names_shown .notes_highlighted.n[data-n="7"] { color:black; }
 
-th.thirds { background-color:rgba(0,200,0,.4) }
-td.thirds { background-color:rgba(0,200,0,.1) }
-th.twos { background-color:rgba(0,0,100,.4) }
-td.twos { background-color:rgba(0,0,100,.1) }
-table .bpm { background-color:black; color:white; width:50px; }
-.border { border:10px solid limegreen; border-top:20px solid limegreen; border-radius:10px; margin-top:33px;}
-.items {
-  background-color:white;
-  position:relative;
-  top:-10px;
-  width:100%;
-  height:calc(100vh - 130px);
-  border-radius:2px;
-  overflow:hidden;
-  background-image:url('images/desktop.jpeg');
-  background-position:center;
-  background-size: 110% 100%;
-  border-bottom:2px solid gray;
-}
-.img_item, .itm {
-  position:absolute;
-  border:1px solid rgba(0,0,0,.75);
-  border-radius:4px;
-  background-color:white;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  touch-action: none;
-  min-height:30px;
-  max-height:100%;
-  overflow-y: auto;
-}
-.controls .btn-group { margin-left:auto; min-width:89px; position:absolute;top:2px;right:4px; }
-.img_item .controls .btn { margin-right:0px; }
-.img_item .controls { position:relative; max-height:24px;text-overflow: ellipsis; overflow:hidden; overflow: hidden; white-space: nowrap;  }
-.img_item .controls strong { text-overflow: ellipsis; padding-right:89px; cursor:default; position:relative; top:1px; }
-.img_item img { height:calc(100% - 40px);width:auto;min-width:auto;max-width:100%;max-height:100%; }
-.max { width:100%;height:100%;top:0;left:0; }
-.items_controls { position:absolute; top: -33px; left: calc(50% - 60px); text-align:center;margin-top:10px; }
-.template { max-width:1210px !important; max-height: 100%; }
-.itm.focus { z-index:6; }
-
-.desktop { background-color:limegreen; }
-.desktop main { padding:0;}
 /* -start _OLD_ TODOLIST
 ......................................................
 [ ]e. chords page
-[ ]f. staff notation view
 [ ]g. frequency spectrum view
-[ ]5. add form & button to generate pseudo random note combinations and highlight them
+[ ]q. staff notation note pad w/ generators
 [ ]6. add buttons to guitar instrument section (submenu?) that allow for tuning & orientation flipping (x & y)
-[ ]8. type to highlight keys mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
+[ ]8. type to highlight notes mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
 [ ]9. MIDI input
 ......................................................
  --end  _OLD_ TODOLIST  */

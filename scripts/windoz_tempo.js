@@ -16,10 +16,10 @@ function fill_table() {
   let table_length = Math.floor((end - bpm_start)/interval);
   let bpm_counter = bpm_start;
   let ms = 60000;
-  for (var i = 0; i <= table_length; i++) {
-    var new_row = row_template.cloneNode(true);
+  for (let i = 0; i <= table_length; i++) {
+    let new_row = row_template.cloneNode(true);
     let quarter_beat_ms = ms/bpm_counter;
-    var ms_array = [
+    let ms_array = [
       Number.parseFloat((quarter_beat_ms*4)).toFixed(4),
       Number.parseFloat((quarter_beat_ms*4*(2/3))).toFixed(4),
       Number.parseFloat((quarter_beat_ms*2)).toFixed(4),
@@ -33,12 +33,12 @@ function fill_table() {
       Number.parseFloat((quarter_beat_ms/8)).toFixed(4),
       Number.parseFloat((quarter_beat_ms/12)).toFixed(4)
     ];
-    var bpm_cell = document.createElement("td");
-    var bpm_cell_bold = document.createElement("strong");
+    let bpm_cell = document.createElement("td");
+    let bpm_cell_bold = document.createElement("strong");
     bpm_cell_bold.innerHTML = bpm_counter;
     bpm_cell.appendChild(bpm_cell_bold);
     new_row.appendChild(bpm_cell);
-    for (var j = 0; j < 12; j++) {
+    for (let j = 0; j < 12; j++) {
       const cell = document.createElement("td");
       cell.dataset.ms = ms_array[j];
       cell.dataset.hz = Number.parseFloat(ms_to_hz(ms_array[j])).toFixed(8);
@@ -52,19 +52,19 @@ function fill_table() {
 }
 
 function table_format(el, format) {
-  var table = el.closest(".template").querySelector("table");
-  var cells_to_update = table.querySelectorAll("td.twos, td.thirds");
+  let table = el.closest(".template").querySelector("table");
+  let cells_to_update = table.querySelectorAll("td.twos, td.thirds");
   for(let i = 0; i < cells_to_update.length; ++i) {
-    var dest;
+    let dest;
     switch (format) {
       case "ms":
-        var hz_btn = el.closest(".template").querySelector("#hz");
+        let hz_btn = el.closest(".template").querySelector("#hz");
         hz_btn.classList.remove("btn-blu");
         el.classList.add("btn-blu");
         dest = Number.parseFloat(cells_to_update[i].dataset.ms).toFixed(2);
         break;
       case "hz":
-        var ms_btn = el.closest(".template").querySelector("#ms");
+        let ms_btn = el.closest(".template").querySelector("#ms");
         ms_btn.classList.remove("btn-blu");
         el.classList.add("btn-blu");
         dest = Number.parseFloat(cells_to_update[i].dataset.hz).toFixed(4);
@@ -73,8 +73,6 @@ function table_format(el, format) {
     cells_to_update[i].innerHTML = dest;
   }
 }
-
-
 
 function add_table() {
   let templates = document.getElementById("items");
@@ -93,16 +91,6 @@ var ttt = `
   <div class="controls">
     <strong>tempo / time / rate</strong>
     <div class="btn-group">
-      <button class="btn" onclick="min(this)">
-        <svg xmlns="http://www.w3.org/2000/svg" style="top:5px;" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-        </svg>
-      </button>
-      <button class="btn" onclick="maximize(this)">
-        <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-        </svg>
-      </button>
       <button class="btn btn-red" onclick="remove(this)">
         <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
