@@ -87,20 +87,14 @@ function hide_instrument(t,b) {
 function clone_template(b) {
   let templates = document.getElementById("items");
   let this_template = b.closest(".template");
-  let sorted_templates = Array.from(templates.querySelectorAll(".template"))
-                              .sort(({ dataset: { id: a } }, { dataset: { id: b } }) => a.localeCompare(b));
   let new_template = this_template.cloneNode(true);
-  new_template.dataset.id = parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1;
   new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
   templates.appendChild(new_template);
 }
 
 function add_template() {
   let templates = document.getElementById("items");
-  let sorted_templates = Array.from(templates.querySelectorAll(".template"))
-                              .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
   let new_template = document.createElement("div");
-  new_template.dataset.id = (sorted_templates.length > 0) ? (parseInt(sorted_templates[sorted_templates.length - 1].dataset.id) + 1) : 1;
   new_template.classList.add("template");
   new_template.classList.add("itm");
   new_template.style.zIndex = parseInt(new Date().getTime() / 1000);

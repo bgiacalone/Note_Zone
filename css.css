@@ -34,7 +34,7 @@ table .bpm { background-color:black; color:white; width:50px; }
 .btn.btn-red { background-color:rgb(200,0,0); color:white; }
 .btn svg { height:11px; width:11px; position:relative; }
 
-.controls { display:flex; flex-direction: row; background-color:#bbb; padding:5px; border-top-left-radius:3px; border-top-right-radius:3px; }
+.controls { display:flex; flex-direction: row; background-color:#bbb; padding:5px; }
 .controls .btn-group { margin-left:auto; min-width:89px; position:absolute;top:2px;right:4px;text-align:right; }
 .scale-form, .range-form { background-color:rgba(0,0,0,.4); border-radius:4px; padding:1px 5px; margin-left:5px; font-family: sans-serif; }
 .range-form label { color: white; font-size:13px; position:relative; top:1px; }

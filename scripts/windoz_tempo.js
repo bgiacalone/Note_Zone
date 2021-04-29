@@ -51,7 +51,7 @@ function fill_table() {
   }
 }
 
-function table_format(el, format) {
+function format_table(el, format) {
   let table = el.closest(".template").querySelector("table");
   let cells_to_update = table.querySelectorAll("td.twos, td.thirds");
   for(let i = 0; i < cells_to_update.length; ++i) {
@@ -109,8 +109,8 @@ var ttt = `
       <button class="btn btn-blu" onclick="fill_table()">OK</button>
     </div>
     <div class="right" style="margin-left:auto;">
-      <button class="btn btn-blu" id="ms" onclick="table_format(this, 'ms')">Milliseconds</button>
-      <button class="btn" id="hz" onclick="table_format(this, 'hz')">Hertz</button>
+      <button class="btn btn-blu" id="ms" onclick="format_table(this, 'ms')">Milliseconds</button>
+      <button class="btn" id="hz" onclick="format_table(this, 'hz')">Hertz</button>
     </div>
   </div>
   <table style="margin:0 auto; width:100%;">

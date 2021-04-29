@@ -72,7 +72,7 @@ function fill_table() {
   }
 }
 
-function table_format(el, format) {
+function format_table(el, format) {
   var table = el.closest("#templates").querySelector("table");
   var cells_to_update = table.querySelectorAll("td.twos, td.thirds");
   for(let i = 0; i < cells_to_update.length; ++i) {
