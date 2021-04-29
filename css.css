@@ -11,10 +11,10 @@ td.thirds { background-color:rgba(0,200,0,.1) }
 th.twos { background-color:rgba(0,0,100,.4) }
 td.twos { background-color:rgba(0,0,100,.1) }
 table .bpm { background-color:black; color:white; width:50px; }
-
+/* -------------------------------------------------------------------------------------------------------- */
 .text-center { text-align:center; }
 .hidden { display: none !important; }
-
+/* -------------------------------------------------------------------------------------------------------- */
 .tn { position:relative; display:flex; background-color:white; width:100%; border-bottom:1px solid rgba(0,0,0,.5); box-shadow:1px 0 8px rgba(0,0,0,.5); z-index:999; }
 .tn_content { display:flex; width:100%; max-width:1390px; margin:0 auto; }
 .tn .logo img, .tn .amburgla img { border-radius:5px; height:50px; }
@@ -27,13 +27,13 @@ table .bpm { background-color:black; color:white; width:50px; }
 .note_logo { height:50px !important; width:50px; }
 .amburgla { margin-left:auto; }
 .amburgla img:hover { filter:invert(100%); }
-
+/* -------------------------------------------------------------------------------------------------------- */
 .btn { background-color:white; color:black; border:1px solid rgba(0,0,0,.5); border-radius:2px; }
 .btn.btn-chromatic { background-image:linear-gradient(to left, violet, purple, rgb(20,40,255), limegreen, yellow, orange, red); color:white; text-shadow:-1px -1px 0 rgba(0,0,0,.6),1px -1px 0 rgba(0,0,0,.6),-1px 1px 0 rgba(0,0,0,.6),1px 1px 0 rgba(0,0,0,.6); }
 .btn.btn-blu { background-color:rgb(30,90,255); color:white; }
 .btn.btn-red { background-color:rgb(200,0,0); color:white; }
 .btn svg { height:11px; width:11px; position:relative; }
-
+/* -------------------------------------------------------------------------------------------------------- */
 .controls { display:flex; flex-direction: row; background-color:#bbb; padding:5px; }
 .controls .btn-group { margin-left:auto; min-width:89px; position:absolute;top:2px;right:4px;text-align:right; }
 .scale-form, .range-form { background-color:rgba(0,0,0,.4); border-radius:4px; padding:1px 5px; margin-left:5px; font-family: sans-serif; }
@@ -44,7 +44,7 @@ table .bpm { background-color:black; color:white; width:50px; }
 .tempo.template { padding-bottom:0px; }
 .template { background-color:#eaeaea; border-radius:4px; margin-bottom:8px; max-height:606px; padding-bottom:5px; }
 .template:not('.itm') { display:flex; justify-content:space-between; flex-direction:column; box-shadow:-2px 2px 4px rgba(0,0,0,.1); border:1px solid #bbb; }
-
+/* -------------------------------------------------------------------------------------------------------- */
 .items { background: no-repeat center/110% 100% url('images/desktop.jpeg'); border-radius:2px; border-bottom:2px solid gray; height:calc(100vh - 130px); overflow:hidden; position:relative; top:-10px; width:100%; }
 .img_item, .itm { background-color:white; border:1px solid rgba(0,0,0,.75); border-radius:4px; box-sizing:border-box; min-height:30px; max-height:100%; overflow:hidden auto; position:absolute; touch-action: none; }
 .img_item .controls .btn { margin-right:0px; }
@@ -61,7 +61,7 @@ table .bpm { background-color:black; color:white; width:50px; }
 .desktop-content { position:relative; }
 .borderZone { border:10px solid rgba(255,255,255,0);border-top:20px solid rgba(255,255,255,0);border-radius:10px;margin-top:33px;padding:0;background-color:rgba(255,255,255,.1); }
 .desktop main { padding:0; max-width:calc(100% - 30px); }
-
+/* -------------------------------------------------------------------------------------------------------- */
 .instrument { display:flex; margin-top:15px; text-align:center; margin-left:5px; }
 .g.hidden, .k.hidden { display: none !important; }
 .k { display: inline-block; margin-left:5px; margin-right:5px; }
@@ -110,13 +110,13 @@ table .bpm { background-color:black; color:white; width:50px; }
 .notes_highlighted.names_shown .n[data-n="6"], .names_shown .notes_highlighted.n[data-n="6"] { color:black; }
 .notes_highlighted.names_shown .n[data-n="7"], .names_shown .notes_highlighted.n[data-n="7"] { color:black; }
 
-/* -start _OLD_ TODOLIST
-......................................................
-[ ]e. chords page
+/* -start \TODOLIST
+............................................................................................................
+[ ]e. chords
 [ ]g. frequency spectrum view
 [ ]q. staff notation note pad w/ generators
-[ ]6. add buttons to guitar instrument section (submenu?) that allow for tuning & orientation flipping (x & y)
+[ ]6. guitar instrument upgrades (submenu?) allow for tuning & orientation flipping (x & y)
 [ ]8. type to highlight notes mode ( like renoise keyboard mapping: z=c,x=d,c=e, etc. )
-[ ]9. MIDI input
-......................................................
- --end  _OLD_ TODOLIST  */
+[ ]9. u s b MIDI input
+............................................................................................................
+ --end  /TODOLIST  */

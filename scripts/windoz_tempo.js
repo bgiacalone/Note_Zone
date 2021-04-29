@@ -2,22 +2,21 @@ function ms_to_hz(ms) {
   return ((1/ms)*1000);
 }
 
-function fill_table() {
-  let bpm_start = parseInt(document.querySelector("div.controls input[id='start']").value);
-  let end = parseInt(document.querySelector("div.controls input[id='end']").value);
-  let interval = parseInt(document.querySelector("div.controls input[id='interval']").value);
-  let row_template = document.createElement("tr");
-  let template_tbody = document.createElement("tbody");
-  let target_table = document.querySelector("div.template table");
-  let target = document.querySelector("div.template tbody");
+function fill_table(n) {
+  let bpm_start = parseInt(n.querySelector("input#start").value);
+  let bpm_end = parseInt(n.querySelector("input#end").value);
+  let interval = parseInt(n.querySelector("input#interval").value);
+  let target_table = n.querySelector("table");
+  let target = n.querySelector("tbody");
+  let new_tbody = document.createElement("tbody");
   target_table.removeChild(target);
-  target_table.appendChild(template_tbody);
-  target = document.querySelector("div.template tbody");
-  let table_length = Math.floor((end - bpm_start)/interval);
+  target_table.appendChild(new_tbody);
+  target = n.querySelector("tbody");
+  let table_length = Math.floor((bpm_end - bpm_start) / interval);
   let bpm_counter = bpm_start;
   let ms = 60000;
   for (let i = 0; i <= table_length; i++) {
-    let new_row = row_template.cloneNode(true);
+    let row = document.createElement("tr");
     let quarter_beat_ms = ms/bpm_counter;
     let ms_array = [
       Number.parseFloat((quarter_beat_ms*4)).toFixed(4),
@@ -37,17 +36,17 @@ function fill_table() {
     let bpm_cell_bold = document.createElement("strong");
     bpm_cell_bold.innerHTML = bpm_counter;
     bpm_cell.appendChild(bpm_cell_bold);
-    new_row.appendChild(bpm_cell);
+    row.appendChild(bpm_cell);
     for (let j = 0; j < 12; j++) {
-      const cell = document.createElement("td");
+      let cell = document.createElement("td");
       cell.dataset.ms = ms_array[j];
       cell.dataset.hz = Number.parseFloat(ms_to_hz(ms_array[j])).toFixed(8);
       cell.innerHTML = Number.parseFloat(ms_array[j]).toFixed(2);
       cell.classList.add( (j % 2 == 0) ? "twos" : "thirds")
-      new_row.appendChild(cell);
+      row.appendChild(cell);
     }
     bpm_counter = bpm_counter + interval;
-    target.appendChild(new_row);
+    target.appendChild(row);
   }
 }
 
@@ -84,7 +83,7 @@ function add_table() {
   new_template.querySelector("tr[id='content']").remove();
   new_template.style.zIndex = parseInt(new Date().getTime() / 1000);
   templates.appendChild(new_template);
-  fill_table();
+  fill_table(new_template);
 }
 
 var ttt = `
@@ -106,7 +105,7 @@ var ttt = `
       <input id="end" class="number_input" type="number"  value="200" min="0" max="500" step="any">
       <label for="interval">interval:</label>
       <input id="interval" class="number_input" type="number" value="1" min="0" step="any">
-      <button class="btn btn-blu" onclick="fill_table()">OK</button>
+      <button class="btn btn-blu" onclick="fill_table(this.closest('.template'))">OK</button>
     </div>
     <div class="right" style="margin-left:auto;">
       <button class="btn btn-blu" id="ms" onclick="format_table(this, 'ms')">Milliseconds</button>
