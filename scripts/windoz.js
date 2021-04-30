@@ -54,6 +54,7 @@ interact('.img_item, .template')
     }
   })
   .draggable({
+    ignoreFrom: '[no-pointer-event]',
     // enable inertial throwing
     inertia: true,
     // keep the element within the area of it's parent

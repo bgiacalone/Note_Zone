@@ -105,6 +105,8 @@ function add_template() {
   name_notes();
 }
 
+
+
 let inst_template = `
   <div class="controls" style="min-height:10px;">
     <div class="btn-group">
@@ -126,7 +128,7 @@ let inst_template = `
   </div>
   <div class="controls">
     <div class="scale-form">
-      <select name="scale tonic" id="tonic">
+      <select name="scale tonic" id="tonic" no-pointer-event>
         <option value="1">C</option>
         <option value="2">C♯</option>
         <option value="2">D♭</option>
@@ -145,7 +147,7 @@ let inst_template = `
         <option value="11">B♭</option>
         <option value="12">B</option>
       </select>
-      <select name="scale mode" id="mode">
+      <select name="scale mode" id="mode" no-pointer-event>
         <option value="0">Ionian mode (Major) [1]</option>
         <option value="3">Dorian mode [2]</option>
         <option value="4">Phrygian mode [3]</option>
