@@ -42,8 +42,8 @@ function add_note(template, n) {
   node_note.setAttribute("fill", "black");
   node_note.setAttribute("stroke", "black");
   node_note.setAttribute("stroke-width", "1.5");
-  node_note.setAttribute("transform", "translate(" + (60 + (35 * note_x)) + "," + (43 - (8.5 * note_y)) + ")");
-  node_note.setAttribute("d", "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" + " M-7,69 v14 M-1,68 v14 M-10,74 L2,72 M-10,79 L2,77");
+  node_note.setAttribute("transform", "translate(" + (60 + (40 * note_x)) + "," + (43 - (8.5 * note_y)) + ")");
+  node_note.setAttribute("d", "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" + " M-5,68 v18 M-1,66 v18 M-8,74 L2,72 M-8,79 L2,77");
   node_note.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
   note_x++;
   note_y++;
