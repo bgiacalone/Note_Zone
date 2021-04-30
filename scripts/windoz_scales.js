@@ -19,7 +19,7 @@ function highlight_scale(b) {
     if (running > 12) {
       running = running - 12;
     }
-    let notes = this_template.querySelectorAll("div[data-n='"+running+"']");
+    let notes = this_template.querySelectorAll("div[data-n='" + running + "']");
     notes.forEach((item, i) => { item.classList.toggle("notes_highlighted"); })
     running += scale_map[scale_mode][i];
   });
@@ -37,17 +37,19 @@ function highlight_scale(b) {
 
 function add_note(template, n) {
   let staff = template.querySelector("#staff");
-  let node_note = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  node_note.classList.add("staffnote");
-  node_note.setAttribute("fill", "black");
-  node_note.setAttribute("stroke", "black");
-  node_note.setAttribute("stroke-width", "1.5");
-  node_note.setAttribute("transform", "translate(" + (60 + (40 * note_x)) + "," + (43 - (8.5 * note_y)) + ")");
-  node_note.setAttribute("d", "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" + " M-5,68 v18 M-1,66 v18 M-8,74 L2,72 M-8,79 L2,77");
-  node_note.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+  let note_path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  let sharp = " M-5,68 v18 M-1,66 v18 M-8,74 L2,72 M-8,79 L2,77";
+  let flat = " M-5,56 v27 M-5,72 C0,67 5,72 -5,83";
+  note_path.classList.add("staffnote");
+  note_path.setAttribute("fill", "black");
+  note_path.setAttribute("stroke", "black");
+  note_path.setAttribute("stroke-width", "1.5");
+  note_path.setAttribute("transform", "translate(" + (60 + (40 * note_x)) + "," + (43 - (8.5 * note_y)) + ")");
+  note_path.setAttribute("d", "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" + flat);
+  note_path.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
   note_x++;
   note_y++;
-  staff.appendChild(node_note);
+  staff.appendChild(note_path);
 }
 
 function clear_scale(b) {
