@@ -46,8 +46,8 @@ table .bpm { background-color:black; color:white; width:50px; }
 .number_input { max-width:50px; }
 .tempo h1 { margin:5px; }
 .tempo.template { padding-bottom:0px; }
+.tempo.controls { width:100%; }
 .template { background-color:#eaeaea; border-radius:4px; margin-bottom:8px; max-height:606px; padding-bottom:5px; }
-.template:not('.itm') { display:flex; justify-content:space-between; flex-direction:column; box-shadow:-2px 2px 4px rgba(0,0,0,.1); border:1px solid #bbb; }
 /* -------------------------------------------------------------------------------------------------------- */
 .items { background: no-repeat center/110% 100% url('images/desktop.jpeg'); border-radius:2px; border-bottom:2px solid gray; height:calc(100vh - 130px); overflow:hidden; position:relative; top:-10px; width:100%; }
 .img_item, .itm { background-color:white; border:1px solid rgba(0,0,0,.75); border-radius:4px; box-sizing:border-box; min-height:30px; max-height:100%; overflow:hidden auto; position:absolute; touch-action: none; }
@@ -60,7 +60,7 @@ table .bpm { background-color:black; color:white; width:50px; }
 .items_controls .btn:hover { background-color:blue; }
 .items_controls .btn:hover svg { filter:invert(100%) }
 .items_controls .btn svg { margin-left: -2px; margin-top: 2px; }
-.desktop .template { max-width:816px !important; }
+.desktop .template:not(.tempo) { max-width:816px !important; }
 .desktop { background-color:limegreen; }
 .desktop-content { position:relative; }
 .borderZone { border:10px solid rgba(255,255,255,0);border-top:20px solid rgba(255,255,255,0);border-radius:10px;margin-top:33px;padding:0;background-color:rgba(255,255,255,.1); }

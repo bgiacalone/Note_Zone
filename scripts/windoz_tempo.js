@@ -109,7 +109,7 @@ var ttt = `
     </div>
     <div class="right" style="margin-left:auto;">
       <button class="btn btn-blu" id="ms" onclick="format_table(this, 'ms')">Milliseconds</button>
-      <button class="btn" id="hz" onclick="format_table(this, 'hz')">Hertz</button>
+      <button class="btn" id="hz" style="margin-right:10px;" onclick="format_table(this, 'hz')">Hertz</button>
     </div>
   </div>
   <table style="margin:0 auto; width:100%;">
