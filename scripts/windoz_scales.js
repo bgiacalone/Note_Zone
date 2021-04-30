@@ -106,9 +106,25 @@ function add_template() {
 }
 
 let inst_template = `
+  <div class="controls" style="min-height:10px;">
+    <div class="btn-group">
+      <!-- <button name="hideKeyboard" class="btn" onclick="hide_instrument(this,'#keyboard');hide_instrument(this,'#guitar');hide_instrument(this,'#staff');">
+        <svg xmlns="http://www.w3.org/2000/svg" style="" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+        </svg>
+      </button> -->
+      <button name="hideKeyboard" class="btn" onclick="hide_instrument(this,'#keyboard')">Keys</button>
+      <button name="hideGuitar" class="btn" onclick="hide_instrument(this,'#guitar')">Guitar</button>
+      <button name="hideStaff" class="btn" onclick="hide_instrument(this,'#staff')">Staff</button>
+      <button id="cloneTemplate" onclick="clone_template(this)" class="btn">Clone</button>
+      <button class="btn btn-red" onclick="remove(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+  </div>
   <div class="controls">
-    <button id="toggleNoteNames" onclick="toggle_note_names(this)" class="btn">Toggle Note Names</button>
-    <button id="toggleChromaticHighlight" class="btn btn-chromatic" onclick="toggle_chromatic_highlight(this)" class="btn btn-chromatic">Toggle Chromatic Highlighting</button>
     <div class="scale-form">
       <select name="scale tonic" id="tonic">
         <option value="1">C</option>
@@ -141,17 +157,8 @@ let inst_template = `
       <button id="scaleHighlight" onclick="highlight_scale(this)" class="btn btn-blu">Highlight Scale</button>
       <button id="clearScaleHighlight" onclick="clear_scale(this)" class="btn">Clear</button>
     </div>
-    <div class="btn-group">
-      <button name="hideKeyboard" class="btn" onclick="hide_instrument(this,'#keyboard')">Keys</button>
-      <button name="hideGuitar" class="btn" onclick="hide_instrument(this,'#guitar')">Guitar</button>
-      <button name="hideStaff" class="btn" onclick="hide_instrument(this,'#staff')">Staff</button>
-      <button id="cloneTemplate" onclick="clone_template(this)" class="btn">Clone</button>
-      <button class="btn btn-red" onclick="remove(this)">
-        <svg xmlns="http://www.w3.org/2000/svg" style="top:2px;" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
-      </button>
-    </div>
+    <button id="toggleNoteNames" onclick="toggle_note_names(this)" class="btn">Names</button>
+    <button id="toggleChromaticHighlight" class="btn btn-chromatic" onclick="toggle_chromatic_highlight(this)" class="btn btn-chromatic">:)</button>
   </div>
   <div class="instrument">
     <div class="k names_hidden" id="keyboard">
@@ -239,40 +246,12 @@ let inst_template = `
         <div class="_11 n" data-o="6" data-n="11"></div>
         <div class="_12 n" data-o="6" data-n="12"></div>
       </div>
-      <div class="o" data-oi="7">
-        <div class="_1 n" data-o="7" data-n="1"></div>
-        <div class="_2 n" data-o="7" data-n="2"></div>
-        <div class="_3 n" data-o="7" data-n="3"></div>
-        <div class="_4 n" data-o="7" data-n="4"></div>
-        <div class="_5 n" data-o="7" data-n="5"></div>
-        <div class="_6 n" data-o="7" data-n="6"></div>
-        <div class="_7 n" data-o="7" data-n="7"></div>
-        <div class="_8 n" data-o="7" data-n="8"></div>
-        <div class="_9 n" data-o="7" data-n="9"></div>
-        <div class="_10 n" data-o="7" data-n="10"></div>
-        <div class="_11 n" data-o="7" data-n="11"></div>
-        <div class="_12 n" data-o="7" data-n="12"></div>
-      </div>
-      <div class="o" data-oi="8">
-        <div class="_1 n" data-o="8" data-n="1"></div>
-        <div class="_2 n" data-o="8" data-n="2"></div>
-        <div class="_3 n" data-o="8" data-n="3"></div>
-        <div class="_4 n" data-o="8" data-n="4"></div>
-        <div class="_5 n" data-o="8" data-n="5"></div>
-        <div class="_6 n" data-o="8" data-n="6"></div>
-        <div class="_7 n" data-o="8" data-n="7"></div>
-        <div class="_8 n" data-o="8" data-n="8"></div>
-        <div class="_9 n" data-o="8" data-n="9"></div>
-        <div class="_10 n" data-o="8" data-n="10"></div>
-        <div class="_11 n" data-o="8" data-n="11"></div>
-        <div class="_12 n" data-o="8" data-n="12"></div>
-      </div>
     </div>
   </div>
   <div class="instrument">
     <div class="g names_hidden" id="guitar">
       <div class="sg">
-        <div class="sgn" data-f="21">_</div>
+        <div class="sgn w5" data-f="21">_</div>
         <div class="sgn w1" data-f="20">_</div>
         <div class="sgn w1" data-f="19">_</div>
         <div class="sgn m w2" data-f="18">o</div>
@@ -296,7 +275,7 @@ let inst_template = `
         <div class="sgn w6" data-f="0">_</div>
       </div>
       <div class="s" data-si="6">
-        <div class="n" data-f="0" data-o="4" data-n="5"></div>
+        <div class="n w5" data-f="0" data-o="4" data-n="5"></div>
         <div class="n w1" data-f="1" data-o="4" data-n="6"></div>
         <div class="n w1" data-f="2" data-o="4" data-n="7"></div>
         <div class="n w2" data-f="3" data-o="4" data-n="8"></div>
@@ -320,7 +299,7 @@ let inst_template = `
         <div class="n w6" data-f="21" data-o="6" data-n="2"></div>
       </div>
       <div class="s" data-si="5">
-        <div class="n" data-f="0" data-o="3" data-n="12"></div>
+        <div class="n w5" data-f="0" data-o="3" data-n="12"></div>
         <div class="n w1" data-f="1" data-o="4" data-n="1"></div>
         <div class="n w1" data-f="2" data-o="4" data-n="2"></div>
         <div class="n w2" data-f="3" data-o="4" data-n="3"></div>
@@ -344,7 +323,7 @@ let inst_template = `
         <div class="n w6" data-f="21" data-o="5" data-n="9"></div>
       </div>
       <div class="s" data-si="4">
-        <div class="n" data-f="0" data-o="3" data-n="8"></div>
+        <div class="n w5" data-f="0" data-o="3" data-n="8"></div>
         <div class="n w1" data-f="1" data-o="3" data-n="9"></div>
         <div class="n w1" data-f="2" data-o="3" data-n="10"></div>
         <div class="n w2" data-f="3" data-o="3" data-n="11"></div>
@@ -368,7 +347,7 @@ let inst_template = `
         <div class="n w6" data-f="21" data-o="5" data-n="5"></div>
       </div>
       <div class="s" data-si="3">
-        <div class="n" data-f="0" data-o="3" data-n="3"></div>
+        <div class="n w5" data-f="0" data-o="3" data-n="3"></div>
         <div class="n w1" data-f="1" data-o="3" data-n="4"></div>
         <div class="n w1" data-f="2" data-o="3" data-n="5"></div>
         <div class="n w2" data-f="3" data-o="3" data-n="6"></div>
@@ -392,7 +371,7 @@ let inst_template = `
         <div class="n w6" data-f="21" data-o="4" data-n="12"></div>
       </div>
       <div class="s" data-si="2">
-        <div class="n" data-f="0" data-o="2" data-n="10"></div>
+        <div class="n w5" data-f="0" data-o="2" data-n="10"></div>
         <div class="n w1" data-f="1" data-o="2" data-n="11"></div>
         <div class="n w1" data-f="2" data-o="2" data-n="12"></div>
         <div class="n w2" data-f="3" data-o="3" data-n="1"></div>
@@ -416,7 +395,7 @@ let inst_template = `
         <div class="n w6" data-f="21" data-o="4" data-n="7"></div>
       </div>
       <div class="s" data-si="1">
-        <div class="n" data-f="0" data-o="2" data-n="5"></div>
+        <div class="n w5" data-f="0" data-o="2" data-n="5"></div>
         <div class="n w1" data-f="1" data-o="2" data-n="6"></div>
         <div class="n w1" data-f="2" data-o="2" data-n="7"></div>
         <div class="n w2" data-f="3" data-o="2" data-n="8"></div>
