@@ -4,17 +4,19 @@ function highlight_scale(b) {
   clear_scale(b);
   note_x = 0;
   let this_template = b.closest(".template");
-  let scale_map = [ [2,2,1,2,2,2,1],
-                    [2,1,2,2,1,2,2],
-                    [1,2,2,1,2,2,2],
-                    [2,1,2,2,2,1,2],
-                    [1,2,2,2,1,2,2],
-                    [2,2,2,1,2,2,1],
-                    [2,2,1,2,2,1,2] ];
-  let scale_tonic = this_template.querySelector("select#tonic").value;
-  let scale_tonic_name = this_template.querySelector(`option[value="${+scale_tonic}"]`).innerHTML;
+  const staff_lines = [1,3,5,6,8,10,12]; //c d e f g a b  /  // c e g b d f a
+  const seventeen = { 'C': 1, 'C♯': 2, 'D♭': 2, 'D': 3, 'D♯': 4, 'E♭': 4, 'E': 5, 'F': 6,
+                      'F♯': 7, 'G♭': 7, 'G': 8, 'G♯': 9, 'A♭': 9, 'A': 10, 'A♯': 11, 'B♭': 11, 'B': 12 };
+  const scale_map = [ [2,2,1,2,2,2,1],
+                      [2,1,2,2,1,2,2],
+                      [1,2,2,1,2,2,2],
+                      [2,1,2,2,2,1,2],
+                      [1,2,2,2,1,2,2],
+                      [2,2,2,1,2,2,1],
+                      [2,2,1,2,2,1,2] ];
+  let scale_tonic = seventeen[this_template.querySelector("select#tonic").value];
   let scale_mode = this_template.querySelector("select#mode").value;
-  let running = +scale_tonic;
+  let running = scale_tonic;
   scale_map[scale_mode].forEach((item, i) => {
     if (running > 12) {
       running = running - 12;
@@ -24,15 +26,26 @@ function highlight_scale(b) {
     running += scale_map[scale_mode][i];
   });
 
-  let staff_lines = [1,3,5,6,8,10,12];
-  let notes_to_highlight = [];
-  let note_run = staff_lines.indexOf(+scale_tonic) + 1;
+  let notes_to_draw = [];
+  let tonc;
+  if (staff_lines.indexOf(scale_tonic) >= 0) {
+    tonc = staff_lines.indexOf(scale_tonic) + 1;
+  } else {
+    let inpt = this_template.querySelector("select#tonic").value;
+    let chry = inpt.split("");
+    if (chry[1] == "♭") {
+      tonc = staff_lines.indexOf(scale_tonic + 1) + 1;
+    } else if (chry[1] == "♯") {
+      tonc = staff_lines.indexOf(scale_tonic - 1) + 1;
+    }
+  }
+  let note_run = tonc;
   scale_map[scale_mode].forEach((item, i) => {
-    notes_to_highlight.push(note_run);
+    notes_to_draw.push(note_run);
     note_run = note_run + scale_map[scale_mode][i];
   });
-  note_y = staff_lines.indexOf(+scale_tonic) + 1;
-  notes_to_highlight.forEach((item, i) => { add_note(this_template, item); });
+  note_y = tonc;
+  notes_to_draw.forEach((item, i) => { add_note(this_template, item); });
 }
 
 function add_note(template, n) {
@@ -129,23 +142,23 @@ let inst_template = `
   <div class="controls">
     <div class="scale-form">
       <select name="scale tonic" id="tonic" no-pointer-event>
-        <option value="1">C</option>
-        <option value="2">C♯</option>
-        <option value="2">D♭</option>
-        <option value="3">D</option>
-        <option value="4">D♯</option>
-        <option value="4">E♭</option>
-        <option value="5">E</option>
-        <option value="6">F</option>
-        <option value="7">F♯</option>
-        <option value="7">G♭</option>
-        <option value="8">G</option>
-        <option value="9">G♯</option>
-        <option value="9">A♭</option>
-        <option value="10">A</option>
-        <option value="11">A♯</option>
-        <option value="11">B♭</option>
-        <option value="12">B</option>
+        <option value="C">C</option>
+        <option value="C♯">C♯</option>
+        <option value="D♭">D♭</option>
+        <option value="D">D</option>
+        <option value="D♯">D♯</option>
+        <option value="E♭">E♭</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="F♯">F♯</option>
+        <option value="G♭">G♭</option>
+        <option value="G">G</option>
+        <option value="G♯">G♯</option>
+        <option value="A♭">A♭</option>
+        <option value="A">A</option>
+        <option value="A♯">A♯</option>
+        <option value="B♭">B♭</option>
+        <option value="B">B</option>
       </select>
       <select name="scale mode" id="mode" no-pointer-event>
         <option value="0">Ionian mode (Major) [1]</option>
