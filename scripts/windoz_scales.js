@@ -3,8 +3,7 @@ let note_y = 0;
 function highlight_scale(b) {
   clear_scale(b);
   note_x = 0;
-  let this_template = b.closest(".template");
-  const staff_lines = [1,3,5,6,8,10,12]; //c d e f g a b  /  // c e g b d f a
+  const staff_lines = [1,3,5,6,8,10,12];
   const seventeen = { 'C': 1, 'C♯': 2, 'D♭': 2, 'D': 3, 'D♯': 4, 'E♭': 4, 'E': 5, 'F': 6,
                       'F♯': 7, 'G♭': 7, 'G': 8, 'G♯': 9, 'A♭': 9, 'A': 10, 'A♯': 11, 'B♭': 11, 'B': 12 };
   const scale_map = [ [2,2,1,2,2,2,1],
@@ -14,6 +13,8 @@ function highlight_scale(b) {
                       [1,2,2,2,1,2,2],
                       [2,2,2,1,2,2,1],
                       [2,2,1,2,2,1,2] ];
+
+  let this_template = b.closest(".template");
   let scale_tonic = seventeen[this_template.querySelector("select#tonic").value];
   let scale_mode = this_template.querySelector("select#mode").value;
   let running = scale_tonic;
@@ -26,44 +27,135 @@ function highlight_scale(b) {
     running += scale_map[scale_mode][i];
   });
 
-  let notes_to_draw = [];
   let tonc;
+  let sign = 'natural';
   if (staff_lines.indexOf(scale_tonic) >= 0) {
     tonc = staff_lines.indexOf(scale_tonic) + 1;
   } else {
-    let inpt = this_template.querySelector("select#tonic").value;
-    let chry = inpt.split("");
+    let chry = this_template.querySelector("select#tonic").value.split("");
     if (chry[1] == "♭") {
+      sign = 'flat';
       tonc = staff_lines.indexOf(scale_tonic + 1) + 1;
     } else if (chry[1] == "♯") {
+      sign = 'sharp';
       tonc = staff_lines.indexOf(scale_tonic - 1) + 1;
     }
   }
-  let note_run = tonc;
-  scale_map[scale_mode].forEach((item, i) => {
-    notes_to_draw.push(note_run);
-    note_run = note_run + scale_map[scale_mode][i];
-  });
+
   note_y = tonc;
-  notes_to_draw.forEach((item, i) => { add_note(this_template, item); });
+  const seven = ['C','D','E','F','G','A','B'];
+  const flat = "♭";
+  const doubleflat = "♭♭";
+  const sharp = "♯";
+  const doublesharp = "♯♯";
+  let names = [this_template.querySelector("select#tonic").value];
+  let current_note_name;
+  let note_number = scale_tonic;
+  console.log("----------------------------------------------------------");
+  console.log("scale tonic ::: " + scale_tonic);
+  scale_map[scale_mode].forEach((item, i) => {
+    if (note_number > 12) { note_number -= 12; }
+    console.log("---------------------------");
+    console.log("note number ::: " + note_number);
+    let distance_of_note_number_from_tonic;
+    let distance_of_newname_number_from_tonic;
+    let offset;
+    if (i == 0) {
+      current_note_name = this_template.querySelector("select#tonic").value;
+      distance_of_note_number_from_tonic = 0;
+      distance_of_newname_number_from_tonic = 0;
+      add_note(this_template, sign);
+    } else {
+      let newname = current_note_name.split("")[0];
+      let interval;
+      if (seven.indexOf(newname) == 6) {
+        interval = -6;
+      } else {
+        interval = 1;
+      }
+      let nextname = seven[seven.indexOf(newname) + interval];
+      let newname_number = seventeen[nextname];
+      distance_of_note_number_from_tonic = note_number - scale_tonic;
+      distance_of_newname_number_from_tonic = newname_number - scale_tonic;
+      offset =  distance_of_note_number_from_tonic - distance_of_newname_number_from_tonic;
+      let per_note_sign;
+      switch (offset) {
+        case -2:
+          nextname += doubleflat;
+          per_note_sign = "doubleflat";
+          break;
+        case -1:
+          nextname += flat;
+          per_note_sign = "flat";
+          break;
+        case 1:
+          nextname += sharp;
+          per_note_sign = "sharp";
+          break;
+        case 2:
+          nextname += doublesharp;
+          per_note_sign = "doublesharp";
+          break;
+      }
+      newname = nextname;
+      current_note_name = newname;
+      names.push(newname);
+      add_note(this_template, per_note_sign);
+    }
+    note_number = note_number + scale_map[scale_mode][i];
+    console.log("current name ::: " + current_note_name);
+    console.log("dst from tonic (name dst) ::: " + distance_of_note_number_from_tonic + ` (${distance_of_newname_number_from_tonic})`);
+    console.log("offset of dsts ::: " + offset);
+  });
+  console.log(names);
+
+  // let notes_to_draw = [];
+  // let note_run = tonc;
+  // scale_map[scale_mode].forEach((item, i) => {
+  //   notes_to_draw.push(note_run);
+  //   note_run = note_run + scale_map[scale_mode][i];
+  // });
+  // notes_to_draw.forEach((item, i) => {
+  //   add_note(this_template, sign);
+  // });
 }
 
-function add_note(template, n) {
+function add_note(template, s) {
   let staff = template.querySelector("#staff");
   let note_path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   let sharp = " M-5,68 v18 M-1,66 v18 M-8,74 L2,72 M-8,79 L2,77";
   let flat = " M-5,56 v27 M-5,72 C0,67 5,72 -5,83";
+  let d = "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57";
+  switch (s) {
+    case "flat":
+      d += flat;
+      break;
+    case "doubleflat":
+      d += flat;
+      d += flat;
+      break;
+    case "sharp":
+      d += sharp;
+      break;
+    case "doublesharp":
+      d += sharp;
+      d += sharp;
+      break;
+  }
   note_path.classList.add("staffnote");
   note_path.setAttribute("fill", "black");
   note_path.setAttribute("stroke", "black");
   note_path.setAttribute("stroke-width", "1.5");
   note_path.setAttribute("transform", "translate(" + (60 + (40 * note_x)) + "," + (43 - (8.5 * note_y)) + ")");
-  note_path.setAttribute("d", "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57" + flat);
+  note_path.setAttribute("d", d);
   note_path.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
   note_x++;
   note_y++;
   staff.appendChild(note_path);
 }
+
+
+
 
 function clear_scale(b) {
   let this_template = b.closest(".template");
