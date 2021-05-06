@@ -4,6 +4,7 @@ function highlight_scale(b) {
   clear_scale(b);
   note_x = 0;
   const staff_lines = [1,3,5,6,8,10,12];
+  const seven = ['C','D','E','F','G','A','B'];
   const seventeen = { 'C': 1, 'C♯': 2, 'D♭': 2, 'D': 3, 'D♯': 4, 'E♭': 4, 'E': 5, 'F': 6,
                       'F♯': 7, 'G♭': 7, 'G': 8, 'G♯': 9, 'A♭': 9, 'A': 10, 'A♯': 11, 'B♭': 11, 'B': 12 };
   const scale_map = [ [2,2,1,2,2,2,1],
@@ -13,7 +14,10 @@ function highlight_scale(b) {
                       [1,2,2,2,1,2,2],
                       [2,2,2,1,2,2,1],
                       [2,2,1,2,2,1,2] ];
-
+  const flat = "♭";
+  const doubleflat = "♭♭";
+  const sharp = "♯";
+  const doublesharp = "♯♯";
   let this_template = b.closest(".template");
   let scale_tonic = seventeen[this_template.querySelector("select#tonic").value];
   let scale_mode = this_template.querySelector("select#mode").value;
@@ -43,23 +47,13 @@ function highlight_scale(b) {
   }
 
   note_y = tonc;
-  const seven = ['C','D','E','F','G','A','B'];
-  const flat = "♭";
-  const doubleflat = "♭♭";
-  const sharp = "♯";
-  const doublesharp = "♯♯";
   let names = [this_template.querySelector("select#tonic").value];
-  let current_note_name;
-  let note_number = scale_tonic;
+  let current_note_name, note_number = scale_tonic;
   console.log("----------------------------------------------------------");
   console.log("scale tonic ::: " + scale_tonic);
   scale_map[scale_mode].forEach((item, i) => {
-    if (note_number > 12) { note_number -= 12; }
-    console.log("---------------------------");
-    console.log("note number ::: " + note_number);
-    let distance_of_note_number_from_tonic;
-    let distance_of_newname_number_from_tonic;
-    let offset;
+    if (note_number >= 13) { note_number -= 12; }
+    let distance_of_note_number_from_tonic, distance_of_newname_number_from_tonic, offset;
     if (i == 0) {
       current_note_name = this_template.querySelector("select#tonic").value;
       distance_of_note_number_from_tonic = 0;
@@ -102,44 +96,34 @@ function highlight_scale(b) {
       names.push(newname);
       add_note(this_template, per_note_sign);
     }
-    note_number = note_number + scale_map[scale_mode][i];
-    console.log("current name ::: " + current_note_name);
+    console.log("--------------------------- \n note ::: " + current_note_name + `(${note_number})`);
     console.log("dst from tonic (name dst) ::: " + distance_of_note_number_from_tonic + ` (${distance_of_newname_number_from_tonic})`);
     console.log("offset of dsts ::: " + offset);
+    note_number = note_number + scale_map[scale_mode][i];
   });
   console.log(names);
-
-  // let notes_to_draw = [];
-  // let note_run = tonc;
-  // scale_map[scale_mode].forEach((item, i) => {
-  //   notes_to_draw.push(note_run);
-  //   note_run = note_run + scale_map[scale_mode][i];
-  // });
-  // notes_to_draw.forEach((item, i) => {
-  //   add_note(this_template, sign);
-  // });
 }
 
 function add_note(template, s) {
   let staff = template.querySelector("#staff");
   let note_path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   let sharp = " M-5,68 v18 M-1,66 v18 M-8,74 L2,72 M-8,79 L2,77";
+  let doublesharp = " M-5,68 v18 M-1,66 v18 M-8,34 L2,72 M-8,79 L2,37 M-5,34 v18 M-1,66 v18 M-8,74 L2,72 M-8,79 L2,77";
   let flat = " M-5,56 v27 M-5,72 C0,67 5,72 -5,83";
+  let doubleflat = " M-5,26 v27 M-5,42 C0,67 5,62 -5,83 M-5,56 v27 M-5,72 C0,67 5,62 -5,83";
   let d = "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57";
   switch (s) {
     case "flat":
       d += flat;
       break;
     case "doubleflat":
-      d += flat;
-      d += flat;
+      d += doubleflat;
       break;
     case "sharp":
       d += sharp;
       break;
     case "doublesharp":
-      d += sharp;
-      d += sharp;
+      d += doublesharp;
       break;
   }
   note_path.classList.add("staffnote");
