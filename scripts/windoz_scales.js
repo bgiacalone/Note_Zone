@@ -1,8 +1,13 @@
 let note_x = 0;
 let note_y = 0;
 function highlight_scale(b) {
-  clear_scale(b);
   note_x = 0;
+  clear_scale(b);
+  const here = b.closest(".template");
+  const flat = "♭";
+  const doubleflat = "♭♭";
+  const sharp = "♯";
+  const doublesharp = "♯♯";
   const staff_lines = [1,3,5,6,8,10,12];
   const seven = ['C','D','E','F','G','A','B'];
   const seventeen = { 'C': 1, 'C♯': 2, 'D♭': 2, 'D': 3, 'D♯': 4, 'E♭': 4, 'E': 5, 'F': 6,
@@ -14,94 +19,82 @@ function highlight_scale(b) {
                       [1,2,2,2,1,2,2],
                       [2,2,2,1,2,2,1],
                       [2,2,1,2,2,1,2] ];
-  const flat = "♭";
-  const doubleflat = "♭♭";
-  const sharp = "♯";
-  const doublesharp = "♯♯";
-  let this_template = b.closest(".template");
-  let scale_tonic = seventeen[this_template.querySelector("select#tonic").value];
-  let scale_mode = this_template.querySelector("select#mode").value;
-  let running = scale_tonic;
-  scale_map[scale_mode].forEach((item, i) => {
-    if (running > 12) {
-      running = running - 12;
-    }
-    let notes = this_template.querySelectorAll("div[data-n='" + running + "']");
-    notes.forEach((item, i) => { item.classList.toggle("notes_highlighted"); })
-    running += scale_map[scale_mode][i];
-  });
 
-  let tonc;
-  let sign = 'natural';
-  if (staff_lines.indexOf(scale_tonic) >= 0) {
-    tonc = staff_lines.indexOf(scale_tonic) + 1;
+  let scale_tonic = [seventeen[here.querySelector("#tonic").value], here.querySelector("#tonic").value];
+  let scale_mode = here.querySelector("#mode").value;
+
+  let tonc, sign = 'natural';
+  if (staff_lines.indexOf(scale_tonic[0]) >= 0) {
+    tonc = staff_lines.indexOf(scale_tonic[0]) + 1;
   } else {
-    let chry = this_template.querySelector("select#tonic").value.split("");
-    if (chry[1] == "♭") {
-      sign = 'flat';
-      tonc = staff_lines.indexOf(scale_tonic + 1) + 1;
-    } else if (chry[1] == "♯") {
-      sign = 'sharp';
-      tonc = staff_lines.indexOf(scale_tonic - 1) + 1;
+    switch (scale_tonic[1].value.split("")[1]) {
+      case  "♭":
+        sign = 'flat';
+        tonc = staff_lines.indexOf(scale_tonic[0] + 1) + 1; break;
+      case "♯":
+        sign = 'sharp';
+        tonc = staff_lines.indexOf(scale_tonic[0] - 1) + 1; break;
     }
   }
-
   note_y = tonc;
-  let names = [this_template.querySelector("select#tonic").value];
-  let current_note_name, note_number = scale_tonic;
+
+  let current_note_name, names = [];
+  let note_number = scale_tonic[0];
+  let running = scale_tonic[0];
   console.log("--------------------- scale tonic ::: " + scale_tonic + "---------------------");
   scale_map[scale_mode].forEach((item, i) => {
-    // if (note_number >= 13) { note_number -= 12; }
-    let distance_of_note_number_from_tonic, distance_of_newname_number_from_tonic, offset;
+    let distance_of_note_number_from_tonic, distance_of_newname_number_from_tonic, offset, newname, newname_number;
+
+    if (running > 12) { running = running - 12; }
+    let notes = here.querySelectorAll("div[data-n='" + running + "']");
+    notes.forEach((item, i) => { item.classList.toggle("notes_highlighted"); })
+    running += scale_map[scale_mode][i];
+
     if (i == 0) {
-      current_note_name = this_template.querySelector("select#tonic").value;
-      distance_of_note_number_from_tonic =
-        distance_of_newname_number_from_tonic =
-          offset = 0;
-      add_note(this_template, sign);
+      current_note_name = scale_tonic[1];
+      distance_of_note_number_from_tonic = distance_of_newname_number_from_tonic = offset = 0;
+      names.push(scale_tonic[1]);
+      add_note(here, sign);
     } else {
-      let newname = current_note_name.split("")[0];
+      newname = current_note_name.split("")[0];
       let interval;
       if (seven.indexOf(newname) == 6) {
         interval = -6;
       } else {
         interval = 1;
       }
-      let nextname = seven[seven.indexOf(newname) + interval];
-      let newname_number = seventeen[nextname];
-      console.log("nextname : : : "+nextname);
-      console.log("newname_number : : : "+newname_number);
-      distance_of_note_number_from_tonic = note_number - scale_tonic;
-      distance_of_newname_number_from_tonic = newname_number - scale_tonic;
-      if (distance_of_newname_number_from_tonic < 0 &&
-          distance_of_note_number_from_tonic > 0) {
-          distance_of_note_number_from_tonic *= -1;
+      newname = seven[seven.indexOf(newname) + interval];
+      newname_number = seventeen[newname];
+      distance_of_note_number_from_tonic = note_number - scale_tonic[0];
+      distance_of_newname_number_from_tonic = newname_number - scale_tonic[0];
+      if (distance_of_newname_number_from_tonic < 0 && distance_of_note_number_from_tonic > 0) {
+        distance_of_note_number_from_tonic *= -1;
       }
-      offset =  distance_of_note_number_from_tonic - distance_of_newname_number_from_tonic;
+      offset = distance_of_note_number_from_tonic - distance_of_newname_number_from_tonic;
       let per_note_sign;
       switch (offset) {
         case -2:
-          nextname += doubleflat;
+          newname += doubleflat;
           per_note_sign = "doubleflat";
           break;
         case -1:
-          nextname += flat;
+          newname += flat;
           per_note_sign = "flat";
           break;
         case 1:
-          nextname += sharp;
+          newname += sharp;
           per_note_sign = "sharp";
           break;
         case 2:
-          nextname += doublesharp;
+          newname += doublesharp;
           per_note_sign = "doublesharp";
           break;
       }
-      newname = nextname;
       current_note_name = newname;
       names.push(newname);
-      add_note(this_template, per_note_sign);
+      add_note(here, per_note_sign);
     }
+    console.log("newname ::: " + newname + "  newname_number ::: " + newname_number);
     console.log("current_note_name ::: " + current_note_name + "  note_number ::: " + note_number);
     console.log("distance_of_note_number_from_tonic ::: " + distance_of_note_number_from_tonic);
     console.log("distance_of_newname_number_from_tonic ::: " + distance_of_newname_number_from_tonic);
