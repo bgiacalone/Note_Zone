@@ -61,7 +61,7 @@ table .bpm { background-color:black; color:white; width:50px; }
 .items_controls .btn:hover svg { filter:invert(100%) }
 .items_controls .btn svg { margin-left: -2px; margin-top: 2px; }
 .desktop .template:not(.tempo) { max-width:816px !important; }
-.desktop { background-color:limegreen; }
+.desktop { background-color:beige; }
 .desktop-content { position:relative; }
 .borderZone { border:10px solid rgba(255,255,255,0);border-top:20px solid rgba(255,255,255,0);border-radius:10px;margin-top:33px;padding:0;background-color:rgba(255,255,255,.1); }
 .desktop main { padding:0; max-width:calc(100% - 30px); }
