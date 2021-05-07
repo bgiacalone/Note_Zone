@@ -52,12 +52,13 @@ function highlight_scale(b) {
   console.log("----------------------------------------------------------");
   console.log("scale tonic ::: " + scale_tonic);
   scale_map[scale_mode].forEach((item, i) => {
-    if (note_number >= 13) { note_number -= 12; }
+    // if (note_number >= 13) { note_number -= 12; }
     let distance_of_note_number_from_tonic, distance_of_newname_number_from_tonic, offset;
     if (i == 0) {
       current_note_name = this_template.querySelector("select#tonic").value;
-      distance_of_note_number_from_tonic = 0;
-      distance_of_newname_number_from_tonic = 0;
+      distance_of_note_number_from_tonic =
+        distance_of_newname_number_from_tonic =
+          offset = 0;
       add_note(this_template, sign);
     } else {
       let newname = current_note_name.split("")[0];
@@ -71,6 +72,10 @@ function highlight_scale(b) {
       let newname_number = seventeen[nextname];
       distance_of_note_number_from_tonic = note_number - scale_tonic;
       distance_of_newname_number_from_tonic = newname_number - scale_tonic;
+      if (distance_of_newname_number_from_tonic < 0 &&
+          distance_of_note_number_from_tonic > 0) {
+          distance_of_note_number_from_tonic *= -1;
+      }
       offset =  distance_of_note_number_from_tonic - distance_of_newname_number_from_tonic;
       let per_note_sign;
       switch (offset) {
