@@ -113,7 +113,7 @@ function add_note(template, s) {
   let staff = template.querySelector("#staff");
   let note_path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   let sharp = " M-5,68 v18 M-1,66 v18 M-8,74 L2,72 M-8,79 L2,77";
-  let doublesharp = " M-5,68 v18 M-1,66 v18 M-8,34 L2,72 M-8,79 L2,37 M-5,34 v18 M-1,66 v18 M-8,74 L2,72 M-8,79 L2,77";
+  let doublesharp = sharp + " M-5,48 v18 M-1,46 v18 M-8,54 L2,52 M-8,59 L2,57";
   let flat = " M-5,56 v27 M-5,72 C0,67 5,72 -5,83";
   let doubleflat = " M-5,26 v27 M-5,42 C0,67 5,62 -5,83 M-5,56 v27 M-5,72 C0,67 5,62 -5,83";
   let d = "M20,76 C15,86 0,86 5,76 S25,66 20,76 m.85,-2 v-57";
