@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-  add_template();
-  fill_template();
+  add_table();
+  fill_table();
 });
 
 function ms_to_hz(ms) {
   return ((1/ms)*1000);
 }
 
-function add_template() {
+function add_table() {
   let templates = document.getElementById("templates");
   var sorted_templates = Array.from(templates.querySelectorAll(".template"))
                               .sort(({dataset: {id: a}}, {dataset: {id: b}}) => a.localeCompare(b));
@@ -19,7 +19,7 @@ function add_template() {
   templates.appendChild(new_template);
 }
 
-function fill_template() {
+function fill_table() {
   let bpm_start = parseInt(document.querySelector("div.controls input[id='start']").value);
   let end = parseInt(document.querySelector("div.controls input[id='end']").value);
   let interval = parseInt(document.querySelector("div.controls input[id='interval']").value);
@@ -41,32 +41,18 @@ function fill_template() {
     var new_row = row_template.cloneNode(true);
     let quarter_beat_ms = ms/bpm_counter;
     var ms_array = [
-      Number.parseFloat((quarter_beat_ms*4)).toFixed(2),
-      Number.parseFloat((quarter_beat_ms*4*(2/3))).toFixed(2),
-      Number.parseFloat((quarter_beat_ms*2)).toFixed(2),
-      Number.parseFloat((quarter_beat_ms*4*(1/3))).toFixed(2),
-      Number.parseFloat((quarter_beat_ms)).toFixed(2),
-      Number.parseFloat((quarter_beat_ms*4*(1/6))).toFixed(2),
-      Number.parseFloat((quarter_beat_ms/2)).toFixed(2),
-      Number.parseFloat((quarter_beat_ms/3)).toFixed(2),
-      Number.parseFloat((quarter_beat_ms/4)).toFixed(2),
-      Number.parseFloat((quarter_beat_ms/6)).toFixed(2),
-      Number.parseFloat((quarter_beat_ms/8)).toFixed(2),
-      Number.parseFloat((quarter_beat_ms/12)).toFixed(2)
-    ];
-    var hz_array = [
-      ms_to_hz(Number.parseFloat((quarter_beat_ms*4)).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms*4*(2/3))).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms*2)).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms*4*(1/3))).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms)).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms*4*(1/6))).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms/2)).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms/3)).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms/4)).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms/6)).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms/8)).toFixed(2)),
-      ms_to_hz(Number.parseFloat((quarter_beat_ms/12)).toFixed(2))
+      Number.parseFloat((quarter_beat_ms*4)).toFixed(4),
+      Number.parseFloat((quarter_beat_ms*4*(2/3))).toFixed(4),
+      Number.parseFloat((quarter_beat_ms*2)).toFixed(4),
+      Number.parseFloat((quarter_beat_ms*4*(1/3))).toFixed(4),
+      Number.parseFloat((quarter_beat_ms)).toFixed(4),
+      Number.parseFloat((quarter_beat_ms*4*(1/6))).toFixed(4),
+      Number.parseFloat((quarter_beat_ms/2)).toFixed(4),
+      Number.parseFloat((quarter_beat_ms/3)).toFixed(4),
+      Number.parseFloat((quarter_beat_ms/4)).toFixed(4),
+      Number.parseFloat((quarter_beat_ms/6)).toFixed(4),
+      Number.parseFloat((quarter_beat_ms/8)).toFixed(4),
+      Number.parseFloat((quarter_beat_ms/12)).toFixed(4)
     ];
     var bpm_cell = document.createElement("td");
     var bpm_cell_bold = document.createElement("strong");
@@ -76,8 +62,8 @@ function fill_template() {
     for (var j = 0; j < 12; j++) {
       const cell = document.createElement("td");
       cell.dataset.ms = ms_array[j];
-      cell.dataset.hz = hz_array[j];
-      cell.innerHTML = ms_array[j];
+      cell.dataset.hz = Number.parseFloat(ms_to_hz(ms_array[j])).toFixed(8);
+      cell.innerHTML = Number.parseFloat(ms_array[j]).toFixed(2);
       cell.classList.add( (j % 2 == 0) ? "twos" : "thirds")
       new_row.appendChild(cell);
     }
@@ -86,23 +72,23 @@ function fill_template() {
   }
 }
 
-function table_format(el, format) {
+function format_table(el, format) {
   var table = el.closest("#templates").querySelector("table");
-  var cells_to_update = table.querySelectorAll('td.twos, td.thirds');
+  var cells_to_update = table.querySelectorAll("td.twos, td.thirds");
   for(let i = 0; i < cells_to_update.length; ++i) {
     var dest;
     switch (format) {
-      case 'ms':
-        el.classList.add('btn-blu');
+      case "ms":
         var hz_btn = el.closest("#templates").querySelector("#hz");
         hz_btn.classList.remove("btn-blu");
-        dest = cells_to_update[i].dataset.ms;
+        el.classList.add("btn-blu");
+        dest = Number.parseFloat(cells_to_update[i].dataset.ms).toFixed(2);
         break;
-      case 'hz':
-        el.classList.add('btn-blu');
+      case "hz":
         var ms_btn = el.closest("#templates").querySelector("#ms");
         ms_btn.classList.remove("btn-blu");
-        dest = Number.parseFloat(cells_to_update[i].dataset.hz).toFixed(3);
+        el.classList.add("btn-blu");
+        dest = Number.parseFloat(cells_to_update[i].dataset.hz).toFixed(4);
         break;
     }
     cells_to_update[i].innerHTML = dest;
