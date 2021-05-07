@@ -22,12 +22,11 @@ function highlight_scale(b) {
 
   let scale_tonic = [seventeen[here.querySelector("#tonic").value], here.querySelector("#tonic").value];
   let scale_mode = here.querySelector("#mode").value;
-
   let tonc, sign = 'natural';
   if (staff_lines.indexOf(scale_tonic[0]) >= 0) {
     tonc = staff_lines.indexOf(scale_tonic[0]) + 1;
   } else {
-    switch (scale_tonic[1].value.split("")[1]) {
+    switch (scale_tonic[1].split("")[1]) {
       case  "♭":
         sign = 'flat';
         tonc = staff_lines.indexOf(scale_tonic[0] + 1) + 1; break;
@@ -38,66 +37,60 @@ function highlight_scale(b) {
   }
   note_y = tonc;
 
-  let current_note_name, names = [];
+  let note_name, names = [];
   let note_number = scale_tonic[0];
   let running = scale_tonic[0];
   console.log("--------------------- scale tonic ::: " + scale_tonic + "---------------------");
   scale_map[scale_mode].forEach((item, i) => {
-    let distance_of_note_number_from_tonic, distance_of_newname_number_from_tonic, offset, newname, newname_number;
-
+    let distance_of_note_number_from_tonic, distance_of_note_name_number_from_tonic, offset, note_name_number;
     if (running > 12) { running = running - 12; }
     let notes = here.querySelectorAll("div[data-n='" + running + "']");
     notes.forEach((item, i) => { item.classList.toggle("notes_highlighted"); })
     running += scale_map[scale_mode][i];
 
     if (i == 0) {
-      current_note_name = scale_tonic[1];
-      distance_of_note_number_from_tonic = distance_of_newname_number_from_tonic = offset = 0;
+      note_name = scale_tonic[1];
+      distance_of_note_number_from_tonic = distance_of_note_name_number_from_tonic = offset = 0;
       names.push(scale_tonic[1]);
       add_note(here, sign);
     } else {
-      newname = current_note_name.split("")[0];
-      let interval;
-      if (seven.indexOf(newname) == 6) {
+      let interval, per_note_sign;
+      note_name = note_name.split("")[0];
+      if (seven.indexOf(note_name) == 6) {
         interval = -6;
       } else {
         interval = 1;
       }
-      newname = seven[seven.indexOf(newname) + interval];
-      newname_number = seventeen[newname];
+      note_name = seven[seven.indexOf(note_name) + interval];
+      note_name_number = seventeen[note_name];
       distance_of_note_number_from_tonic = note_number - scale_tonic[0];
-      distance_of_newname_number_from_tonic = newname_number - scale_tonic[0];
-      if (distance_of_newname_number_from_tonic < 0 && distance_of_note_number_from_tonic > 0) {
+      distance_of_note_name_number_from_tonic = note_name_number - scale_tonic[0];
+      if (distance_of_note_name_number_from_tonic < 0 && distance_of_note_number_from_tonic > 0) {
         distance_of_note_number_from_tonic *= -1;
       }
-      offset = distance_of_note_number_from_tonic - distance_of_newname_number_from_tonic;
-      let per_note_sign;
+      offset = distance_of_note_number_from_tonic - distance_of_note_name_number_from_tonic;
       switch (offset) {
         case -2:
-          newname += doubleflat;
-          per_note_sign = "doubleflat";
-          break;
+          note_name += doubleflat;
+          per_note_sign = "doubleflat"; break;
         case -1:
-          newname += flat;
-          per_note_sign = "flat";
-          break;
+          note_name += flat;
+          per_note_sign = "flat"; break;
         case 1:
-          newname += sharp;
-          per_note_sign = "sharp";
-          break;
+          note_name += sharp;
+          per_note_sign = "sharp"; break;
         case 2:
-          newname += doublesharp;
-          per_note_sign = "doublesharp";
-          break;
+          note_name += doublesharp;
+          per_note_sign = "doublesharp"; break;
       }
-      current_note_name = newname;
-      names.push(newname);
+      names.push(note_name);
       add_note(here, per_note_sign);
     }
-    console.log("newname ::: " + newname + "  newname_number ::: " + newname_number);
-    console.log("current_note_name ::: " + current_note_name + "  note_number ::: " + note_number);
+    console.log("note_name ::: " + note_name);
+    console.log("note_name_number ::: " + note_name_number);
+    console.log("note_number ::: " + note_number);
     console.log("distance_of_note_number_from_tonic ::: " + distance_of_note_number_from_tonic);
-    console.log("distance_of_newname_number_from_tonic ::: " + distance_of_newname_number_from_tonic);
+    console.log("distance_of_note_name_number_from_tonic ::: " + distance_of_note_name_number_from_tonic);
     console.log("offset of dsts ::: " + offset);
     console.log("------------------------------------------------------------");
     note_number = note_number + scale_map[scale_mode][i];
