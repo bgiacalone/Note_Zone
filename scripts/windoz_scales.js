@@ -127,9 +127,6 @@ function add_note(template, s) {
   staff.appendChild(note_path);
 }
 
-
-
-
 function clear_scale(b) {
   let this_template = b.closest(".template");
   this_template.querySelectorAll(".g .notes_highlighted, .k .notes_highlighted").forEach((item, i) => { item.classList.remove("notes_highlighted"); });
@@ -182,8 +179,6 @@ function add_template() {
   templates.appendChild(new_template);
   name_notes();
 }
-
-
 
 let inst_template = `
   <div class="controls" style="min-height:10px;">
