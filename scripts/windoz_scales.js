@@ -49,8 +49,7 @@ function highlight_scale(b) {
   note_y = tonc;
   let names = [this_template.querySelector("select#tonic").value];
   let current_note_name, note_number = scale_tonic;
-  console.log("----------------------------------------------------------");
-  console.log("scale tonic ::: " + scale_tonic);
+  console.log("--------------------- scale tonic ::: " + scale_tonic + "---------------------");
   scale_map[scale_mode].forEach((item, i) => {
     // if (note_number >= 13) { note_number -= 12; }
     let distance_of_note_number_from_tonic, distance_of_newname_number_from_tonic, offset;
@@ -70,6 +69,8 @@ function highlight_scale(b) {
       }
       let nextname = seven[seven.indexOf(newname) + interval];
       let newname_number = seventeen[nextname];
+      console.log("nextname : : : "+nextname);
+      console.log("newname_number : : : "+newname_number);
       distance_of_note_number_from_tonic = note_number - scale_tonic;
       distance_of_newname_number_from_tonic = newname_number - scale_tonic;
       if (distance_of_newname_number_from_tonic < 0 &&
@@ -101,9 +102,11 @@ function highlight_scale(b) {
       names.push(newname);
       add_note(this_template, per_note_sign);
     }
-    console.log("--------------------------- \n note ::: " + current_note_name + `(${note_number})`);
-    console.log("dst from tonic (name dst) ::: " + distance_of_note_number_from_tonic + ` (${distance_of_newname_number_from_tonic})`);
+    console.log("current_note_name ::: " + current_note_name + "  note_number ::: " + note_number);
+    console.log("distance_of_note_number_from_tonic ::: " + distance_of_note_number_from_tonic);
+    console.log("distance_of_newname_number_from_tonic ::: " + distance_of_newname_number_from_tonic);
     console.log("offset of dsts ::: " + offset);
+    console.log("------------------------------------------------------------");
     note_number = note_number + scale_map[scale_mode][i];
   });
   console.log(names);
