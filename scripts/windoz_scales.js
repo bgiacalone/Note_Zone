@@ -27,7 +27,7 @@ function highlight_scale(b) {
     tonc = staff_lines.indexOf(scale_tonic[0]) + 1;
   } else {
     switch (scale_tonic[1].split("")[1]) {
-      case  "♭":
+      case "♭":
         sign = 'flat';
         tonc = staff_lines.indexOf(scale_tonic[0] + 1) + 1; break;
       case "♯":
@@ -44,10 +44,10 @@ function highlight_scale(b) {
   scale_map[scale_mode].forEach((item, i) => {
     let distance_of_note_number_from_tonic, distance_of_note_name_number_from_tonic, offset, note_name_number;
     if (running > 12) { running = running - 12; }
+    if (note_number > 12) { note_number = note_number - 12; }
     let notes = here.querySelectorAll("div[data-n='" + running + "']");
     notes.forEach((item, i) => { item.classList.toggle("notes_highlighted"); })
     running += scale_map[scale_mode][i];
-
     if (i == 0) {
       note_name = scale_tonic[1];
       distance_of_note_number_from_tonic = distance_of_note_name_number_from_tonic = offset = 0;
@@ -56,19 +56,14 @@ function highlight_scale(b) {
     } else {
       let interval, per_note_sign;
       note_name = note_name.split("")[0];
-      if (seven.indexOf(note_name) == 6) {
-        interval = -6;
-      } else {
-        interval = 1;
-      }
+      if (seven.indexOf(note_name) == 6) { interval = -6; } else { interval = 1; }
       note_name = seven[seven.indexOf(note_name) + interval];
       note_name_number = seventeen[note_name];
       distance_of_note_number_from_tonic = note_number - scale_tonic[0];
       distance_of_note_name_number_from_tonic = note_name_number - scale_tonic[0];
-      if (distance_of_note_name_number_from_tonic < 0 && distance_of_note_number_from_tonic > 0) {
-        distance_of_note_number_from_tonic *= -1;
-      }
       offset = distance_of_note_number_from_tonic - distance_of_note_name_number_from_tonic;
+      if (offset >= 10) { offset -= 12 }
+      if (offset <= -10) { offset += 12 }
       switch (offset) {
         case -2:
           note_name += doubleflat;
