@@ -6,7 +6,7 @@ function load_nav() {
   var body = document.querySelector("body");
   tn.classList.add("tn");
   var nav = `<div class="tn_content">
-               <div class="logo"><a href="./home.html"><img class="note_logo" src="images/32n.png"><img src="images/logo.png" alt-text="The Note Zone"></a></div>
+               <div class="logo"><a href="./index.html"><img class="note_logo" src="images/32n.png"><img src="images/logo.png" alt-text="The Note Zone"></a></div>
                <a href="./scale.html" id="Scales"  class="nav_item">
                  <span>
                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
